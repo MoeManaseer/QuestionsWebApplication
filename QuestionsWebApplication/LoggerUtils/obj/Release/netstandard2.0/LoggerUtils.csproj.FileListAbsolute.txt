@@ -1,0 +1,8 @@
+C:\Users\moutasem\source\repos\QuestionsFormsTest\LoggerUtils\bin\Release\netstandard2.0\LoggerUtils.deps.json
+C:\Users\moutasem\source\repos\QuestionsFormsTest\LoggerUtils\bin\Release\netstandard2.0\LoggerUtils.dll
+C:\Users\moutasem\source\repos\QuestionsFormsTest\LoggerUtils\bin\Release\netstandard2.0\LoggerUtils.pdb
+C:\Users\moutasem\source\repos\QuestionsFormsTest\LoggerUtils\obj\Release\netstandard2.0\LoggerUtils.csproj.CoreCompileInputs.cache
+C:\Users\moutasem\source\repos\QuestionsFormsTest\LoggerUtils\obj\Release\netstandard2.0\LoggerUtils.AssemblyInfoInputs.cache
+C:\Users\moutasem\source\repos\QuestionsFormsTest\LoggerUtils\obj\Release\netstandard2.0\LoggerUtils.AssemblyInfo.cs
+C:\Users\moutasem\source\repos\QuestionsFormsTest\LoggerUtils\obj\Release\netstandard2.0\LoggerUtils.dll
+C:\Users\moutasem\source\repos\QuestionsFormsTest\LoggerUtils\obj\Release\netstandard2.0\LoggerUtils.pdb

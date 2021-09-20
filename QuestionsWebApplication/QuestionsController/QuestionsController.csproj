@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LoggerUtils\LoggerUtils.csproj" />
+    <ProjectReference Include="..\QuestionDatabase\QuestionDatabase.csproj" />
+    <ProjectReference Include="..\QuestionEntities\QuestionEntities.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LoggerUtils;
+using QuestionsController;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,20 @@ namespace QuestionsWebApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private QuestionsHandler QuestionsHandlerObject;
+        
+        public HomeController(QuestionsHandler pQuestionsHandler)
+        {
+            try
+            {
+                QuestionsHandlerObject = pQuestionsHandler;
+            }
+            catch (Exception tException)
+            {
+                Logger.WriteExceptionMessage(tException);
+            }
+        }
+
         public ActionResult Index()
         {
             return View();
