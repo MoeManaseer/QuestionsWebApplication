@@ -5,7 +5,7 @@ namespace QuestionEntities
 {
     public static class QuestionsFactory
     {
-        public static Question GetInstance(QuestionsTypes pQuestionType)
+        public static Question GetInstance(QuestionsTypes pQuestionType = QuestionsTypes.Default)
         {
             Question tQuestion = null;
 
