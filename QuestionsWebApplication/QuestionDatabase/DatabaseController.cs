@@ -180,7 +180,7 @@ namespace QuestionDatabase
 
                     tQuestion.Id = Convert.ToInt32(tSQLReader[IdKey]);
                     tQuestion.Text = Convert.ToString(tSQLReader[TextKey]);
-                    tQuestion.Type = Convert.ToString(tSQLReader[TypeKey]);
+                    tQuestion.Type = (QuestionsTypes)Enum.Parse(typeof(QuestionsTypes), Convert.ToString(tSQLReader[TypeKey]));
                     tQuestion.Order = Convert.ToByte(tSQLReader[OrderKey]);
 
                     pQuestionsList.Add(tQuestion);
@@ -270,7 +270,7 @@ namespace QuestionDatabase
 
                             tQuestion.Id = tCurrentId;
                             tQuestion.Text = Convert.ToString(tSQLReader[TextKey]);
-                            tQuestion.Type = Convert.ToString(tSQLReader[TypeKey]);
+                            tQuestion.Type = (QuestionsTypes)Enum.Parse(typeof(QuestionsTypes), Convert.ToString(tSQLReader[TypeKey]));
                             tQuestion.Order = Convert.ToByte(tSQLReader[OrderKey]);
 
                             if (pQuestionsList[tQuestionsListPointer].Id > tCurrentId)
@@ -296,7 +296,7 @@ namespace QuestionDatabase
 
                         tQuestion.Id = Convert.ToInt32(tSQLReader[IdKey]);
                         tQuestion.Text = Convert.ToString(tSQLReader[TextKey]);
-                        tQuestion.Type = Convert.ToString(tSQLReader[TypeKey]);
+                        tQuestion.Type = (QuestionsTypes)Enum.Parse(typeof(QuestionsTypes), Convert.ToString(tSQLReader[TypeKey]));
                         tQuestion.Order = Convert.ToByte(tSQLReader[OrderKey]);
 
                         pQuestionsList.Add(tQuestion);

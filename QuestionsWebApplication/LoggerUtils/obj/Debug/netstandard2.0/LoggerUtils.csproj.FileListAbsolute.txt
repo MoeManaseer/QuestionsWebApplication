@@ -22,3 +22,13 @@ D:\source\repos\QuestionsApp\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.As
 D:\source\repos\QuestionsApp\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.AssemblyInfo.cs
 D:\source\repos\QuestionsApp\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.dll
 D:\source\repos\QuestionsApp\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.pdb
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\bin\Debug\netstandard2.0\LoggerUtils.deps.json
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\bin\Debug\netstandard2.0\LoggerUtils.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\bin\Debug\netstandard2.0\LoggerUtils.pdb
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.GeneratedMSBuildEditorConfig.editorconfig
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.AssemblyInfoInputs.cache
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.AssemblyInfo.cs
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.csproj.CoreCompileInputs.cache
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.pdb
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.csproj.AssemblyReference.cache

@@ -1,0 +1,69 @@
+﻿@model QuestionEntities.Question
+
+@{
+    bool tIsNewQuestion = Model == null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Question</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Type, new { @class = "form-control question__type-dropdown " + (tIsNewQuestion ? "question__type-dropdown--enabled" : "question__type-dropdown--disabled") })
+            @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Order, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Order, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Order, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="question__extra-data-container">
+        <div class="Smiley__container">
+            @Html.Partial("_" + (tIsNewQuestion ? "Smiley" : Model.Type.ToString()) + "Form", Model)
+        </div>
+
+        @if (tIsNewQuestion)
+        {
+            <div class="Star__container">
+                @Html.Partial("_StarForm", Model)
+            </div>
+                
+            <div class="Slider__container">
+                @Html.Partial("_SliderForm", Model)
+            </div>
+        }
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value=@(tIsNewQuestion ? "Create" : "Edit") class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+    @Html.Hidden("ModelTypeName", (tIsNewQuestion ? "Smiley" : Model.Type.ToString()) + "Question")
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

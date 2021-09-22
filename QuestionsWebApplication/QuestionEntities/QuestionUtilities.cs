@@ -3,6 +3,13 @@ using System;
 
 namespace QuestionEntities
 {
+    public enum QuestionsTypes
+    {
+        Smiley,
+        Slider,
+        Star,
+    };
+
     public enum ResultCodesEnum
     {
         SUCCESS = 0,

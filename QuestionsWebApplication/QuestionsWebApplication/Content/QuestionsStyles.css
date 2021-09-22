@@ -1,0 +1,11 @@
+﻿.questions__container {
+    display: none;
+}
+
+.questions__container--visible {
+    display: flex;
+}
+
+.dropdown-disabled {
+    pointer-events: none;
+}

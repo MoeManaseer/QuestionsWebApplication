@@ -8,7 +8,7 @@ namespace QuestionEntities
     {
         private int _Id;
         private byte _Order;
-        private string _type;
+        private QuestionsTypes _type;
         private string _Text;
 
         public int Id
@@ -42,16 +42,11 @@ namespace QuestionEntities
                 _Text = value;
             }
         }
-        public string Type
+        public QuestionsTypes Type
         {
             get { return _type; }
             set
             {
-                if (value.Length > 250 && string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("Type validation error, please make sure the string is not empty or longer than 250");
-                }
-
                 _type = value;
             }
         }
@@ -63,7 +58,7 @@ namespace QuestionEntities
                 Id = pId;
                 Order = pOrder;
                 Text = pText;
-                Type = pType;
+                Type = (QuestionsTypes)Enum.Parse(typeof(QuestionsTypes), pType);
             }
             catch (Exception tException)
             {

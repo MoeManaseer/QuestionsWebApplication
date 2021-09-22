@@ -1,0 +1,14 @@
+﻿@model QuestionEntities.Question
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+
+@Html.Partial("_QuestionForm", Model)
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/QuestionsJS")
+}
