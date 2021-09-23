@@ -41,6 +41,19 @@ namespace QuestionsController
             }
         }
 
+        ~QuestionsHandler()
+        {
+            try
+            {
+                UpdateDataTimer.Dispose();
+            }
+            catch (Exception tException)
+            {
+                Logger.WriteExceptionMessage(tException);
+            }
+        }
+
+
         /// <summary>
         /// Initializes the UpdateTimer
         /// </summary>
@@ -49,7 +62,7 @@ namespace QuestionsController
             try
             {
                 // Create a timer with ten seconds interval.
-                UpdateDataTimer = new Timer(20000);
+                UpdateDataTimer = new Timer(10000);
                 UpdateDataTimer.Elapsed += OnTimedEvent;
                 UpdateDataTimer.Enabled = true;
             }

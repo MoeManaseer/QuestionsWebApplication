@@ -67,7 +67,7 @@ namespace QuestionEntities
         }
 
         public Question()
-            : this(0, 0, "", "")
+            : this(0, 0, "", "Default")
         {
 
         }

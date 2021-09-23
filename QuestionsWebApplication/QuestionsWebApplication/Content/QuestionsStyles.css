@@ -9,3 +9,17 @@
 .dropdown-disabled {
     pointer-events: none;
 }
+
+#questions__container form {
+   display: inline-block;
+}
+
+.question__delete-btn {
+    border: 0;
+    color: #337ab7;
+    padding: 0;
+}
+
+.question__delete-btn:hover {
+    text-decoration: underline;
+}

@@ -3,8 +3,6 @@ using QuestionEntities;
 using QuestionsController;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace QuestionsWebApplication.Controllers
@@ -12,14 +10,14 @@ namespace QuestionsWebApplication.Controllers
     public class QuestionsController : Controller
     {
         private QuestionsHandler QuestionsHandlerObject;
-        private static readonly string MessageKey = "Message";
-        private static readonly string ResponseKey = "Response";
-        private static readonly string DangerKey = "danger";
-        private static readonly string InfoKey = "info";
-        private static readonly string SuccessKey = "success";
-        private static readonly string QuestionsKey = "Questions";
-        private static readonly string IndexKey = "Index";
-        private static readonly string CreateKey = "Create";
+        private const string MessageKey = "Message";
+        private const string ResponseKey = "Response";
+        private const string DangerKey = "danger";
+        private const string InfoKey = "info";
+        private const string SuccessKey = "success";
+        private const string QuestionsKey = "Questions";
+        private const string IndexKey = "Index";
+        private const string CreateKey = "Create";
 
         public QuestionsController(QuestionsHandler pQuestionsHandler)
         {
@@ -34,7 +32,31 @@ namespace QuestionsWebApplication.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
+        {
+            List<Question> tQuestions = new List<Question>();
+
+            try
+            {
+                tQuestions.AddRange(QuestionsHandlerObject.QuestionsList);
+                QuestionsHandlerObject.UpdateData += NotifyUpdateData;
+            }
+            catch (Exception tException)
+            {
+                Logger.WriteExceptionMessage(tException);
+                TempData[MessageKey] = "Something wrong happend while getting the questions list..";
+                TempData[ResponseKey] = DangerKey;
+            }
+
+            return View(tQuestions);
+        }
+
+        [HttpPost]
+        public ActionResult GetUpdatedData()
         {
             List<Question> tQuestions = new List<Question>();
 
@@ -45,11 +67,11 @@ namespace QuestionsWebApplication.Controllers
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = "Something wrong happend while getting the questions list..";
+                TempData[MessageKey] = "Something wrong happend while getting the data list..";
                 TempData[ResponseKey] = DangerKey;
             }
 
-            return View(tQuestions);
+            return PartialView("_QuestionsView", tQuestions);
         }
 
         public ActionResult Create()
@@ -156,20 +178,27 @@ namespace QuestionsWebApplication.Controllers
             return RedirectToAction(IndexKey, QuestionsKey);
         }
 
-        public ActionResult Delete(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult OnDeleteQuestion(string pQuestionId)
         {
+            List<Question> tQuestions = new List<Question>();
+
             try
             {
-                Question tQuestion = GetQuestionObject(id);
+                int tCurrentQuestionId = Convert.ToInt32(pQuestionId);
+                Question tQuestion = GetQuestionObject(tCurrentQuestionId);
 
                 if (tQuestion == null)
                 {
                     TempData[MessageKey] = "Something wrong happend while deleting the question.. The question might be already deleted";
                     TempData[ResponseKey] = DangerKey;
-                    return RedirectToAction(IndexKey, QuestionsKey);
+                    tQuestions.AddRange(QuestionsHandlerObject.QuestionsList);
+                    return PartialView("_QuestionsView", tQuestions);
                 }
 
                 int tResultCode = QuestionsHandlerObject.RemoveQuestion(tQuestion);
+                tQuestions.AddRange(QuestionsHandlerObject.QuestionsList);
 
                 if (tResultCode == (int) ResultCodesEnum.SUCCESS)
                 {
@@ -189,7 +218,7 @@ namespace QuestionsWebApplication.Controllers
                 TempData[ResponseKey] = DangerKey;
             }
 
-            return RedirectToAction(IndexKey, QuestionsKey);
+            return PartialView("_QuestionsView", tQuestions);
         }
 
         public ActionResult Details(int id = -1)
@@ -240,6 +269,18 @@ namespace QuestionsWebApplication.Controllers
             }
 
             return tQuestion;
+        }
+
+        private void NotifyUpdateData(object sender, EventArgs e)
+        {
+            try
+            {
+                DataUpdateNotifier.Instance.NotifyDataChanged();
+            }
+            catch (Exception tException)
+            {
+                Logger.WriteExceptionMessage(tException);
+            }
         }
     }
 }

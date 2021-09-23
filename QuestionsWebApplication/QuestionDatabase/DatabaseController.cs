@@ -580,6 +580,7 @@ namespace QuestionDatabase
 
             try
             {
+                CurrentDataState = (CurrentDataState + 1) % MaxIntValue;
                 // Get the table name to remove the quesand the question id
                 string tTableName = pQuestion.Type + QuestionsString;
                 int tQuestionId = pQuestion.Id;
@@ -598,9 +599,9 @@ namespace QuestionDatabase
                 SQLConnection.Open();
                 tResultCode = tSQLCommand.ExecuteNonQuery() != 0 ? (int)ResultCodesEnum.SUCCESS : (int)ResultCodesEnum.QUESTION_OUT_OF_DATE;
 
-                if ((int)ResultCodesEnum.SUCCESS == tResultCode)
+                if ((int)ResultCodesEnum.SUCCESS != tResultCode)
                 {
-                    CurrentDataState = (CurrentDataState + 1) % MaxIntValue; ;
+                    CurrentDataState = (CurrentDataState - 1) % MaxIntValue;
                 }
             }
             catch (SqlException tSQLException)
