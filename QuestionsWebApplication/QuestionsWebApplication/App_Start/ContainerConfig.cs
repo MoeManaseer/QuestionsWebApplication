@@ -21,7 +21,7 @@ namespace QuestionsWebApplication
                 tBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
                 tBuilder.RegisterType<QuestionsHandler>()
                     .As<QuestionsHandler>()
-                    .InstancePerRequest();
+                    .ExternallyOwned();
 
                 var tContainer = tBuilder.Build();
                 DependencyResolver.SetResolver(new AutofacDependencyResolver(tContainer));

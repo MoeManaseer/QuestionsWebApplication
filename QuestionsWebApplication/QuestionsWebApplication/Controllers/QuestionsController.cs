@@ -179,46 +179,42 @@ namespace QuestionsWebApplication.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult OnDeleteQuestion(string pQuestionId)
         {
-            List<Question> tQuestions = new List<Question>();
+            bool tDidDelete = false;
+            string tMessageResponse = "";
+            string tRequestResponse = "";
 
             try
             {
                 int tCurrentQuestionId = Convert.ToInt32(pQuestionId);
                 Question tQuestion = GetQuestionObject(tCurrentQuestionId);
+                
+                tDidDelete = (tQuestion != null) && (QuestionsHandlerObject.RemoveQuestion(tQuestion) == (int)ResultCodesEnum.SUCCESS);
 
-                if (tQuestion == null)
+                if (tDidDelete)
                 {
-                    TempData[MessageKey] = "Something wrong happend while deleting the question.. The question might be already deleted";
-                    TempData[ResponseKey] = DangerKey;
-                    tQuestions.AddRange(QuestionsHandlerObject.QuestionsList);
-                    return PartialView("_QuestionsView", tQuestions);
-                }
-
-                int tResultCode = QuestionsHandlerObject.RemoveQuestion(tQuestion);
-                tQuestions.AddRange(QuestionsHandlerObject.QuestionsList);
-
-                if (tResultCode == (int) ResultCodesEnum.SUCCESS)
-                {
-                    TempData[MessageKey] = "Question deleted successfully";
-                    TempData[ResponseKey] = SuccessKey;
+                    tMessageResponse = "The question was removed successfully!";
+                    tRequestResponse = SuccessKey;
                 }
                 else
                 {
-                    TempData[MessageKey] = "Something wrong happend while deleting the question.. The question might be already deleted";
-                    TempData[ResponseKey] = DangerKey;
+                    tMessageResponse = "Something wrong happend while deleting the question.. The question might be already deleted";
+                    tRequestResponse = DangerKey;
                 }
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = "Something wrong happend while deleting the question..";
-                TempData[ResponseKey] = DangerKey;
+                tDidDelete = false;
             }
 
-            return PartialView("_QuestionsView", tQuestions);
+            return Json(new
+            {
+                message = tMessageResponse,
+                requestResponse = tRequestResponse,
+                didDelete = tDidDelete
+            });
         }
 
         public ActionResult Details(int id = -1)

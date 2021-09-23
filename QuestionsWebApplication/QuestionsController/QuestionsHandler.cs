@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 using LoggerUtils;
 using QuestionDatabase;
@@ -14,6 +15,8 @@ namespace QuestionsController
     {
         private DatabaseController DatabaseController;
         private Thread UpdateDataThread;
+        private CancellationTokenSource cts = new CancellationTokenSource();
+        private Task task;
         public event EventHandler UpdateData;
         public List<Question> QuestionsList { get; private set; }
         private ListSortDirection CurrentSortDirection;
@@ -34,13 +37,19 @@ namespace QuestionsController
                 DatabaseController = new DatabaseController();
                 CurrentSortDirection = ListSortDirection.Ascending;
                 CurrentSortValueEnum = (int) SortableValueNames.Id;
-                UpdateDataThread = new Thread(UpdateDataThreadCall);
-                UpdateDataThread.IsBackground = true;
+                //task = new Task(UpdateDataThreadCall, cts.Token, TaskCreationOptions.LongRunning);
+                //UpdateDataThread = new Thread(UpdateDataThreadCall);
+                //UpdateDataThread.IsBackground = true;
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
             }
+        }
+
+        ~QuestionsHandler()
+        {
+            
         }
 
         /// <summary>
@@ -56,7 +65,7 @@ namespace QuestionsController
                     {
                         // Sleep this thread for 10 seconds
                         Thread.Sleep(10000);
-
+                        //await Task.Delay(10000);
                         int tResultCode = UpdateQuestionsData();
 
                         // If new data cameback, invoke the UI to update It's data
@@ -91,11 +100,16 @@ namespace QuestionsController
                 QuestionsList = new List<Question>();
                 tResultCode = DatabaseController.GetData(QuestionsList);
 
-                // Start the automatic refresh of data after the data is initially fetched.
-                if (!UpdateDataThread.IsAlive)
-                {
-                    UpdateDataThread.Start();
-                }
+                //if (task.Status != TaskStatus.Running)
+                //{
+                //    task.Start();
+                //}
+
+                //Start the automatic refresh of data after the data is initially fetched.
+                //if (!UpdateDataThread.IsAlive)
+                //{
+                //    UpdateDataThread.Start();
+                //}
             }
             catch (Exception tException)
             {

@@ -1,48 +1,44 @@
 ﻿@model IEnumerable<QuestionEntities.Question>
 
-@{
-    AjaxOptions tDeleteAJAXOptions = new AjaxOptions
-    {
-        HttpMethod = "POST",
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "questions__container",
-    };
-}
 
-<div id="questions__container">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Order)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Text)
-            </th>
-            <th></th>
-        </tr>
+    <div class="questions__delete-response-container" role="alert">
 
-        @foreach (var item in Model)
-        {
+    </div>
+
+    <div id="questions__container">
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Order)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Text)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @using (Ajax.BeginForm("OnDeleteQuestion", "Questions", tDeleteAJAXOptions))
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.Hidden("pQuestionId", item.Id)
-
-                        <input type="submit" value="Delete" class="question__delete-btn" />
-                    }
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Order)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Text)
+                </th>
+                <th></th>
             </tr>
-        }
 
-    </table>
-</div>
+            @foreach (var item in Model)
+            {
+        <tr class=@($"question__container-{item.Id}")>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                <button class="question__delete-btn" id=@($"delete-{item.Id}")>Delete</button>
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
