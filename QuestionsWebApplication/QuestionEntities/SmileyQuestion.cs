@@ -6,25 +6,13 @@ namespace QuestionEntities
 {
     public class SmileyQuestion : Question
     {
-        private byte _NumberOfSmiley;
+        private static readonly string NumberOfSmileyKey = "NumberOfSmiley";
 
-        public byte NumberOfSmiley
-        {
-            get { return _NumberOfSmiley; }
-            set
-            {
-                if (value > 5 || value < 2)
-                {
-                    throw new Exception("NumberOfSmiley validation error, please make sure the value is lower than or equal 5 and bigger or equal to 2");
-                }
-
-                _NumberOfSmiley = value;
-            }
-        }
+        public byte NumberOfSmiley { set; get; }
 
         public SmileyQuestion
             (int pId, byte pOrder, string pText, byte pNumberOfSmiley)
-            : base(pId, pOrder, pText, "Smiley")
+            : base(pId, pOrder, pText, QuestionsTypeEnum.Smiley)
         {
             try
             {
@@ -43,6 +31,29 @@ namespace QuestionEntities
         }
 
         /// <summary>
+        /// Validates the question fields
+        /// </summary>
+        /// <returns>Whether the question fields are valid or no</returns>
+        public override bool ValidateQuestionFields()
+        {
+            bool tAreFieldsValid = base.ValidateQuestionFields();
+
+            try
+            {
+                if (NumberOfSmiley < 2 || NumberOfSmiley > 5)
+                {
+                    tAreFieldsValid = false;
+                }
+            }
+            catch (Exception tException)
+            {
+                Logger.WriteExceptionMessage(tException);
+            }
+
+            return tAreFieldsValid;
+        }
+
+        /// <summary>
         /// Util function that returns a dictionary of the current object values
         /// </summary>
         /// <returns>A key value pair of the values needed</returns>
@@ -52,7 +63,7 @@ namespace QuestionEntities
 
             try
             {
-                tDataDictionary.Add("NumberOfSmiley", NumberOfSmiley.ToString());
+                tDataDictionary.Add(NumberOfSmileyKey, NumberOfSmiley.ToString());
             }
             catch (Exception tException)
             {
@@ -73,7 +84,7 @@ namespace QuestionEntities
 
             try
             {
-                NumberOfSmiley = Convert.ToByte(pDataDictionary["NumberOfSmiley"]);
+                NumberOfSmiley = Convert.ToByte(pDataDictionary[NumberOfSmileyKey]);
             }
             catch (Exception tException)
             {
@@ -94,7 +105,7 @@ namespace QuestionEntities
 
             try
             {
-                tParamNames.Add("NumberOfSmiley");
+                tParamNames.Add(NumberOfSmileyKey);
             }
             catch (Exception tException)
             {

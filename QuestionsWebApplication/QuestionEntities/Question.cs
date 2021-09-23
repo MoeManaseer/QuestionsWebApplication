@@ -6,59 +6,24 @@ namespace QuestionEntities
 {
     public class Question
     {
-        private int _Id;
-        private byte _Order;
-        private QuestionsTypes _type;
-        private string _Text;
+        private static readonly string IdKey = "Id";
+        private static readonly string TypeKey = "Type";
+        private static readonly string OrderKey = "Order";
+        private static readonly string TextKey = "Text";
 
-        public int Id
-        {
-            get { return _Id; }
-            set { _Id = value; }
-        }
-        public byte Order
-        {
-            get { return _Order; }
-            set
-            {
-                if (value > 100 || value < 0)
-                {
-                    throw new Exception("Order can't be bigger than 100 or lower than 0");
-                }
+        public int Id { get; set; }
+        public byte Order { get; set; }
+        public string Text { get; set; }
+        public QuestionsTypeEnum Type { get; set; }
 
-                _Order = value;
-            }
-        }
-        public string Text
-        {
-            get { return _Text; }
-            set
-            {
-                if (value.Length > 250 && string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("Text validation error, please make sure the string is not empty or longer than 250");
-                }
-
-                _Text = value;
-            }
-        }
-        public QuestionsTypes Type
-        {
-            get { return _type; }
-            set
-            {
-                _type = value;
-            }
-        }
-
-        public Question(int pId, byte pOrder, string pText, string pType)
+        public Question(int pId, byte pOrder, string pText, QuestionsTypeEnum pType)
         {
             try
             {
                 Id = pId;
                 Order = pOrder;
                 Text = pText;
-                Type = (QuestionsTypes)Enum.Parse(typeof(QuestionsTypes), pType);
+                Type = pType;
             }
             catch (Exception tException)
             {
@@ -67,9 +32,42 @@ namespace QuestionEntities
         }
 
         public Question()
-            : this(0, 0, "", "Default")
+            : this(0, 0, "", QuestionsTypeEnum.Smiley)
         {
 
+        }
+
+        /// <summary>
+        /// Validates the question fields
+        /// </summary>
+        /// <returns>Whether the question fields are valid or no</returns>
+        public virtual bool ValidateQuestionFields()
+        {
+            bool tAreFieldsValid = true;
+
+            try
+            {
+                if (string.IsNullOrEmpty(Text) || string.IsNullOrEmpty(Type.ToString()))
+                {
+                    tAreFieldsValid = false;
+                }
+
+                if (Text.Length > 255)
+                {
+                    tAreFieldsValid = false;
+                }
+
+                if (Order < 0 || Order > 100)
+                {
+                    tAreFieldsValid = false;
+                }
+            }
+            catch (Exception tException)
+            {
+                Logger.WriteExceptionMessage(tException);
+            }
+
+            return tAreFieldsValid;
         }
 
         /// <summary>
@@ -82,8 +80,8 @@ namespace QuestionEntities
 
             try
             {
-                tDataDictionary.Add("Order", Order.ToString());
-                tDataDictionary.Add("Text", Text);
+                tDataDictionary.Add(OrderKey, Order.ToString());
+                tDataDictionary.Add(TextKey, Text);
             }
             catch (Exception tException)
             {
@@ -104,8 +102,8 @@ namespace QuestionEntities
 
             try
             {
-                Order = Convert.ToByte(pDataDictionary["Order"]);
-                Text = pDataDictionary["Text"];
+                Order = Convert.ToByte(pDataDictionary[OrderKey]);
+                Text = pDataDictionary[TextKey];
 
                 tUpdated = true;
             }
@@ -127,10 +125,10 @@ namespace QuestionEntities
 
             try
             {
-                tParamNames.Add("Id");
-                tParamNames.Add("Order");
-                tParamNames.Add("Type");
-                tParamNames.Add("Text");
+                tParamNames.Add(IdKey);
+                tParamNames.Add(OrderKey);
+                tParamNames.Add(TypeKey);
+                tParamNames.Add(TextKey);
             }
             catch (Exception tException)
             {

@@ -6,24 +6,12 @@ namespace QuestionEntities
 {
     public class StarQuestion : Question
     {
-        private byte _NumberOfStar;
+        private static readonly string NumberOfStarKey = "NumberOfStar";
 
-        public byte NumberOfStar
-        {
-            get { return _NumberOfStar; }
-            set
-            {
-                if (value > 10 || value < 1)
-                {
-                    throw new Exception("NumberOfStar validation error, please make sure the value is lower than or equal 10 and bigger than 0");
-                }
-
-                _NumberOfStar = value;
-            }
-        }
+        public byte NumberOfStar { get; set; }
         public StarQuestion
             (int pId, byte pOrder, string pText, byte pNumberOfStar)
-            : base(pId, pOrder, pText, "Star")
+            : base(pId, pOrder, pText, QuestionsTypeEnum.Star)
         {
             try
             {
@@ -42,6 +30,29 @@ namespace QuestionEntities
         }
 
         /// <summary>
+        /// Validates the question fields
+        /// </summary>
+        /// <returns>Whether the question fields are valid or no</returns>
+        public override bool ValidateQuestionFields()
+        {
+            bool tAreFieldsValid = base.ValidateQuestionFields();
+
+            try
+            {
+                if (NumberOfStar < 1 || NumberOfStar > 10)
+                {
+                    tAreFieldsValid = false;
+                }
+            }
+            catch (Exception tException)
+            {
+                Logger.WriteExceptionMessage(tException);
+            }
+
+            return tAreFieldsValid;
+        }
+
+        /// <summary>
         /// Util function that returns a dictionary of the current object values
         /// </summary>
         /// <returns>A key value pair of the values needed</returns>
@@ -51,7 +62,7 @@ namespace QuestionEntities
 
             try
             {
-                tDataDictionary.Add("NumberOfStar", NumberOfStar.ToString());
+                tDataDictionary.Add(NumberOfStarKey, NumberOfStar.ToString());
             }
             catch (Exception tException)
             {
@@ -72,7 +83,7 @@ namespace QuestionEntities
 
             try
             {
-                NumberOfStar = Convert.ToByte(pDataDictionary["NumberOfStar"]);
+                NumberOfStar = Convert.ToByte(pDataDictionary[NumberOfStarKey]);
             }
             catch (Exception tException)
             {
@@ -93,7 +104,7 @@ namespace QuestionEntities
 
             try
             {
-                tParamNames.Add("NumberOfStar");
+                tParamNames.Add(NumberOfStarKey);
             }
             catch (Exception tException)
             {

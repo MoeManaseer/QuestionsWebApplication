@@ -5,21 +5,21 @@ namespace QuestionEntities
 {
     public static class QuestionsFactory
     {
-        public static Question GetInstance(QuestionsTypes pQuestionType = QuestionsTypes.Default)
+        public static Question GetInstance(QuestionsTypeEnum pType = QuestionsTypeEnum.Smiley)
         {
             Question tQuestion = null;
 
             try
             {
-                switch (pQuestionType)
+                switch (pType)
                 {
-                    case QuestionsTypes.Smiley:
+                    case QuestionsTypeEnum.Smiley:
                         tQuestion = new SmileyQuestion();
                         break;
-                    case QuestionsTypes.Star:
+                    case QuestionsTypeEnum.Star:
                         tQuestion = new StarQuestion();
                         break;
-                    case QuestionsTypes.Slider:
+                    case QuestionsTypeEnum.Slider:
                         tQuestion = new SliderQuestion();
                         break;
                     default:

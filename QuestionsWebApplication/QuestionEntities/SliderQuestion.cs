@@ -6,67 +6,19 @@ namespace QuestionEntities
 {
     public class SliderQuestion : Question
     {
-        private byte _StartValue;
-        private byte _EndValue;
-        private string _StartValueCaption;
-        private string _EndValueCaption;
+        private static readonly string StartValueKey = "StartValue";
+        private static readonly string EndValueKey = "EndValue";
+        private static readonly string StartValueCaptionKey = "StartValueCaption";
+        private static readonly string EndValueCaptionKey = "EndValueCaption";
 
-        public byte StartValue
-        {
-            get { return _StartValue; }
-            set
-            {
-                if (value > 100 || value < 0)
-                {
-                    throw new Exception("StartValue validation error, please make sure the value is lower than or equal 100 and bigger than 0");
-                }
-
-                _StartValue = value;
-            }
-        }
-        public byte EndValue
-        {
-            get { return _EndValue; }
-            set
-            {
-                if (value > 100 || value < 0)
-                {
-                    throw new Exception("EndValue validation error, please make sure the value is lower than or equal 100 and bigger than 0");
-                }
-
-                _EndValue = value;
-            }
-        }
-        public string StartValueCaption
-        {
-            get { return _StartValueCaption; }
-            set
-            {
-                if (value.Length > 250 && string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("StartValueCaption validation error, please make sure the string is not empty or longer than 250");
-                }
-
-                _StartValueCaption = value;
-            }
-        }
-        public string EndValueCaption
-        {
-            get { return _EndValueCaption; }
-            set
-            {
-                if (value.Length > 250 && string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("EndValueCaption validation error, please make sure the string is not empty or longer than 250");
-                }
-
-                _EndValueCaption = value;
-            }
-        }
+        public byte StartValue { get; set; }
+        public byte EndValue { get; set; }
+        public string StartValueCaption { get; set; }
+        public string EndValueCaption { get; set; }
 
         public SliderQuestion
             (int pId, byte pOrder, string pText, byte pStartValue, byte pEndValue, string pStartValueCaption, string pEndValueCaption)
-            : base (pId, pOrder, pText, "Slider")
+            : base (pId, pOrder, pText, QuestionsTypeEnum.Slider)
         {
             try
             {
@@ -88,6 +40,44 @@ namespace QuestionEntities
         }
 
         /// <summary>
+        /// Validates the question fields
+        /// </summary>
+        /// <returns>Whether the question fields are valid or no</returns>
+        public override bool ValidateQuestionFields()
+        {
+            bool tAreFieldsValid = base.ValidateQuestionFields();
+
+            try
+            {
+                if (string.IsNullOrEmpty(StartValueCaption) || string.IsNullOrEmpty(EndValueCaption))
+                {
+                    tAreFieldsValid = false;
+                }
+
+                if (StartValueCaption.Length > 255 || EndValueCaption.Length > 255)
+                {
+                    tAreFieldsValid = false;
+                }
+
+                if (StartValue < 0 || StartValue > 100)
+                {
+                    tAreFieldsValid = false;
+                }
+
+                if (EndValue < 0 || EndValue > 100 || EndValue < StartValue)
+                {
+                    tAreFieldsValid = false;
+                }
+            }
+            catch (Exception tException)
+            {
+                Logger.WriteExceptionMessage(tException);
+            }
+
+            return tAreFieldsValid;
+        }
+
+        /// <summary>
         /// Util function that returns a dictionary of the current object values
         /// </summary>
         /// <returns>A key value pair of the values needed</returns>
@@ -97,10 +87,10 @@ namespace QuestionEntities
 
             try
             {
-                tDataDictionary.Add("StartValue", StartValue.ToString());
-                tDataDictionary.Add("EndValue", EndValue.ToString());
-                tDataDictionary.Add("StartValueCaption", StartValueCaption);
-                tDataDictionary.Add("EndValueCaption", EndValueCaption);
+                tDataDictionary.Add(StartValueKey, StartValue.ToString());
+                tDataDictionary.Add(EndValueKey, EndValue.ToString());
+                tDataDictionary.Add(StartValueCaptionKey, StartValueCaption);
+                tDataDictionary.Add(EndValueCaptionKey, EndValueCaption);
             }
             catch (Exception tException)
             {
@@ -121,10 +111,10 @@ namespace QuestionEntities
 
             try
             {
-                StartValue = Convert.ToByte(pDataDictionary["StartValue"]);
-                EndValue = Convert.ToByte(pDataDictionary["EndValue"]);
-                StartValueCaption = pDataDictionary["StartValueCaption"];
-                EndValueCaption = pDataDictionary["EndValueCaption"];
+                StartValue = Convert.ToByte(pDataDictionary[StartValueKey]);
+                EndValue = Convert.ToByte(pDataDictionary[EndValueKey]);
+                StartValueCaption = pDataDictionary[StartValueCaptionKey];
+                EndValueCaption = pDataDictionary[EndValueCaptionKey];
             }
             catch (Exception tException)
             {
@@ -145,10 +135,10 @@ namespace QuestionEntities
 
             try
             {
-                tParamNames.Add("StartValue");
-                tParamNames.Add("EndValue");
-                tParamNames.Add("StartValueCaption");
-                tParamNames.Add("EndValueCaption");
+                tParamNames.Add(StartValueKey);
+                tParamNames.Add(EndValueKey);
+                tParamNames.Add(StartValueCaptionKey);
+                tParamNames.Add(EndValueCaptionKey);
             }
             catch (Exception tException)
             {

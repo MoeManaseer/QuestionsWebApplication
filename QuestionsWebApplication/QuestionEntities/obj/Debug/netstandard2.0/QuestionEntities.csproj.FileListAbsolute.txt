@@ -3,13 +3,14 @@ D:\source\repos\QuestionsApp\QuestionEntities\bin\Debug\netstandard2.0\QuestionE
 D:\source\repos\QuestionsApp\QuestionEntities\bin\Debug\netstandard2.0\QuestionEntities.pdb
 D:\source\repos\QuestionsApp\QuestionEntities\bin\Debug\netstandard2.0\LoggerUtils.dll
 D:\source\repos\QuestionsApp\QuestionEntities\bin\Debug\netstandard2.0\LoggerUtils.pdb
-D:\source\repos\QuestionsApp\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.csprojAssemblyReference.cache
 D:\source\repos\QuestionsApp\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.csproj.CoreCompileInputs.cache
 D:\source\repos\QuestionsApp\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.AssemblyInfoInputs.cache
 D:\source\repos\QuestionsApp\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.AssemblyInfo.cs
 D:\source\repos\QuestionsApp\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.csproj.CopyComplete
 D:\source\repos\QuestionsApp\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.dll
 D:\source\repos\QuestionsApp\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.pdb
+D:\source\repos\QuestionsApp\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.csproj.AssemblyReference.cache
+D:\source\repos\QuestionsApp\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.GeneratedMSBuildEditorConfig.editorconfig
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\QuestionEntities.deps.json
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\QuestionEntities.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\QuestionEntities.pdb

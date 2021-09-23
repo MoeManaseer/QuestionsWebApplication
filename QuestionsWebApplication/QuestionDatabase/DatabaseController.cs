@@ -180,10 +180,13 @@ namespace QuestionDatabase
 
                     tQuestion.Id = Convert.ToInt32(tSQLReader[IdKey]);
                     tQuestion.Text = Convert.ToString(tSQLReader[TextKey]);
-                    tQuestion.Type = (QuestionsTypes)Enum.Parse(typeof(QuestionsTypes), Convert.ToString(tSQLReader[TypeKey]));
+                    tQuestion.Type = (QuestionsTypeEnum)Enum.Parse(typeof(QuestionsTypeEnum), Convert.ToString(tSQLReader[TypeKey]));
                     tQuestion.Order = Convert.ToByte(tSQLReader[OrderKey]);
 
-                    pQuestionsList.Add(tQuestion);
+                    if (tQuestion.ValidateQuestionFields())
+                    {
+                        pQuestionsList.Add(tQuestion);
+                    }
                 }
 
                 // Whenever we get fresh data, reset the CurrentState int
@@ -270,10 +273,10 @@ namespace QuestionDatabase
 
                             tQuestion.Id = tCurrentId;
                             tQuestion.Text = Convert.ToString(tSQLReader[TextKey]);
-                            tQuestion.Type = (QuestionsTypes)Enum.Parse(typeof(QuestionsTypes), Convert.ToString(tSQLReader[TypeKey]));
+                            tQuestion.Type = (QuestionsTypeEnum)Enum.Parse(typeof(QuestionsTypeEnum), Convert.ToString(tSQLReader[TypeKey]));
                             tQuestion.Order = Convert.ToByte(tSQLReader[OrderKey]);
 
-                            if (pQuestionsList[tQuestionsListPointer].Id > tCurrentId)
+                            if (pQuestionsList[tQuestionsListPointer].Id > tCurrentId && tQuestion.ValidateQuestionFields())
                             {
                                 pQuestionsList.Insert(tQuestionsListPointer, tQuestion);
                             }
@@ -296,11 +299,14 @@ namespace QuestionDatabase
 
                         tQuestion.Id = Convert.ToInt32(tSQLReader[IdKey]);
                         tQuestion.Text = Convert.ToString(tSQLReader[TextKey]);
-                        tQuestion.Type = (QuestionsTypes)Enum.Parse(typeof(QuestionsTypes), Convert.ToString(tSQLReader[TypeKey]));
+                        tQuestion.Type = (QuestionsTypeEnum)Enum.Parse(typeof(QuestionsTypeEnum), Convert.ToString(tSQLReader[TypeKey]));
                         tQuestion.Order = Convert.ToByte(tSQLReader[OrderKey]);
 
-                        pQuestionsList.Add(tQuestion);
-                        tQuestionsListPointer++;
+                        if (tQuestion.ValidateQuestionFields())
+                        {
+                            pQuestionsList.Add(tQuestion);
+                            tQuestionsListPointer++;
+                        }
                     }
                 }
                 
@@ -580,7 +586,6 @@ namespace QuestionDatabase
 
             try
             {
-                CurrentDataState = (CurrentDataState + 1) % MaxIntValue;
                 // Get the table name to remove the quesand the question id
                 string tTableName = pQuestion.Type + QuestionsString;
                 int tQuestionId = pQuestion.Id;
@@ -599,9 +604,9 @@ namespace QuestionDatabase
                 SQLConnection.Open();
                 tResultCode = tSQLCommand.ExecuteNonQuery() != 0 ? (int)ResultCodesEnum.SUCCESS : (int)ResultCodesEnum.QUESTION_OUT_OF_DATE;
 
-                if ((int)ResultCodesEnum.SUCCESS != tResultCode)
+                if ((int)ResultCodesEnum.SUCCESS == tResultCode)
                 {
-                    CurrentDataState = (CurrentDataState - 1) % MaxIntValue;
+                    CurrentDataState = (CurrentDataState + 1) % MaxIntValue; ;
                 }
             }
             catch (SqlException tSQLException)

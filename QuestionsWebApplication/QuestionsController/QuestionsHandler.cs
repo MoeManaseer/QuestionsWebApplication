@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Timers;
 using LoggerUtils;
 using QuestionDatabase;
@@ -12,7 +13,7 @@ namespace QuestionsController
     public class QuestionsHandler
     {
         private DatabaseController DatabaseController;
-        private Timer UpdateDataTimer;
+        private Thread UpdateDataThread;
         public event EventHandler UpdateData;
         public List<Question> QuestionsList { get; private set; }
         private ListSortDirection CurrentSortDirection;
@@ -33,38 +34,8 @@ namespace QuestionsController
                 DatabaseController = new DatabaseController();
                 CurrentSortDirection = ListSortDirection.Ascending;
                 CurrentSortValueEnum = (int) SortableValueNames.Id;
-                InitTimer();
-            }
-            catch (Exception tException)
-            {
-                Logger.WriteExceptionMessage(tException);
-            }
-        }
-
-        ~QuestionsHandler()
-        {
-            try
-            {
-                UpdateDataTimer.Dispose();
-            }
-            catch (Exception tException)
-            {
-                Logger.WriteExceptionMessage(tException);
-            }
-        }
-
-
-        /// <summary>
-        /// Initializes the UpdateTimer
-        /// </summary>
-        private void InitTimer()
-        {
-            try
-            {
-                // Create a timer with ten seconds interval.
-                UpdateDataTimer = new Timer(10000);
-                UpdateDataTimer.Elapsed += OnTimedEvent;
-                UpdateDataTimer.Enabled = true;
+                UpdateDataThread = new Thread(UpdateDataThreadCall);
+                UpdateDataThread.IsBackground = true;
             }
             catch (Exception tException)
             {
@@ -73,20 +44,31 @@ namespace QuestionsController
         }
 
         /// <summary>
-        /// The timer onElapsed function that fires whenever the timer finishes It's interval
+        /// The updateThread function call
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnTimedEvent(object sender, ElapsedEventArgs e)
+        private void UpdateDataThreadCall()
         {
             try
             {
-                int tResultCode = UpdateQuestionsData();
-
-                // If new data cameback, invoke the UI to update It's data
-                if (tResultCode == (int)ResultCodesEnum.SUCCESS)
+                while (true)
                 {
-                    UpdateData?.Invoke(this, new EventArgs());
+                    try
+                    {
+                        // Sleep this thread for 10 seconds
+                        Thread.Sleep(10000);
+
+                        int tResultCode = UpdateQuestionsData();
+
+                        // If new data cameback, invoke the UI to update It's data
+                        if (tResultCode == (int)ResultCodesEnum.SUCCESS)
+                        {
+                            UpdateData?.Invoke(this, new EventArgs());
+                        }
+                    }
+                    catch (Exception tException)
+                    {
+                        Logger.WriteExceptionMessage(tException);
+                    }
                 }
             }
             catch (Exception tException)
@@ -106,7 +88,14 @@ namespace QuestionsController
             try
             {
                 // Create a new instance of the List so that data Isn't duplicated 
+                QuestionsList = new List<Question>();
                 tResultCode = DatabaseController.GetData(QuestionsList);
+
+                // Start the automatic refresh of data after the data is initially fetched.
+                if (!UpdateDataThread.IsAlive)
+                {
+                    UpdateDataThread.Start();
+                }
             }
             catch (Exception tException)
             {

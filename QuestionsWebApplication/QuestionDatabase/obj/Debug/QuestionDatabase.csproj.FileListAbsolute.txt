@@ -314,11 +314,11 @@ D:\source\repos\QuestionsApp\QuestionDatabase\bin\Debug\LoggerUtils.dll
 D:\source\repos\QuestionsApp\QuestionDatabase\bin\Debug\QuestionEntities.dll
 D:\source\repos\QuestionsApp\QuestionDatabase\bin\Debug\LoggerUtils.pdb
 D:\source\repos\QuestionsApp\QuestionDatabase\bin\Debug\QuestionEntities.pdb
-D:\source\repos\QuestionsApp\QuestionDatabase\obj\Debug\QuestionDatabase.csprojAssemblyReference.cache
 D:\source\repos\QuestionsApp\QuestionDatabase\obj\Debug\QuestionDatabase.csproj.CoreCompileInputs.cache
 D:\source\repos\QuestionsApp\QuestionDatabase\obj\Debug\QuestionDatabase.csproj.CopyComplete
 D:\source\repos\QuestionsApp\QuestionDatabase\obj\Debug\QuestionDatabase.dll
 D:\source\repos\QuestionsApp\QuestionDatabase\obj\Debug\QuestionDatabase.pdb
+D:\source\repos\QuestionsApp\QuestionDatabase\obj\Debug\QuestionDatabase.csproj.AssemblyReference.cache
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\QuestionDatabase.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\QuestionDatabase.pdb
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\Microsoft.Win32.Primitives.dll
