@@ -24,6 +24,12 @@ namespace QuestionsWebApplication.Controllers
             try
             {
                 QuestionsHandlerObject = pQuestionsHandler;
+                
+                if (QuestionsHandlerObject.IsInitialLoad)
+                {
+                    QuestionsHandlerObject.UpdateData += NotifyUpdateData;
+                }
+                
                 QuestionsHandlerObject.FillQuestionsData();
             }
             catch (Exception tException)
@@ -43,7 +49,6 @@ namespace QuestionsWebApplication.Controllers
             try
             {
                 tQuestions.AddRange(QuestionsHandlerObject.QuestionsList);
-                QuestionsHandlerObject.UpdateData += NotifyUpdateData;
             }
             catch (Exception tException)
             {

@@ -29,3 +29,7 @@
 .sortable {
     cursor: pointer;
 }
+
+.sortable:hover {
+    background-color: lightgray;
+}

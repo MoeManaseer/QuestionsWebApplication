@@ -27,6 +27,7 @@ namespace QuestionsWebApplication
 
             bundles.Add(new ScriptBundle("~/bundles/QuestionsIndexControllers").Include(
                       "~/Scripts/jquery.unobtrusive*",
+                      "~/Scripts/QuestionsSharedHandlers.js",
                       "~/Scripts/QuestionsSortHandler.js",
                       "~/Scripts/QuestionsRefreshHandler.js",
                       "~/Scripts/QuestionsDeleteHandler.js"));

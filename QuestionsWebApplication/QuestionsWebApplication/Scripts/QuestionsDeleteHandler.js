@@ -54,18 +54,6 @@ const RemoveQuestionAjax = (questionId) => {
     });
 };
 
-const AddRemoveEventListeners = () => {
-    const deleteQuestionButtons = document.querySelectorAll('.question__delete-btn');
-
-    if (deleteQuestionButtons) {
-        deleteQuestionButtons.forEach((deleteButton) => {
-            deleteButton.addEventListener('click', (event) => {
-                RemoveQuestionAjax(deleteButton.id.split('-')[1]);
-            });
-        });
-    }
-};
-
 document.addEventListener('DOMContentLoaded', () => {
     deleteQuestionResponseContainer = document.querySelector('.questions__delete-response-container');
     AddRemoveEventListeners();

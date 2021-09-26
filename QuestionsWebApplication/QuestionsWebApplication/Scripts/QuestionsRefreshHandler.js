@@ -10,7 +10,7 @@
             if (questionsContainer) {
                 questionsContainer.outerHTML = result;
                 AddRemoveEventListeners();
-                console.log('dataUpdated');
+                InitSortingFunctionality();
             }
         },
         error: (error) => {

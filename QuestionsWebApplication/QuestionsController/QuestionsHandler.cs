@@ -16,8 +16,10 @@ namespace QuestionsController
     {
         private DatabaseController DatabaseController;
         private Thread UpdateDataThread;
+        private Mutex ResourcesLocker = new Mutex();
         public event EventHandler UpdateData;
         public List<Question> QuestionsList { get; private set; }
+        public bool IsInitialLoad;
         private ListSortDirection CurrentSortDirection;
         private int CurrentSortValueEnum; 
         private enum SortableValueNames
@@ -36,6 +38,7 @@ namespace QuestionsController
                 DatabaseController = new DatabaseController();
                 CurrentSortDirection = ListSortDirection.Ascending;
                 CurrentSortValueEnum = (int) SortableValueNames.Id;
+                IsInitialLoad = true;
 
                 UpdateDataThread = new Thread(UpdateDataThreadCall);
                 UpdateDataThread.IsBackground = true;
@@ -44,11 +47,6 @@ namespace QuestionsController
             {
                 Logger.WriteExceptionMessage(tException);
             }
-        }
-
-        ~QuestionsHandler()
-        {
-            
         }
 
         /// <summary>
@@ -97,6 +95,7 @@ namespace QuestionsController
                 // Create a new instance of the List so that data Isn't duplicated 
                 QuestionsList = new List<Question>();
                 tResultCode = DatabaseController.GetData(QuestionsList);
+                IsInitialLoad = false;
 
                 // Start the automatic refresh of data after the data is initially fetched.
                 if (!UpdateDataThread.IsAlive)
@@ -132,7 +131,9 @@ namespace QuestionsController
                     SortQuestions(SortableValueNames.Id.ToString(), ListSortDirection.Ascending, false);
                 }
 
+                ResourcesLocker.WaitOne();
                 tResultCode = DatabaseController.UpdateData(QuestionsList);
+                ResourcesLocker.ReleaseMutex();
 
                 if (tShouldSortList)
                 {
@@ -183,6 +184,7 @@ namespace QuestionsController
 
             try
             {
+                ResourcesLocker.WaitOne();
                 tResultCode = DatabaseController.AddQuestion(pQuestion);
 
                 // On success, add the current object to the List
@@ -196,6 +198,10 @@ namespace QuestionsController
             {
                 Logger.WriteExceptionMessage(tException);
                 tResultCode = (int) ResultCodesEnum.CODE_FAILUER;
+            }
+            finally
+            {
+                ResourcesLocker.ReleaseMutex();
             }
 
             return tResultCode;
@@ -212,6 +218,7 @@ namespace QuestionsController
 
             try
             {
+                ResourcesLocker.WaitOne();
                 tResultCode = DatabaseController.EditQuestion(pQuestion);
 
                 if ((int)ResultCodesEnum.SUCCESS == tResultCode)
@@ -226,6 +233,10 @@ namespace QuestionsController
             {
                 Logger.WriteExceptionMessage(tException);
                 tResultCode = (int) ResultCodesEnum.CODE_FAILUER;
+            }
+            finally
+            {
+                ResourcesLocker.ReleaseMutex();
             }
 
             return tResultCode;
@@ -242,6 +253,7 @@ namespace QuestionsController
 
             try
             {
+                ResourcesLocker.WaitOne();
                 tResultCode = DatabaseController.DeleteQuestion(pQuestion);
 
                 if ((int)ResultCodesEnum.SUCCESS == tResultCode)
@@ -254,6 +266,10 @@ namespace QuestionsController
             {
                 Logger.WriteExceptionMessage(tException);
                 tResultCode = (int) ResultCodesEnum.CODE_FAILUER;
+            }
+            finally
+            {
+                ResourcesLocker.ReleaseMutex();
             }
 
             return tResultCode;
