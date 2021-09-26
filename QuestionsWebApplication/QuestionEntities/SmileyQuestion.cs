@@ -1,6 +1,8 @@
 ﻿using LoggerUtils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace QuestionEntities
 {
@@ -8,6 +10,9 @@ namespace QuestionEntities
     {
         private static readonly string NumberOfSmileyKey = "NumberOfSmiley";
 
+        [Required]
+        [DisplayName("Number of smiley")]
+        [Range(2, 5, ErrorMessage = "Number of smiley must be between 1 and 10")]
         public byte NumberOfSmiley { set; get; }
 
         public SmileyQuestion

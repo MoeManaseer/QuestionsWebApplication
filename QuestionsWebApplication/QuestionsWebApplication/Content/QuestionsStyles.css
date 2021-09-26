@@ -1,4 +1,6 @@
-﻿.questions__container {
+﻿
+
+.questions__container {
     display: none;
 }
 
@@ -22,4 +24,8 @@
 
 .question__delete-btn:hover {
     text-decoration: underline;
+}
+
+.sortable {
+    cursor: pointer;
 }

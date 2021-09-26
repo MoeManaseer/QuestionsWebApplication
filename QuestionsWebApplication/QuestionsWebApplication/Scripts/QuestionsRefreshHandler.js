@@ -9,6 +9,8 @@
 
             if (questionsContainer) {
                 questionsContainer.outerHTML = result;
+                AddRemoveEventListeners();
+                console.log('dataUpdated');
             }
         },
         error: (error) => {

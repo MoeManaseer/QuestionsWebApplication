@@ -33,4 +33,3 @@ D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.csproj.CoreCompileInputs.cache
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.pdb
-D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\LoggerUtils\obj\Debug\netstandard2.0\LoggerUtils.csproj.AssemblyReference.cache

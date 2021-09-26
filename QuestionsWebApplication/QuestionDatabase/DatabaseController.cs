@@ -10,8 +10,7 @@ namespace QuestionDatabase
 {
     public class DatabaseController
     {
-        private SqlConnection SQLConnection;
-        public ConnectionString ConnectionString { private set; get; }
+        public static ConnectionString ConnectionString { private set; get; }
         private int CurrentDataState { get; set; }
         private int MaxIntValue = 2147483647;
         private const string TestQueryString = "SELECT 1 FROM AllQuestions;";
@@ -49,12 +48,13 @@ namespace QuestionDatabase
         {
             int tCurrentDataState = CurrentDataState;
             SqlCommand tSQLCommand = null;
+            SqlConnection tSqlConnection = null;
 
             try
             {
-                SQLConnection = new SqlConnection(ConnectionString.ToString());
-                tSQLCommand = new SqlCommand(GetCurrentStateQueryString, SQLConnection);
-                SQLConnection.Open();
+                tSqlConnection = new SqlConnection(ConnectionString.ToString());
+                tSQLCommand = new SqlCommand(GetCurrentStateQueryString, tSqlConnection);
+                tSqlConnection.Open();
 
                 tCurrentDataState = Convert.ToInt32(tSQLCommand.ExecuteScalar());
             }
@@ -73,9 +73,9 @@ namespace QuestionDatabase
                     tSQLCommand.Dispose();
                 }
 
-                if (SQLConnection.State == ConnectionState.Open)
+                if (tSqlConnection.State == ConnectionState.Open)
                 {
-                    SQLConnection.Close();
+                    tSqlConnection.Close();
                 }
             }
 
@@ -113,16 +113,17 @@ namespace QuestionDatabase
         {
             int tResultCode = (int)ResultCodesEnum.SUCCESS;
             SqlCommand tSQLCommand = null;
+            SqlConnection tSqlConnection = null;
 
             try
             {
                 string tomato = tConnectionString.ToString();
-                SQLConnection = new SqlConnection(tConnectionString.ToString());
+                tSqlConnection = new SqlConnection(tConnectionString.ToString());
                 
                 // We know that the AllQuestions table will always exist in the database, so test selecting from it
-                tSQLCommand = new SqlCommand(TestQueryString, SQLConnection);
+                tSQLCommand = new SqlCommand(TestQueryString, tSqlConnection);
 
-                SQLConnection.Open();
+                tSqlConnection.Open();
                 tSQLCommand.ExecuteNonQuery();
             }
             catch (SqlException tSQLException)
@@ -143,9 +144,9 @@ namespace QuestionDatabase
                     tSQLCommand.Dispose();
                 }
 
-                if (SQLConnection.State == ConnectionState.Open)
+                if (tSqlConnection.State == ConnectionState.Open)
                 {
-                    SQLConnection.Close();
+                    tSqlConnection.Close();
                 }
             }
 
@@ -162,14 +163,16 @@ namespace QuestionDatabase
         {
             SqlCommand tSQLCommand = null;
             SqlDataReader tSQLReader = null;
+            SqlConnection tSqlConnection = null;
+
             int tResultCode = (int)ResultCodesEnum.SUCCESS;
 
             try
             {
-                SQLConnection = new SqlConnection(ConnectionString.ToString());
+                tSqlConnection = new SqlConnection(ConnectionString.ToString());
 
-                tSQLCommand = new SqlCommand(GetAllQuestionsQueryString, SQLConnection);
-                SQLConnection.Open();
+                tSQLCommand = new SqlCommand(GetAllQuestionsQueryString, tSqlConnection);
+                tSqlConnection.Open();
 
                 tSQLReader = tSQLCommand.ExecuteReader();
 
@@ -215,9 +218,9 @@ namespace QuestionDatabase
                     tSQLCommand.Dispose();
                 }
 
-                if (SQLConnection.State == ConnectionState.Open)
+                if (tSqlConnection.State == ConnectionState.Open)
                 {
-                    SQLConnection.Close();
+                    tSqlConnection.Close();
                 }
             }
 
@@ -233,12 +236,14 @@ namespace QuestionDatabase
         {
             SqlCommand tSQLCommand = null;
             SqlDataReader tSQLReader = null;
+            SqlConnection tSqlConnection = null;
             int tResultCode = (int)ResultCodesEnum.SUCCESS;
             int tCurrentState = CurrentDataState;
 
             try
             {
                 tCurrentState = GetCurrentDataState();
+                tSqlConnection = new SqlConnection(ConnectionString.ToString());
 
                 // If the current state is the same as the database state, don't fetch any new data.
                 if (tCurrentState == CurrentDataState)
@@ -246,10 +251,8 @@ namespace QuestionDatabase
                     return (int) ResultCodesEnum.UP_TO_DATE;
                 }
 
-                SQLConnection = new SqlConnection(ConnectionString.ToString());
-
-                tSQLCommand = new SqlCommand(GetAllQuestionsQueryString, SQLConnection);
-                SQLConnection.Open();
+                tSQLCommand = new SqlCommand(GetAllQuestionsQueryString, tSqlConnection);
+                tSqlConnection.Open();
 
                 tSQLReader = tSQLCommand.ExecuteReader();
                 tSQLReader.Read();
@@ -341,9 +344,9 @@ namespace QuestionDatabase
                     tSQLCommand.Dispose();
                 }
 
-                if (SQLConnection.State == ConnectionState.Open)
+                if (tSqlConnection.State == ConnectionState.Open)
                 {
-                    SQLConnection.Close();
+                    tSqlConnection.Close();
                 }
             }
 
@@ -359,6 +362,7 @@ namespace QuestionDatabase
         {
             SqlCommand tSQLCommand = null;
             SqlDataReader tSQLReader = null;
+            SqlConnection tSqlConnection = null;
             int tResultCode = (int) ResultCodesEnum.QUESTION_OUT_OF_DATE;
 
             try
@@ -366,17 +370,17 @@ namespace QuestionDatabase
                 int tQuestionId = pQuestion.Id;
                 string tQuestionTableName = pQuestion.Type + QuestionsString;
 
-                SQLConnection = new SqlConnection(ConnectionString.ToString());
+                tSqlConnection = new SqlConnection(ConnectionString.ToString());
 
                 // Get the correct procedure based on the tablename
-                tSQLCommand = new SqlCommand(GetString + "_" + tQuestionTableName, SQLConnection)
+                tSQLCommand = new SqlCommand(GetString + "_" + tQuestionTableName, tSqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
 
                 tSQLCommand.Parameters.Add(new SqlParameter("@" + IdKey, tQuestionId));
 
-                SQLConnection.Open();
+                tSqlConnection.Open();
                 tSQLReader = tSQLCommand.ExecuteReader(CommandBehavior.KeyInfo);
 
                 while (tSQLReader.Read())
@@ -419,9 +423,9 @@ namespace QuestionDatabase
                     tSQLCommand.Dispose();
                 }
 
-                if (SQLConnection.State == ConnectionState.Open)
+                if (tSqlConnection.State == ConnectionState.Open)
                 {
-                    SQLConnection.Close();
+                    tSqlConnection.Close();
                 }
             }
 
@@ -436,16 +440,17 @@ namespace QuestionDatabase
         public int AddQuestion(Question pQuestion)
         {
             SqlCommand tSQLCommand = null;
+            SqlConnection tSqlConnection = null;
             int tResultCode = (int)ResultCodesEnum.SUCCESS;
 
             try
             {
                 string tTableName = pQuestion.Type + QuestionsString;
 
-                SQLConnection = new SqlConnection(ConnectionString.ToString());
+                tSqlConnection = new SqlConnection(ConnectionString.ToString());
 
                 // Get the correct procedure based on the tablename
-                tSQLCommand = new SqlCommand(AddString + "_" + tTableName, SQLConnection)
+                tSQLCommand = new SqlCommand(AddString + "_" + tTableName, tSqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -467,7 +472,7 @@ namespace QuestionDatabase
 
                 tSQLCommand.Parameters.Add(tNewQuestionId);
 
-                SQLConnection.Open();
+                tSqlConnection.Open();
                 tResultCode = tSQLCommand.ExecuteNonQuery() != 0 ? (int)ResultCodesEnum.SUCCESS : (int)ResultCodesEnum.ADD_FAILURE;
 
                 // If the procedure succeds, get the newly created Id from the database and insert it into the question instance
@@ -496,9 +501,9 @@ namespace QuestionDatabase
                     tSQLCommand.Dispose();
                 }
 
-                if (SQLConnection.State == ConnectionState.Open)
+                if (tSqlConnection.State == ConnectionState.Open)
                 {
-                    SQLConnection.Close();
+                    tSqlConnection.Close();
                 }
             }
 
@@ -513,16 +518,17 @@ namespace QuestionDatabase
         public int EditQuestion(Question pQuestion)
         {
             SqlCommand tSQLCommand = null;
+            SqlConnection tSqlConnection = null;
             int tResultCode = (int)ResultCodesEnum.SUCCESS;
 
             try
             {
                 string tTableName = pQuestion.Type + QuestionsString;
 
-                SQLConnection = new SqlConnection(ConnectionString.ToString());
+                tSqlConnection = new SqlConnection(ConnectionString.ToString());
 
                 // Get the correct procedure based on the tablename
-                tSQLCommand = new SqlCommand(UpdateString + "_" + tTableName, SQLConnection)
+                tSQLCommand = new SqlCommand(UpdateString + "_" + tTableName, tSqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -539,7 +545,7 @@ namespace QuestionDatabase
                 // Add the question Id individually
                 tSQLCommand.Parameters.Add(new SqlParameter("@" + IdKey, pQuestion.Id));
 
-                SQLConnection.Open();
+                tSqlConnection.Open();
                 tResultCode = tSQLCommand.ExecuteNonQuery() != 0 ? (int)ResultCodesEnum.SUCCESS : (int)ResultCodesEnum.QUESTION_OUT_OF_DATE;
 
                 if ((int)ResultCodesEnum.SUCCESS == tResultCode)
@@ -565,9 +571,9 @@ namespace QuestionDatabase
                     tSQLCommand.Dispose();
                 }
 
-                if (SQLConnection.State == ConnectionState.Open)
+                if (tSqlConnection.State == ConnectionState.Open)
                 {
-                    SQLConnection.Close();
+                    tSqlConnection.Close();
                 }
             }
 
@@ -582,6 +588,7 @@ namespace QuestionDatabase
         public int DeleteQuestion(Question pQuestion)
         {
             SqlCommand tSQLCommand = null;
+            SqlConnection tSqlConnection = null;
             int tResultCode = (int)ResultCodesEnum.SUCCESS;
 
             try
@@ -590,10 +597,10 @@ namespace QuestionDatabase
                 string tTableName = pQuestion.Type + QuestionsString;
                 int tQuestionId = pQuestion.Id;
 
-                SQLConnection = new SqlConnection(ConnectionString.ToString());
+                tSqlConnection = new SqlConnection(ConnectionString.ToString());
 
                 // Get the correct procedure based on the tablename
-                tSQLCommand = new SqlCommand(DeleteString + "_" + tTableName, SQLConnection)
+                tSQLCommand = new SqlCommand(DeleteString + "_" + tTableName, tSqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -601,7 +608,7 @@ namespace QuestionDatabase
                 // Add the @Id param with the current question Id
                 tSQLCommand.Parameters.Add(new SqlParameter("@" + IdKey, tQuestionId));
 
-                SQLConnection.Open();
+                tSqlConnection.Open();
                 tResultCode = tSQLCommand.ExecuteNonQuery() != 0 ? (int)ResultCodesEnum.SUCCESS : (int)ResultCodesEnum.QUESTION_OUT_OF_DATE;
 
                 if ((int)ResultCodesEnum.SUCCESS == tResultCode)
@@ -627,9 +634,9 @@ namespace QuestionDatabase
                     tSQLCommand.Dispose();
                 }
 
-                if (SQLConnection.State == ConnectionState.Open)
+                if (tSqlConnection.State == ConnectionState.Open)
                 {
-                    SQLConnection.Close();
+                    tSqlConnection.Close();
                 }
             }
 

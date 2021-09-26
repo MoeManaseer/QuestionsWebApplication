@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.response__message-container {
+    margin-top: 16px;
+}

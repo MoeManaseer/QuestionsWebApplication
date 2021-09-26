@@ -30,8 +30,10 @@
 
         @if (TempData["Message"] != null)
         {
-            <div class="alert alert-@TempData["Response"]" role="alert">
-                @TempData["Message"]
+            <div class="response__message-container">
+                <div class="alert alert-@TempData["Response"]" role="alert">
+                    @TempData["Message"]
+                </div>
             </div>
         }
 

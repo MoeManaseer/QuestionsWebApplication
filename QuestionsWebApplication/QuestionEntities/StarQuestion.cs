@@ -1,6 +1,8 @@
 ﻿using LoggerUtils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace QuestionEntities
 {
@@ -8,6 +10,9 @@ namespace QuestionEntities
     {
         private static readonly string NumberOfStarKey = "NumberOfStar";
 
+        [Required]
+        [DisplayName("Number of star")]
+        [Range(1, 10, ErrorMessage = "Number of star must be between 1 and 10")]
         public byte NumberOfStar { get; set; }
         public StarQuestion
             (int pId, byte pOrder, string pText, byte pNumberOfStar)

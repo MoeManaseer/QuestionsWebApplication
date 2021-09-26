@@ -24,3 +24,9 @@ D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.csproj.CopyComplete
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.pdb
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Configuration.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Security.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.xml
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Configuration.xml
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Security.xml

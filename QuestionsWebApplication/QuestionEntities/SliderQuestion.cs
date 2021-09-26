@@ -1,6 +1,8 @@
 ﻿using LoggerUtils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace QuestionEntities
 {
@@ -11,9 +13,24 @@ namespace QuestionEntities
         private static readonly string StartValueCaptionKey = "StartValueCaption";
         private static readonly string EndValueCaptionKey = "EndValueCaption";
 
+        [Required]
+        [DisplayName("Start value")]
+        [Range(1, 100, ErrorMessage = "Start value must be between 1 and 100")]
         public byte StartValue { get; set; }
+
+        [Required]
+        [DisplayName("End value")]
+        [Range(1, 100, ErrorMessage = "End value must be between 1 and 100")]
         public byte EndValue { get; set; }
+
+        [Required]
+        [DisplayName("Start value caption")]
+        [StringLength(maximumLength: 255, MinimumLength = 1, ErrorMessage = "The property {0} should have {1} maximum characters and {2} minimum characters")]
         public string StartValueCaption { get; set; }
+
+        [Required]
+        [DisplayName("End value caption")]
+        [StringLength(maximumLength: 255, MinimumLength = 1, ErrorMessage = "The property {0} should have {1} maximum characters and {2} minimum characters")]
         public string EndValueCaption { get; set; }
 
         public SliderQuestion

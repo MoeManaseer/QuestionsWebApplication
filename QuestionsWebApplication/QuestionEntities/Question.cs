@@ -1,6 +1,8 @@
 ﻿using LoggerUtils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace QuestionEntities
 {
@@ -11,9 +13,19 @@ namespace QuestionEntities
         private static readonly string OrderKey = "Order";
         private static readonly string TextKey = "Text";
 
+        [Key]
         public int Id { get; set; }
+
+        [Required]
+        [Range(1, 100, ErrorMessage = "Order must be between 1 and 100")]
         public byte Order { get; set; }
+        
+        [Required]
+        [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessage = "The property {0} should have {1} maximum characters and {2} minimum characters")]
         public string Text { get; set; }
+
+        [Required]
+        [DisplayName("Question type")]
         public QuestionsTypeEnum Type { get; set; }
 
         public Question(int pId, byte pOrder, string pText, QuestionsTypeEnum pType)

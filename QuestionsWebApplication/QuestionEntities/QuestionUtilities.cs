@@ -7,8 +7,7 @@ namespace QuestionEntities
     {
         Smiley,
         Star,
-        Slider,
-        Default
+        Slider
     }
     public enum ResultCodesEnum
     {

@@ -113,6 +113,8 @@ namespace QuestionsWebApplication.Controllers
 
         public ActionResult Edit(int id = -1)
         {
+            Question tCorrectInstance = null;
+
             try
             {
                 Question tOriginalQuestion = GetQuestionObject(id);
@@ -124,16 +126,11 @@ namespace QuestionsWebApplication.Controllers
                     return RedirectToAction(IndexKey, QuestionsKey);
                 }
 
-                Question tCorrectInstance = QuestionsFactory.GetInstance(tOriginalQuestion.Type);
+                tCorrectInstance = QuestionsFactory.GetInstance(tOriginalQuestion.Type);
                 tCorrectInstance.Id = tOriginalQuestion.Id;
                 int tResultCode = QuestionsHandlerObject.GetQuestion(tCorrectInstance);
 
-                if (tResultCode == (int)ResultCodesEnum.SUCCESS)
-                {
-                    TempData[MessageKey] = "Question edited successfully.";
-                    TempData[ResponseKey] = SuccessKey;
-                }
-                else
+                if (tResultCode != (int)ResultCodesEnum.SUCCESS)
                 {
                     TempData[MessageKey] = "Something wrong happend while fetching the question.. the question is probably deleted.";
                     TempData[ResponseKey] = DangerKey;
@@ -146,7 +143,7 @@ namespace QuestionsWebApplication.Controllers
                 TempData[ResponseKey] = DangerKey;
             }
 
-            return RedirectToAction(IndexKey, QuestionsKey);
+            return View(tCorrectInstance);
         }
 
         [HttpPost]

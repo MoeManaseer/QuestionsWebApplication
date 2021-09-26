@@ -3,14 +3,11 @@ using Autofac.Integration.Mvc;
 using LoggerUtils;
 using QuestionsController;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace QuestionsWebApplication
 {
-    public static class ContainerConfig
+    internal class ContainerConfig
     {
         internal static void RegisterContainer()
         {
@@ -21,7 +18,7 @@ namespace QuestionsWebApplication
                 tBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
                 tBuilder.RegisterType<QuestionsHandler>()
                     .As<QuestionsHandler>()
-                    .ExternallyOwned();
+                    .SingleInstance();
 
                 var tContainer = tBuilder.Build();
                 DependencyResolver.SetResolver(new AutofacDependencyResolver(tContainer));

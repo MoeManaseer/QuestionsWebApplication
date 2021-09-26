@@ -54,9 +54,8 @@ const RemoveQuestionAjax = (questionId) => {
     });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+const AddRemoveEventListeners = () => {
     const deleteQuestionButtons = document.querySelectorAll('.question__delete-btn');
-    deleteQuestionResponseContainer = document.querySelector('.questions__delete-response-container')
 
     if (deleteQuestionButtons) {
         deleteQuestionButtons.forEach((deleteButton) => {
@@ -65,4 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    deleteQuestionResponseContainer = document.querySelector('.questions__delete-response-container');
+    AddRemoveEventListeners();
 });
