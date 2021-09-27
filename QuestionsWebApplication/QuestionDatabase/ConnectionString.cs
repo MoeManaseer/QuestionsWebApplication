@@ -1,26 +1,55 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
+using Languages;
 using LoggerUtils;
 
 namespace QuestionDatabase
 {
     public class ConnectionString
     {
+        private static readonly string DataSourceKey = "DataSource";
+        private static readonly string DatabaseKey = "Database";
+        private static readonly string IntegratedSecurityKey = "IntegratedSecurity";
+        private static readonly string UsernameKey = "Username";
+        private static readonly string PasswordKey = "Password";
+        public enum IntegratedSecurityEnum
+        {
+            SSPI,
+            Other
+        }
+
+        [Required(ErrorMessageResourceName = "DataSourceRequired", ErrorMessageResourceType = typeof(Language))]
+        [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessageResourceName = "DataSourceLength", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "DataSource", ResourceType = typeof(Language))]
         public string DataSource { get; private set; }
+
+        [Required(ErrorMessageResourceName = "DatabaseNameRequired", ErrorMessageResourceType = typeof(Language))]
+        [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessageResourceName = "DatabaseNameLength", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "DatabaseName", ResourceType = typeof(Language))]
         public string DatabaseName { get; private set; }
-        public string IntegratedSecurity { get; private set; }
+
+        [Required(ErrorMessageResourceName = "IntegratedSecurityRequired", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "IntegratedSecurity", ResourceType = typeof(Language))]
+        public IntegratedSecurityEnum IntegratedSecurity { get; private set; }
+
+        [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessageResourceName = "UsernameLength", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "Username", ResourceType = typeof(Language))]
         public string Username { get; private set; }
+
+        [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessageResourceName = "PasswordLength", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "Password", ResourceType = typeof(Language))]
         public string Password { get; private set; }
 
         public ConnectionString()
         {
             try
             {
-                DataSource = ConfigurationManager.AppSettings["DataSource"];
-                DatabaseName = ConfigurationManager.AppSettings["Database"];
-                IntegratedSecurity = ConfigurationManager.AppSettings["IntegratedSecurity"];
-                Username = ConfigurationManager.AppSettings["Username"];
-                Password = ConfigurationManager.AppSettings["Password"];
+                DataSource = ConfigurationManager.AppSettings[DataSourceKey];
+                DatabaseName = ConfigurationManager.AppSettings[DatabaseKey];
+                IntegratedSecurity = (IntegratedSecurityEnum)Enum.Parse(typeof(IntegratedSecurityEnum), ConfigurationManager.AppSettings[IntegratedSecurityKey]);
+                Username = ConfigurationManager.AppSettings[UsernameKey];
+                Password = ConfigurationManager.AppSettings[PasswordKey];
             }
             catch (Exception tException)
             {
@@ -34,7 +63,7 @@ namespace QuestionDatabase
             {
                 DataSource = pDataSource;
                 DatabaseName = pDatabaseName;
-                IntegratedSecurity = pIntegratedSecurity;
+                IntegratedSecurity = (IntegratedSecurityEnum) Enum.Parse(typeof(IntegratedSecurityEnum), pIntegratedSecurity);
                 Username = pUsername;
                 Password = pPassword;
             }
@@ -45,7 +74,7 @@ namespace QuestionDatabase
         }
 
         public ConnectionString(ConnectionString pConnectionString)
-            : this(pConnectionString.DataSource, pConnectionString.DatabaseName, pConnectionString.IntegratedSecurity, pConnectionString.Username, pConnectionString.Password)
+            : this(pConnectionString.DataSource, pConnectionString.DatabaseName, pConnectionString.IntegratedSecurity.ToString(), pConnectionString.Username, pConnectionString.Password)
         {
 
         }
@@ -60,11 +89,11 @@ namespace QuestionDatabase
                 // Set back the value of the current object to app.config settings
                 var tConfigurationManager = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-                tConfigurationManager.AppSettings.Settings["DataSource"].Value = DataSource;
-                tConfigurationManager.AppSettings.Settings["Database"].Value = DatabaseName;
-                tConfigurationManager.AppSettings.Settings["IntegratedSecurity"].Value = IntegratedSecurity;
-                tConfigurationManager.AppSettings.Settings["Username"].Value = Username;
-                tConfigurationManager.AppSettings.Settings["Password"].Value = Password;
+                tConfigurationManager.AppSettings.Settings[DataSourceKey].Value = DataSource;
+                tConfigurationManager.AppSettings.Settings[DatabaseKey].Value = DatabaseName;
+                tConfigurationManager.AppSettings.Settings[IntegratedSecurityKey].Value = IntegratedSecurity.ToString();
+                tConfigurationManager.AppSettings.Settings[UsernameKey].Value = Username;
+                tConfigurationManager.AppSettings.Settings[PasswordKey].Value = Password;
 
                 tConfigurationManager.Save(ConfigurationSaveMode.Modified);
             }
@@ -80,7 +109,7 @@ namespace QuestionDatabase
 
             try
             {
-                tConnectionString = IntegratedSecurity.Equals("SSPI") ?
+                tConnectionString = IntegratedSecurity == IntegratedSecurityEnum.SSPI ?
                 string.Format("Data Source={0}; database={1};Integrated Security=SSPI;", DataSource, DatabaseName)
                 : string.Format("Data Source={0}; database={1};User ID={2};Password={3};", DataSource, DatabaseName, Username, Password);
             }

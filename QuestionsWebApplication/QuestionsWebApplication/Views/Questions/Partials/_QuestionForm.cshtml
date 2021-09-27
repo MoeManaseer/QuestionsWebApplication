@@ -9,7 +9,7 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Question</h4>
+    <h4>@Languages.Language.Question</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -56,7 +56,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value=@(tIsNewQuestion ? "Create" : "Edit") class="btn btn-default" />
+            <input type="submit" value=@(tIsNewQuestion ? Languages.Language.Add : Languages.Language.Edit) class="btn btn-default" />
         </div>
     </div>
 </div>
@@ -65,5 +65,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Languages.Language.IndexBack, "Index")
 </div>

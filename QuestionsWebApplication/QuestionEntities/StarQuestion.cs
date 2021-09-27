@@ -1,4 +1,5 @@
-﻿using LoggerUtils;
+﻿using Languages;
+using LoggerUtils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,9 +11,9 @@ namespace QuestionEntities
     {
         private static readonly string NumberOfStarKey = "NumberOfStar";
 
-        [Required]
-        [DisplayName("Number of star")]
-        [Range(1, 10, ErrorMessage = "Number of star must be between 1 and 10")]
+        [Required(ErrorMessageResourceName = "NumberOfStarRequired", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "NumberOfStar", ResourceType = typeof(Language))]
+        [Range(1, 10, ErrorMessageResourceName = "NumberOfStarRange", ErrorMessageResourceType = typeof(Language))]
         public byte NumberOfStar { get; set; }
         public StarQuestion
             (int pId, byte pOrder, string pText, byte pNumberOfStar)

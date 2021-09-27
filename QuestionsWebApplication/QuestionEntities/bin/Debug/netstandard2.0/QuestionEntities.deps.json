@@ -9,6 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "QuestionEntities/1.0.0": {
         "dependencies": {
+          "Languages": "1.0.0",
           "LoggerUtils": "1.0.0",
           "NETStandard.Library": "2.0.3",
           "System.ComponentModel.DataAnnotations": "4.0.0.0"
@@ -21,6 +22,16 @@
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Languages/1.0.0": {
+        "runtime": {
+          "Languages.dll": {}
+        },
+        "resources": {
+          "ar/Languages.resources.dll": {
+            "locale": "ar"
+          }
         }
       },
       "LoggerUtils/1.0.0": {
@@ -73,6 +84,11 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Languages/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "LoggerUtils/1.0.0": {
       "type": "project",

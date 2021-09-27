@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +48,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Languages\Languages.csproj">
+      <Project>{13a664fe-5948-47a5-a858-9018c03beac6}</Project>
+      <Name>Languages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LoggerUtils\LoggerUtils.csproj">
       <Project>{416FE0F4-598E-44E7-BEEA-B6A3F4DADD83}</Project>
       <Name>LoggerUtils</Name>

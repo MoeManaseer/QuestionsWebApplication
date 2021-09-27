@@ -26,6 +26,16 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "Languages/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Languages.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Languages.dll": {}
+        }
+      },
       "LoggerUtils/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -39,6 +49,7 @@
       "QuestionDatabase/1.0.0": {
         "type": "project",
         "dependencies": {
+          "Languages": "1.0.0",
           "LoggerUtils": "1.0.0",
           "QuestionEntities": "1.0.0"
         },
@@ -53,6 +64,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Languages": "1.0.0",
           "LoggerUtils": "1.0.0"
         },
         "compile": {
@@ -207,6 +219,11 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "Languages/1.0.0": {
+      "type": "project",
+      "path": "../Languages/Languages.csproj",
+      "msbuildProject": "../Languages/Languages.csproj"
     },
     "LoggerUtils/1.0.0": {
       "type": "project",

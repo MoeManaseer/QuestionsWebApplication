@@ -1,0 +1,16 @@
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\bin\Debug\netstandard2.0\Languages.deps.json
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\bin\Debug\netstandard2.0\Languages.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\bin\Debug\netstandard2.0\Languages.pdb
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.Language.resources
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.ResponseMessages.resources
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.csproj.GenerateResource.cache
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.GeneratedMSBuildEditorConfig.editorconfig
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.AssemblyInfoInputs.cache
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.AssemblyInfo.cs
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.csproj.CoreCompileInputs.cache
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.pdb
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\bin\Debug\netstandard2.0\ar\Languages.resources.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.Language.ar.resources
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\ar\Languages.resources.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\Languages\obj\Debug\netstandard2.0\Languages.csproj.AssemblyReference.cache

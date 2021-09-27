@@ -1,4 +1,5 @@
-﻿using LoggerUtils;
+﻿using Languages;
+using LoggerUtils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,24 +14,24 @@ namespace QuestionEntities
         private static readonly string StartValueCaptionKey = "StartValueCaption";
         private static readonly string EndValueCaptionKey = "EndValueCaption";
 
-        [Required]
-        [DisplayName("Start value")]
-        [Range(1, 100, ErrorMessage = "Start value must be between 1 and 100")]
+        [Required(ErrorMessageResourceName = "QuestionStartValueRequired", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "QuestionStartValue", ResourceType = typeof(Language))]
+        [Range(1, 100, ErrorMessageResourceName = "QuestionStartValueRange", ErrorMessageResourceType = typeof(Language))]
         public byte StartValue { get; set; }
 
-        [Required]
-        [DisplayName("End value")]
-        [Range(1, 100, ErrorMessage = "End value must be between 1 and 100")]
+        [Required(ErrorMessageResourceName = "QuestionEndValueRequired", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "QuestionEndValue", ResourceType = typeof(Language))]
+        [Range(1, 100, ErrorMessageResourceName = "QuestionEndValueRange", ErrorMessageResourceType = typeof(Language))]
         public byte EndValue { get; set; }
 
-        [Required]
-        [DisplayName("Start value caption")]
-        [StringLength(maximumLength: 255, MinimumLength = 1, ErrorMessage = "The property {0} should have {1} maximum characters and {2} minimum characters")]
+        [Required(ErrorMessageResourceName = "QuestionStartValueCaptionRequired", ErrorMessageResourceType = typeof(Language))]
+        [StringLength(maximumLength: 255, MinimumLength = 1, ErrorMessageResourceName = "QuestionStartValueCaptionLength", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "QuestionStartValueCaption", ResourceType = typeof(Language))]
         public string StartValueCaption { get; set; }
 
-        [Required]
-        [DisplayName("End value caption")]
-        [StringLength(maximumLength: 255, MinimumLength = 1, ErrorMessage = "The property {0} should have {1} maximum characters and {2} minimum characters")]
+        [Required(ErrorMessageResourceName = "QuestionEndValueCaptionRequired", ErrorMessageResourceType = typeof(Language))]
+        [StringLength(maximumLength: 255, MinimumLength = 1, ErrorMessageResourceName = "QuestionEndValueCaptionLength", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "QuestionEndValueCaption", ResourceType = typeof(Language))]
         public string EndValueCaption { get; set; }
 
         public SliderQuestion

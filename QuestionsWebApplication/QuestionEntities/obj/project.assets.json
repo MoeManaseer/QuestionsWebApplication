@@ -26,6 +26,16 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "Languages/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Languages.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Languages.dll": {}
+        }
+      },
       "LoggerUtils/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -182,6 +192,11 @@
         "netstandard.library.nuspec"
       ]
     },
+    "Languages/1.0.0": {
+      "type": "project",
+      "path": "../Languages/Languages.csproj",
+      "msbuildProject": "../Languages/Languages.csproj"
+    },
     "LoggerUtils/1.0.0": {
       "type": "project",
       "path": "../LoggerUtils/LoggerUtils.csproj",
@@ -190,6 +205,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Languages >= 1.0.0",
       "LoggerUtils >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
     ]
@@ -225,6 +241,9 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "projectReferences": {
+            "D:\\source\\repos\\QuestionsWebApplication\\QuestionsWebApplication\\Languages\\Languages.csproj": {
+              "projectPath": "D:\\source\\repos\\QuestionsWebApplication\\QuestionsWebApplication\\Languages\\Languages.csproj"
+            },
             "D:\\source\\repos\\QuestionsWebApplication\\QuestionsWebApplication\\LoggerUtils\\LoggerUtils.csproj": {
               "projectPath": "D:\\source\\repos\\QuestionsWebApplication\\QuestionsWebApplication\\LoggerUtils\\LoggerUtils.csproj"
             }

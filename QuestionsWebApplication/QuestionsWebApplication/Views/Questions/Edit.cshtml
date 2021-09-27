@@ -1,10 +1,10 @@
 ﻿@model QuestionEntities.Question
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Languages.Language.Edit;
 }
 
-<h2>Edit</h2>
+<h2>@Languages.Language.Edit</h2>
 
 @Html.Partial("_QuestionForm", Model)
 

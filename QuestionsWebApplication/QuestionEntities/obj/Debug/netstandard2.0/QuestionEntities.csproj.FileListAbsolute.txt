@@ -14,8 +14,16 @@ D:\source\repos\QuestionsApp\QuestionEntities\obj\Debug\netstandard2.0\QuestionE
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\QuestionEntities.deps.json
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\QuestionEntities.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\QuestionEntities.pdb
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\Languages.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\LoggerUtils.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Configuration.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Security.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\Languages.pdb
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\LoggerUtils.pdb
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.xml
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Configuration.xml
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Security.xml
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.csproj.AssemblyReference.cache
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.GeneratedMSBuildEditorConfig.editorconfig
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.AssemblyInfoInputs.cache
@@ -24,9 +32,4 @@ D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.csproj.CopyComplete
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\obj\Debug\netstandard2.0\QuestionEntities.pdb
-D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.dll
-D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Configuration.dll
-D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Security.dll
-D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.xml
-D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Configuration.xml
-D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\System.Security.xml
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionEntities\bin\Debug\netstandard2.0\ar\Languages.resources.dll

@@ -30,9 +30,9 @@
                             @Html.DisplayFor(modelItem => item.Text)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            <button class="question__delete-btn" id=@($"delete-{item.Id}")>Delete</button>
+                            @Html.ActionLink(Languages.Language.Edit, "Edit", new { id = item.Id }) |
+                            @Html.ActionLink(Languages.Language.Details, "Details", new { id = item.Id }) |
+                            <button class="question__delete-btn" id=@($"delete-{item.Id}")>@Languages.Language.Delete</button>
                         </td>
                     </tr>
                 }

@@ -1,4 +1,5 @@
-﻿using LoggerUtils;
+﻿using Languages;
+using LoggerUtils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,16 +17,18 @@ namespace QuestionEntities
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [Range(1, 100, ErrorMessage = "Order must be between 1 and 100")]
+        [Required(ErrorMessageResourceName = "QuestionOrderRequired", ErrorMessageResourceType = typeof(Language))]
+        [Range(1, 100, ErrorMessageResourceName = "QuestionOrderLength", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "QuestionOrder", ResourceType = typeof(Language))]
         public byte Order { get; set; }
         
-        [Required]
-        [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessage = "The property {0} should have {1} maximum characters and {2} minimum characters")]
+        [Required(ErrorMessageResourceName = "QuestionTextRequired", ErrorMessageResourceType = typeof(Language))]
+        [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessageResourceName = "QuestionTextLength", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "QuestionText", ResourceType = typeof(Language))]
         public string Text { get; set; }
 
-        [Required]
-        [DisplayName("Question type")]
+        [Required(ErrorMessageResourceName = "QuestionTypeRequired", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "QuestionType", ResourceType = typeof(Language))]
         public QuestionsTypeEnum Type { get; set; }
 
         public Question(int pId, byte pOrder, string pText, QuestionsTypeEnum pType)

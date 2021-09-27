@@ -1,4 +1,5 @@
-﻿using LoggerUtils;
+﻿using Languages;
+using LoggerUtils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,9 +11,9 @@ namespace QuestionEntities
     {
         private static readonly string NumberOfSmileyKey = "NumberOfSmiley";
 
-        [Required]
-        [DisplayName("Number of smiley")]
-        [Range(2, 5, ErrorMessage = "Number of smiley must be between 1 and 10")]
+        [Required(ErrorMessageResourceName = "NumberOfSmileyRequired", ErrorMessageResourceType = typeof(Language))]
+        [Display(Name = "NumberOfSmiley", ResourceType = typeof(Language))]
+        [Range(2, 5, ErrorMessageResourceName = "NumberOfSmileyRange", ErrorMessageResourceType = typeof(Language))]
         public byte NumberOfSmiley { set; get; }
 
         public SmileyQuestion

@@ -26,3 +26,11 @@ textarea {
 .response__message-container {
     margin-top: 16px;
 }
+
+.settings__user-password-container--disabled {
+    opacity: 0.5;
+}
+
+.form-horizontal input {
+    width: 280px
+}

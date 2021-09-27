@@ -165,6 +165,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\ContainerConfig.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="DataUpdateNotifier.cs" />
     <Compile Include="Extentions\QuestionsModelBinder.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
@@ -173,6 +174,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\DataUpdatedHub.cs" />
+    <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -213,8 +215,10 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\QuestionsContainersHandler.js" />
     <Content Include="Scripts\QuestionsDeleteHandler.js" />
+    <Content Include="Scripts\QuestionsSharedHandlers.js" />
     <Content Include="Scripts\QuestionsSortHandler.js" />
     <Content Include="Scripts\QuestionsRefreshHandler.js" />
+    <Content Include="Scripts\SettingsHandler.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -238,10 +242,10 @@
     <Content Include="Views\Questions\Partials\_StarView.cshtml" />
     <Content Include="Views\Questions\Partials\_SmileyView.cshtml" />
     <Content Include="Views\Questions\Partials\_QuestionsView.cshtml" />
+    <Content Include="Views\Settings\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -249,9 +253,17 @@
     <Content Include="Scripts\jquery-3.6.0.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Languages\Languages.csproj">
+      <Project>{13a664fe-5948-47a5-a858-9018c03beac6}</Project>
+      <Name>Languages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LoggerUtils\LoggerUtils.csproj">
       <Project>{CFF9149C-1C3E-4946-8B35-B838A0189E31}</Project>
       <Name>LoggerUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuestionDatabase\QuestionDatabase.csproj">
+      <Project>{A63C6101-46DC-400E-82C8-04208AFD4B98}</Project>
+      <Name>QuestionDatabase</Name>
     </ProjectReference>
     <ProjectReference Include="..\QuestionEntities\QuestionEntities.csproj">
       <Project>{E7C24826-31C8-47CA-BA7A-7A9F2BAC6E1A}</Project>

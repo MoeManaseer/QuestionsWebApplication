@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Languages\Languages.csproj" />
     <ProjectReference Include="..\LoggerUtils\LoggerUtils.csproj" />
   </ItemGroup>
 

@@ -417,8 +417,10 @@ D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\System.Xml.XmlSerializer.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\System.Xml.XPath.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\System.Xml.XPath.XDocument.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\Languages.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\LoggerUtils.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\QuestionEntities.dll
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\Languages.pdb
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\LoggerUtils.pdb
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\QuestionEntities.pdb
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\obj\Debug\QuestionDatabase.csproj.AssemblyReference.cache
@@ -426,3 +428,4 @@ D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\obj\Debug\QuestionDatabase.csproj.CopyComplete
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\obj\Debug\QuestionDatabase.dll
 D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\obj\Debug\QuestionDatabase.pdb
+D:\source\repos\QuestionsWebApplication\QuestionsWebApplication\QuestionDatabase\bin\Debug\ar\Languages.resources.dll

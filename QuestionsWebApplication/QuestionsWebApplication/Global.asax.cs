@@ -1,7 +1,9 @@
-﻿using QuestionsWebApplication.Extensions;
+﻿using LoggerUtils;
+using QuestionsWebApplication.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -20,6 +22,24 @@ namespace QuestionsWebApplication
             ContainerConfig.RegisterContainer();
             ModelBinders.Binders.DefaultBinder = new QuestionsModelBinder();
             ViewEngines.Engines.Add(new QuestionsViewEngine());
+        }
+
+        protected void Application_BeginRequest(object pSender, EventArgs pEventArgs)
+        {
+            try
+            {
+                HttpCookie tCurrentLanguageCookie = Request.Cookies["Language"];
+
+                if (tCurrentLanguageCookie != null && !string.IsNullOrEmpty(tCurrentLanguageCookie.Value))
+                {
+                    Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(tCurrentLanguageCookie.Value);
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(tCurrentLanguageCookie.Value);
+                }
+            }
+            catch (Exception tException)
+            {
+                Logger.WriteExceptionMessage(tException);
+            }
         }
     }
 }

@@ -32,6 +32,10 @@ namespace QuestionsWebApplication
                       "~/Scripts/QuestionsRefreshHandler.js",
                       "~/Scripts/QuestionsDeleteHandler.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/Settings").Include(
+                "~/Scripts/SettingsHandler.js"
+                ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
