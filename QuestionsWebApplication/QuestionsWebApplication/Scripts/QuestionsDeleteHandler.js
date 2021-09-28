@@ -1,28 +1,4 @@
-﻿let deleteQuestionResponseContainer;
-
-const createResponseMessage = (requestResponse, message) => {
-    if (deleteQuestionResponseContainer) {
-        const messageNode = document.createElement('div');
-        messageNode.classList.add('alert', `alert-${requestResponse}`);
-        messageNode.innerText = message;
-
-        if (deleteQuestionResponseContainer.firstChild) {
-            deleteQuestionResponseContainer.insertBefore(messageNode, deleteQuestionResponseContainer.firstChild);
-        }
-        else {
-            deleteQuestionResponseContainer.insert(message);
-        }
-
-        setTimeout(() => {
-            messageNode.classList.add('fade');
-            setTimeout(() => {
-                messageNode.remove();
-            }, 150)
-        }, 4850);
-    }
-}
-
-const RemoveQuestion = (resultData = {}, questionId = 0) => {
+﻿const RemoveQuestion = (resultData = {}, questionId = 0) => {
     const {
         didDelete = false,
         requestResponse = 'error',
@@ -38,6 +14,8 @@ const RemoveQuestion = (resultData = {}, questionId = 0) => {
 };
 
 const RemoveQuestionAjax = (questionId) => {
+    isSelfUpdated = true;
+
     $.ajax({
         url: '/Questions/OnDeleteQuestion',
         contentType: 'application/json; charset=utf-8',
@@ -55,6 +33,5 @@ const RemoveQuestionAjax = (questionId) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    deleteQuestionResponseContainer = document.querySelector('.questions__delete-response-container');
     AddRemoveEventListeners();
 });

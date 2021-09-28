@@ -38,17 +38,17 @@
     </div>
     
     <div class="question__extra-data-container">
-        <div class="Smiley__container">
+        <div class=@((tIsNewQuestion ? "Smiley" : Model.Type.ToString()) + "__container") type=@((tIsNewQuestion ? "Smiley" : Model.Type.ToString()))>
             @Html.Partial("_" + (tIsNewQuestion ? "Smiley" : Model.Type.ToString()) + "Form", Model)
         </div>
 
         @if (tIsNewQuestion)
         {
-            <div class="Star__container">
+            <div class="Star__container" type="Star">
                 @Html.Partial("_StarForm", Model)
             </div>
-                
-            <div class="Slider__container">
+
+            <div class="Slider__container" type="Slider">
                 @Html.Partial("_SliderForm", Model)
             </div>
         }

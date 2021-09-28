@@ -82,7 +82,7 @@ namespace QuestionEntities
                     tAreFieldsValid = false;
                 }
 
-                if (EndValue < 0 || EndValue > 100 || EndValue < StartValue)
+                if (EndValue < 0 || EndValue > 100 || (EndValue < StartValue && EndValue != 100))
                 {
                     tAreFieldsValid = false;
                 }

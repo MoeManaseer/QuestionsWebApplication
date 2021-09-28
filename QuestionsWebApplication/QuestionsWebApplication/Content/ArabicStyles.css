@@ -1,0 +1,59 @@
+﻿.body--right-to-left .navbar-toggle {
+    float: left;
+    margin-left: 15px;
+}
+
+.body--right-to-left .navbar-brand {
+    float: right;
+}
+
+.body--right-to-left .navbar-collapse.collapse {
+    width: 100%;
+    margin-right: 16px;
+}
+
+.body--right-to-left ul.nav.navbar-nav,
+.body--right-to-left .navbar-header,
+.body--right-to-left dt {
+    float: right;
+}
+
+.body--right-to-left ul.nav.navbar-nav.navbar-right {
+    float: left !important;
+}
+
+.body--right-to-left .form-horizontal .form-group {
+    display: flex;
+}
+
+.body--right-to-left th {
+    text-align: right;
+}
+
+@media only screen and (max-width: 1024px) {
+    .body--right-to-left .form-horizontal .form-group {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .body--right-to-left .col-md-10 {
+        width: 100%;
+    }
+
+    .body--right-to-left .navbar-collapse.collapse {
+        margin-right: 0;
+    }
+
+    .body--right-to-left ul.nav.navbar-nav, .body--right-to-left .navbar-header, .body--right-to-left dt, .body--right-to-left ul.nav.navbar-nav.navbar-right {
+        float: none !important;
+    }
+
+    .body--right-to-left ul.nav.navbar-nav, .body--right-to-left .navbar-header {
+        padding: 0;
+    }
+
+    .body--right-to-left .form-horizontal .form-group {
+        flex-direction: column;
+    }
+}

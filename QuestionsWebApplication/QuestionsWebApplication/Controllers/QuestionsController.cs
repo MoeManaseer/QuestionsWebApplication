@@ -25,6 +25,7 @@ namespace QuestionsWebApplication.Controllers
             {
                 QuestionsHandlerObject = pQuestionsHandler;
                 
+                // Only add the event listener once when the QuestionsHandler singleton gets constructed
                 if (QuestionsHandlerObject.IsInitialLoad)
                 {
                     QuestionsHandlerObject.UpdateData += NotifyUpdateData;
@@ -39,9 +40,10 @@ namespace QuestionsWebApplication.Controllers
         }
 
         /// <summary>
-        /// 
+        /// GET: \Questions\Index
+        /// Questions index page, shows all the questions from the database
         /// </summary>
-        /// <returns></returns>
+        /// <returns>View</returns>
         public ActionResult Index()
         {
             List<Question> tQuestions = new List<Question>();
@@ -53,13 +55,18 @@ namespace QuestionsWebApplication.Controllers
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = "Something wrong happend while getting the questions list..";
+                TempData[MessageKey] = Languages.Language.ListFail;
                 TempData[ResponseKey] = DangerKey;
             }
 
             return View(tQuestions);
         }
 
+        /// <summary>
+        /// POST: \Questions\GetUpdatedData
+        /// API call to get a list of updated questions list and return it as a partial
+        /// </summary>
+        /// <returns>A partial view</returns>
         [HttpPost]
         public ActionResult GetUpdatedData()
         {
@@ -72,18 +79,29 @@ namespace QuestionsWebApplication.Controllers
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = "Something wrong happend while getting the data list..";
+                TempData[MessageKey] = Languages.Language.ListFail;
                 TempData[ResponseKey] = DangerKey;
             }
 
             return PartialView("_QuestionsView", tQuestions);
         }
 
+        /// <summary>
+        /// GET: \Questions\Create
+        /// Returns the create new question view
+        /// </summary>
+        /// <returns>View</returns>
         public ActionResult Create()
         {
             return View();
         }
 
+        /// <summary>
+        /// POST: \Questions\Create
+        /// Post method to add a new question
+        /// </summary>
+        /// <param name="pQuestion"></param>
+        /// <returns>View</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Question pQuestion)
@@ -92,94 +110,145 @@ namespace QuestionsWebApplication.Controllers
 
             try
             {
-                tResultCode = QuestionsHandlerObject.AddQuestion(pQuestion);
-
-                if (tResultCode == (int) ResultCodesEnum.SUCCESS)
+                // Validate the inputted data
+                if (ModelState.IsValid && pQuestion.ValidateQuestionFields())
                 {
-                    TempData[MessageKey] = "Question added successfully";
-                    TempData[ResponseKey] = SuccessKey;
+                    tResultCode = QuestionsHandlerObject.AddQuestion(pQuestion);
+
+                    if (tResultCode == (int)ResultCodesEnum.SUCCESS)
+                    {
+                        TempData[MessageKey] = Languages.Language.QuestionAddSuccess;
+                        TempData[ResponseKey] = SuccessKey;
+                    }
+                    else
+                    {
+                        TempData[MessageKey] = Languages.Language.QuestionAddFail;
+                        TempData[ResponseKey] = DangerKey;
+                    }
                 }
                 else
                 {
-                    TempData[MessageKey] = "Something wrong happend while adding the question..";
+                    TempData[MessageKey] = Languages.Language.QuestionAddValidationFail;
                     TempData[ResponseKey] = DangerKey;
+                    tResultCode = (int) ResultCodesEnum.CODE_FAILUER;
                 }
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = "Something wrong happend while adding the question..";
+                TempData[MessageKey] = Languages.Language.QuestionAddFail;
                 TempData[ResponseKey] = DangerKey;
                 tResultCode = (int) ResultCodesEnum.CODE_FAILUER;
             }
 
-            return tResultCode == (int) ResultCodesEnum.SUCCESS ? RedirectToAction(IndexKey, QuestionsKey) : RedirectToAction(CreateKey, QuestionsKey);
+            // If successful redirect to the index page
+            if (tResultCode == (int) ResultCodesEnum.SUCCESS)
+            {
+                return RedirectToAction(IndexKey, QuestionsKey);
+            }
+            // If not return to the same page with the question data
+            else
+            {
+                return View(pQuestion);
+            }
         }
 
+        /// <summary>
+        /// GET: \Questions\Edit\Id
+        /// Returns the edit view for the question id with the question data
+        /// </summary>
+        /// <param name="id">The id of the selected question</param>
+        /// <returns>View</returns>
         public ActionResult Edit(int id = -1)
         {
             Question tCorrectInstance = null;
 
             try
             {
+                // Get the question object
                 Question tOriginalQuestion = GetQuestionObject(id);
 
+                // If question doesn't exist redirect the user
                 if (id == -1 || tOriginalQuestion == null)
                 {
-                    TempData[MessageKey] = "There isn't a question with that specific id..";
+                    TempData[MessageKey] = Languages.Language.QuestionNull;
                     TempData[ResponseKey] = InfoKey;
                     return RedirectToAction(IndexKey, QuestionsKey);
                 }
 
+                // Create a new instance of the Question class with the right subtype
                 tCorrectInstance = QuestionsFactory.GetInstance(tOriginalQuestion.Type);
+                // Manually assign the Id
                 tCorrectInstance.Id = tOriginalQuestion.Id;
+                // Get all the subtyped question data from the database
                 int tResultCode = QuestionsHandlerObject.GetQuestion(tCorrectInstance);
 
                 if (tResultCode != (int)ResultCodesEnum.SUCCESS)
                 {
-                    TempData[MessageKey] = "Something wrong happend while fetching the question.. the question is probably deleted.";
+                    TempData[MessageKey] = Languages.Language.QuestionDeleted;
                     TempData[ResponseKey] = DangerKey;
                 }
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = "Something wrong happend while adding the question..";
+                TempData[MessageKey] = Languages.Language.QuestionAddFail;
                 TempData[ResponseKey] = DangerKey;
             }
 
             return View(tCorrectInstance);
         }
 
+        /// <summary>
+        /// POST: \Question\Edit\Id
+        /// POST method to edit an old question
+        /// </summary>
+        /// <param name="pQuestion"></param>
+        /// <returns>View</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Question pQuestion)
         {
             try
             {
-                int tResultCode = QuestionsHandlerObject.EditQuestion(pQuestion);
-
-                if (tResultCode == (int)ResultCodesEnum.SUCCESS)
+                // Validate the inputted data
+                if (ModelState.IsValid && pQuestion.ValidateQuestionFields())
                 {
-                    TempData[MessageKey] = "Question updated successfully";
-                    TempData[ResponseKey] = SuccessKey;
+                    int tResultCode = QuestionsHandlerObject.EditQuestion(pQuestion);
+
+                    if (tResultCode == (int)ResultCodesEnum.SUCCESS)
+                    {
+                        TempData[MessageKey] = Languages.Language.QuestionUpdateSuccess;
+                        TempData[ResponseKey] = SuccessKey;
+                    }
+                    else
+                    {
+                        TempData[MessageKey] = Languages.Language.QuestionUpdateDeleted;
+                        TempData[ResponseKey] = DangerKey;
+                    }
                 }
                 else
                 {
-                    TempData[MessageKey] = "Something wrong happend while updating the question.. The question probably got deleted";
+                    TempData[MessageKey] = Languages.Language.QuestionEditValidationFail;
                     TempData[ResponseKey] = DangerKey;
                 }
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = "Something wrong happend while editing the question..";
+                TempData[MessageKey] = Languages.Language.QuestionUpdateFail;
                 TempData[ResponseKey] = DangerKey;
             }
 
-            return RedirectToAction(IndexKey, QuestionsKey);
+            return View(pQuestion);
         }
 
+        /// <summary>
+        /// POST: \Questions\OnDeleteQuestion\Id
+        /// POST method to delete questions
+        /// </summary>
+        /// <param name="pQuestionId">The question id that should be deleted</param>
+        /// <returns>JSON object that determines what the value of the POST method</returns>
         [HttpPost]
         public ActionResult OnDeleteQuestion(string pQuestionId)
         {
@@ -196,12 +265,12 @@ namespace QuestionsWebApplication.Controllers
 
                 if (tDidDelete)
                 {
-                    tMessageResponse = "The question was removed successfully!";
+                    tMessageResponse = Languages.Language.QuestionDeleteSuccess;
                     tRequestResponse = SuccessKey;
                 }
                 else
                 {
-                    tMessageResponse = "Something wrong happend while deleting the question.. The question might be already deleted";
+                    tMessageResponse = Languages.Language.QuestionDeleteDeleted;
                     tRequestResponse = DangerKey;
                 }
             }
@@ -219,40 +288,56 @@ namespace QuestionsWebApplication.Controllers
             });
         }
 
+        /// <summary>
+        /// GET: \Questions\Details\Id
+        /// Returns the details view for the question id with the question data
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>View</returns>
         public ActionResult Details(int id = -1)
         {
             Question tCorrectInstance = null;
             try
             {
+                // Get the question object
                 Question tOriginalQuestion = GetQuestionObject(id);
 
+                // If question doesn't exist redirect the user
                 if (id == -1 || tOriginalQuestion == null)
                 {
-                    TempData[MessageKey] = "There isn't a question with that specific id..";
+                    TempData[MessageKey] = Languages.Language.QuestionNull;
                     TempData[ResponseKey] = InfoKey;
                     return RedirectToAction(IndexKey, QuestionsKey);
                 }
 
+                // Create a new instance of the Question class with the right subtype
                 tCorrectInstance = QuestionsFactory.GetInstance(tOriginalQuestion.Type);
+                // Manually assign the Id
                 tCorrectInstance.Id = tOriginalQuestion.Id;
+                // Get all the subtyped question data from the database
                 int tResultCode = QuestionsHandlerObject.GetQuestion(tCorrectInstance);
 
                 if (tResultCode != (int) ResultCodesEnum.SUCCESS)
                 {
-                    TempData[MessageKey] = "Something wrong happend while fetching the question.. The question might be deleted";
+                    TempData[MessageKey] = Languages.Language.QuestionFetchDeleted;
                     TempData[ResponseKey] = DangerKey;
                 }
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = "Something wrong happend while fetching the question.. please try again";
+                TempData[MessageKey] = Languages.Language.QuestionFetchFail;
                 TempData[ResponseKey] = DangerKey;
             }
 
             return View(tCorrectInstance);
         }
 
+        /// <summary>
+        /// Utility function that returns a question object
+        /// </summary>
+        /// <param name="pId">The question object to return</param>
+        /// <returns>a question object if found or null</returns>
         private Question GetQuestionObject(int pId)
         {
             Question tQuestion = null;
@@ -269,6 +354,11 @@ namespace QuestionsWebApplication.Controllers
             return tQuestion;
         }
 
+        /// <summary>
+        /// Utility function that triggers the Hubs to update their data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NotifyUpdateData(object sender, EventArgs e)
         {
             try

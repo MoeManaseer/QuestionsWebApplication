@@ -25,3 +25,33 @@ const AddRemoveEventListeners = () => {
         });
     }
 };
+
+let deleteQuestionResponseContainer;
+
+const createResponseMessage = (requestResponse, message) => {
+    if (deleteQuestionResponseContainer) {
+        const messageNode = document.createElement('div');
+        messageNode.classList.add('alert', `alert-${requestResponse}`);
+        messageNode.innerText = message;
+
+        if (deleteQuestionResponseContainer.firstChild) {
+            deleteQuestionResponseContainer.insertBefore(messageNode, deleteQuestionResponseContainer.firstChild);
+        }
+        else {
+            deleteQuestionResponseContainer.insert(message);
+        }
+
+        setTimeout(() => {
+            messageNode.classList.add('fade');
+            setTimeout(() => {
+                messageNode.remove();
+            }, 150)
+        }, 4850);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    deleteQuestionResponseContainer = document.querySelector('.questions__delete-response-container');
+});
+
+let isSelfUpdated = false;

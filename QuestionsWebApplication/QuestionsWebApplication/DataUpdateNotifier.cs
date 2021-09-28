@@ -17,6 +17,7 @@ namespace QuestionsWebApplication
             get;
             set;
         }
+
         public static DataUpdateNotifier Instance
         {
             get
@@ -37,6 +38,9 @@ namespace QuestionsWebApplication
             }
         }
 
+        /// <summary>
+        /// Helper function that notifies all the hubs that are registered to this function to recieve a notification whenever this function gets called.
+        /// </summary>
         public void NotifyDataChanged()
         {
             try

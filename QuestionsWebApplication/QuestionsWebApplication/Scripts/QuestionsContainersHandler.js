@@ -1,20 +1,16 @@
 ﻿let tQuestionExtraDataContainer;
 let tModelTypeField;
 
-const SelectExtraQuestionContainer = (type = "Smiley") => {
+const SelectExtraQuestionContainer = (typeIndex = 0) => {
     if (tQuestionExtraDataContainer) {
-        [...tQuestionExtraDataContainer.childNodes].forEach((tDataContainer) => {
-            if (tDataContainer && tDataContainer.nodeType != Node.TEXT_NODE) {
-                if (tDataContainer.classList.contains(type + '__container')) {
-                    tDataContainer.style.display = 'block';
-                }
-                else {
-                    tDataContainer.style.display = 'none';
-                }
-            }
+        [...tQuestionExtraDataContainer.children].forEach((tDataContainer) => {
+            tDataContainer.style.display = 'none';
         });
 
-        tModelTypeField.value = `${type}Question`;
+        const selectedContainer = tQuestionExtraDataContainer.children[typeIndex];
+        selectedContainer.style.display = 'block';
+
+        tModelTypeField.value = `${selectedContainer.getAttribute('type')}Question`;
     }
 };
 
@@ -29,8 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tQuestionTypeMenu.disabled = tQuestionTypeMenu.classList.contains('question__type-dropdown--disabled') ? true : false;
 
         tQuestionTypeMenu.addEventListener('change', (event) => {
-            const tCurrentType = tQuestionTypeMenu.options[tQuestionTypeMenu.selectedIndex].text;
-            SelectExtraQuestionContainer(tCurrentType);
+            SelectExtraQuestionContainer(tQuestionTypeMenu.selectedIndex);
         });
     }
 });

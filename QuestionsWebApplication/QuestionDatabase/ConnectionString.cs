@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using Languages;
 using LoggerUtils;
+using QuestionEntities;
 
 namespace QuestionDatabase
 {
@@ -15,7 +16,9 @@ namespace QuestionDatabase
         private static readonly string PasswordKey = "Password";
         public enum IntegratedSecurityEnum
         {
+            [Display(Name = "SSPIKey", ResourceType = typeof(Language))]
             SSPI,
+            [Display(Name = "OtherKey", ResourceType = typeof(Language))]
             Other
         }
 
@@ -82,12 +85,26 @@ namespace QuestionDatabase
         /// <summary>
         /// Saves the changes to app.config file with the current instance data
         /// </summary>
-        public void ApplyChanges()
+        public int ApplyChanges()
         {
+            int tResultCode = (int) ResultCodesEnum.SUCCESS;
+
             try
             {
                 // Set back the value of the current object to app.config settings
-                var tConfigurationManager = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+                Configuration tConfigurationManager = null;
+                
+                if (System.Web.HttpContext.Current != null)
+                {
+                    tConfigurationManager =
+                        System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                }
+                else
+                {
+                    tConfigurationManager =
+                        ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                }
 
                 tConfigurationManager.AppSettings.Settings[DataSourceKey].Value = DataSource;
                 tConfigurationManager.AppSettings.Settings[DatabaseKey].Value = DatabaseName;
@@ -100,7 +117,10 @@ namespace QuestionDatabase
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
+                tResultCode = (int) ResultCodesEnum.CODE_FAILUER;
             }
+
+            return tResultCode;
         }
 
         public override string ToString()

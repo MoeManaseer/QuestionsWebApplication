@@ -1,8 +1,8 @@
 ﻿let tSettingsUserPasswordContainer;
 
-const toggleSettingsUserPasswordContainer = (value = 'Other') => {
+const toggleSettingsUserPasswordContainer = (valueIndex = 0) => {
     if (tSettingsUserPasswordContainer) {
-        if (value == 'SSPI') {
+        if (!valueIndex) {
             tSettingsUserPasswordContainer.classList.add('settings__user-password-container--disabled');
         } else {
             tSettingsUserPasswordContainer.classList.remove('settings__user-password-container--disabled');
@@ -11,7 +11,7 @@ const toggleSettingsUserPasswordContainer = (value = 'Other') => {
         [...tSettingsUserPasswordContainer.children].forEach((inputBoxContainer) => {
             const inputBox = inputBoxContainer.querySelector('input');
 
-            if (value == 'SSPI') {
+            if (!valueIndex) {
                 inputBox.setAttribute('disabled', '');
             } else {
                 inputBox.removeAttribute('disabled');
@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     tSettingsUserPasswordContainer = document.querySelector('.settings__user-password-container');
 
     if (tSettingsSecuirtyDropDown) {
-        toggleSettingsUserPasswordContainer(tSettingsSecuirtyDropDown.options[tSettingsSecuirtyDropDown.value].text);
+        toggleSettingsUserPasswordContainer(tSettingsSecuirtyDropDown.selectedIndex);
 
         tSettingsSecuirtyDropDown.addEventListener('change', () => {
-            toggleSettingsUserPasswordContainer(tSettingsSecuirtyDropDown.options[tSettingsSecuirtyDropDown.value].text);
+            toggleSettingsUserPasswordContainer(tSettingsSecuirtyDropDown.selectedIndex);
         });
     }
 });

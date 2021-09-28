@@ -126,6 +126,9 @@
   <data name="AppName" xml:space="preserve">
     <value>QuestionsBuilder</value>
   </data>
+  <data name="ArabicKey" xml:space="preserve">
+    <value>عربي</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>إنشاء</value>
   </data>
@@ -156,6 +159,9 @@
   <data name="Edit" xml:space="preserve">
     <value>يحرر</value>
   </data>
+  <data name="EnglishKey" xml:space="preserve">
+    <value>إنجليزي</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>خطأ</value>
   </data>
@@ -183,6 +189,9 @@
   <data name="LanguageRequired" xml:space="preserve">
     <value>لا يمكن أن يكون اللغة فارغًا</value>
   </data>
+  <data name="ListFail" xml:space="preserve">
+    <value>حدث خطأ أثناء جلب البيانات .. يرجى التحديث أو المحاولة مرة أخرى لاحقًا</value>
+  </data>
   <data name="NumberOfSmiley" xml:space="preserve">
     <value>عدد الوجوه المبتسمة</value>
   </data>
@@ -201,6 +210,9 @@
   <data name="NumberOfStarRequired" xml:space="preserve">
     <value>لا يجوز أن يكون عدد النجوم فارغًا</value>
   </data>
+  <data name="OtherKey" xml:space="preserve">
+    <value>آخر</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>كلمه السر</value>
   </data>
@@ -209,6 +221,27 @@
   </data>
   <data name="Question" xml:space="preserve">
     <value>سؤال</value>
+  </data>
+  <data name="QuestionAddFail" xml:space="preserve">
+    <value>حدث خطأ ما اثناء اضافة السؤال ..</value>
+  </data>
+  <data name="QuestionAddSuccess" xml:space="preserve">
+    <value>تمت إضافة السؤال بنجاح</value>
+  </data>
+  <data name="QuestionAddValidationFail" xml:space="preserve">
+    <value>تمت إضافة السؤال دون نجاح ، يرجى التحقق من القيم والتأكد من صحتها</value>
+  </data>
+  <data name="QuestionDeleted" xml:space="preserve">
+    <value>حدث خطأ ما أثناء إحضار السؤال .. ربما تم حذف السؤال</value>
+  </data>
+  <data name="QuestionDeleteDeleted" xml:space="preserve">
+    <value>حدث خطأ ما أثناء حذف السؤال .. ربما تم حذف السؤال بالفعل</value>
+  </data>
+  <data name="QuestionDeleteSuccess" xml:space="preserve">
+    <value>تمت إزالة السؤال بنجاح!</value>
+  </data>
+  <data name="QuestionEditValidationFail" xml:space="preserve">
+    <value>تم تحرير السؤال دون نجاح ، يرجى التحقق من القيم والتأكد من صحتها</value>
   </data>
   <data name="QuestionEndValue" xml:space="preserve">
     <value>القيمة النهائية</value>
@@ -227,6 +260,15 @@
   </data>
   <data name="QuestionEndValueRequired" xml:space="preserve">
     <value>لا يجوز أن تكون قيمة النهاية فارغة</value>
+  </data>
+  <data name="QuestionFetchDeleted" xml:space="preserve">
+    <value>حدث خطأ ما أثناء إحضار السؤال .. قد يتم حذف السؤال</value>
+  </data>
+  <data name="QuestionFetchFail" xml:space="preserve">
+    <value>حدث خطأ ما أثناء إحضار السؤال .. يرجى المحاولة مرة أخرى</value>
+  </data>
+  <data name="QuestionNull" xml:space="preserve">
+    <value>لا يوجد سؤال بهذا المعرف المحدد ...</value>
   </data>
   <data name="QuestionOrder" xml:space="preserve">
     <value>ترتيب</value>
@@ -270,11 +312,41 @@
   <data name="QuestionTypeRequired" xml:space="preserve">
     <value>لا يمكن أن يكون النوع فارغًا</value>
   </data>
+  <data name="QuestionUpdateDeleted" xml:space="preserve">
+    <value>حدث خطأ ما أثناء تحديث السؤال .. ربما تم حذف السؤال</value>
+  </data>
+  <data name="QuestionUpdateFail" xml:space="preserve">
+    <value>حدث خطأ ما أثناء تحرير السؤال ..</value>
+  </data>
+  <data name="QuestionUpdateSuccess" xml:space="preserve">
+    <value>تم تحديث السؤال بنجاح</value>
+  </data>
   <data name="SaveButton" xml:space="preserve">
     <value>يحفظ</value>
   </data>
+  <data name="SaveFail" xml:space="preserve">
+    <value>حدث خطأ ما أثناء حفظ الإعدادات .. يرجى المحاولة مرة أخرى!</value>
+  </data>
+  <data name="SaveSuccess" xml:space="preserve">
+    <value>تم حفظ الإعدادات بنجاح!</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>إعدادات</value>
+  </data>
+  <data name="SliderKey" xml:space="preserve">
+    <value>المنزلق</value>
+  </data>
+  <data name="SliderValuesValidationMessage" xml:space="preserve">
+    <value>يرجى التأكد من أن القيمة النهائية أعلى من قيمة البداية ، أو أن كلاهما 100</value>
+  </data>
+  <data name="SmileyKey" xml:space="preserve">
+    <value>مبتسم</value>
+  </data>
+  <data name="SSPIKey" xml:space="preserve">
+    <value>مصادقة Windows</value>
+  </data>
+  <data name="StarKey" xml:space="preserve">
+    <value>نجمة</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>اسم المستخدم</value>

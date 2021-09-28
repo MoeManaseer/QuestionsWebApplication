@@ -1,4 +1,9 @@
 ﻿const getUpdatedData = () => {
+    if (isSelfUpdated) {
+        isSelfUpdated = false;
+        return;
+    }
+
     $.ajax({
         url: '/Questions/GetUpdatedData',
         contentType: 'application/html; charset=utf-8',
@@ -15,6 +20,7 @@
         },
         error: (error) => {
             console.log(error);
+            createResponseMessage('error', error);
         },
     });
 };

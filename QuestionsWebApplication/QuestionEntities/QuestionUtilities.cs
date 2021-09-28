@@ -1,12 +1,17 @@
-﻿using LoggerUtils;
+﻿using Languages;
+using LoggerUtils;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace QuestionEntities
 {
     public enum QuestionsTypeEnum
     {
+        [Display(Name = "SmileyKey", ResourceType = typeof(Language))]
         Smiley,
+        [Display(Name = "StarKey", ResourceType = typeof(Language))]
         Star,
+        [Display(Name = "SliderKey", ResourceType = typeof(Language))]
         Slider
     }
     public enum ResultCodesEnum

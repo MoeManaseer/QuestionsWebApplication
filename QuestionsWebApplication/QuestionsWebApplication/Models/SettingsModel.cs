@@ -12,7 +12,9 @@ namespace QuestionsWebApplication.Models
     {
         public enum LanguagesEnum
         {
+            [Display(Name = "EnglishKey", ResourceType = typeof(Language))]
             English,
+            [Display(Name = "ArabicKey", ResourceType = typeof(Language))]
             Arabic,
         };
 

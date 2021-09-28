@@ -88,6 +88,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arabic.
+        /// </summary>
+        public static string ArabicKey {
+            get {
+                return ResourceManager.GetString("ArabicKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         public static string Create {
@@ -178,6 +187,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string EnglishKey {
+            get {
+                return ResourceManager.GetString("EnglishKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
@@ -259,6 +277,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error while fetching the data.. please refresh or try again later.
+        /// </summary>
+        public static string ListFail {
+            get {
+                return ResourceManager.GetString("ListFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of smiley faces.
         /// </summary>
         public static string NumberOfSmiley {
@@ -313,6 +340,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string OtherKey {
+            get {
+                return ResourceManager.GetString("OtherKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
@@ -336,6 +372,69 @@ namespace Languages {
         public static string Question {
             get {
                 return ResourceManager.GetString("Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wrong happend while adding the question...
+        /// </summary>
+        public static string QuestionAddFail {
+            get {
+                return ResourceManager.GetString("QuestionAddFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question added successfully.
+        /// </summary>
+        public static string QuestionAddSuccess {
+            get {
+                return ResourceManager.GetString("QuestionAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The question was added unsuccessfully, please check the values and make sure they are valid.
+        /// </summary>
+        public static string QuestionAddValidationFail {
+            get {
+                return ResourceManager.GetString("QuestionAddValidationFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wrong happend while fetching the question.. the question is probably deleted.
+        /// </summary>
+        public static string QuestionDeleted {
+            get {
+                return ResourceManager.GetString("QuestionDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wrong happend while deleting the question.. The question might be already deleted.
+        /// </summary>
+        public static string QuestionDeleteDeleted {
+            get {
+                return ResourceManager.GetString("QuestionDeleteDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The question was removed successfully!.
+        /// </summary>
+        public static string QuestionDeleteSuccess {
+            get {
+                return ResourceManager.GetString("QuestionDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The question was edited unsuccessfully, please check the values and make sure they are valid.
+        /// </summary>
+        public static string QuestionEditValidationFail {
+            get {
+                return ResourceManager.GetString("QuestionEditValidationFail", resourceCulture);
             }
         }
         
@@ -390,6 +489,33 @@ namespace Languages {
         public static string QuestionEndValueRequired {
             get {
                 return ResourceManager.GetString("QuestionEndValueRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wrong happend while fetching the question.. The question might be deleted.
+        /// </summary>
+        public static string QuestionFetchDeleted {
+            get {
+                return ResourceManager.GetString("QuestionFetchDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wrong happend while fetching the question.. please try again.
+        /// </summary>
+        public static string QuestionFetchFail {
+            get {
+                return ResourceManager.GetString("QuestionFetchFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There isn&apos;t a question with that specific id....
+        /// </summary>
+        public static string QuestionNull {
+            get {
+                return ResourceManager.GetString("QuestionNull", resourceCulture);
             }
         }
         
@@ -520,6 +646,33 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something wrong happend while updating the question.. The question probably got deleted.
+        /// </summary>
+        public static string QuestionUpdateDeleted {
+            get {
+                return ResourceManager.GetString("QuestionUpdateDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wrong happend while editing the question...
+        /// </summary>
+        public static string QuestionUpdateFail {
+            get {
+                return ResourceManager.GetString("QuestionUpdateFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question updated successfully.
+        /// </summary>
+        public static string QuestionUpdateSuccess {
+            get {
+                return ResourceManager.GetString("QuestionUpdateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string SaveButton {
@@ -529,11 +682,74 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something wrong happend while saving the settings.. please try again!.
+        /// </summary>
+        public static string SaveFail {
+            get {
+                return ResourceManager.GetString("SaveFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The settings were saved successfully!.
+        /// </summary>
+        public static string SaveSuccess {
+            get {
+                return ResourceManager.GetString("SaveSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slider.
+        /// </summary>
+        public static string SliderKey {
+            get {
+                return ResourceManager.GetString("SliderKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please make sure that the end value is higher than the start value, or they are both 100.
+        /// </summary>
+        public static string SliderValuesValidationMessage {
+            get {
+                return ResourceManager.GetString("SliderValuesValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smiley.
+        /// </summary>
+        public static string SmileyKey {
+            get {
+                return ResourceManager.GetString("SmileyKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows authentication.
+        /// </summary>
+        public static string SSPIKey {
+            get {
+                return ResourceManager.GetString("SSPIKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Star.
+        /// </summary>
+        public static string StarKey {
+            get {
+                return ResourceManager.GetString("StarKey", resourceCulture);
             }
         }
         

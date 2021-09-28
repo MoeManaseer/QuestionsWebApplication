@@ -309,10 +309,13 @@ namespace QuestionsController
             try
             {
                 // Changes the values that are present in the app.config file
-                pConnectionString.ApplyChanges();
+                tResultCode = pConnectionString.ApplyChanges();
 
-                // Change the current instance of ConnectionString present in the Database to the new instance
-                tResultCode = DatabaseController.ChangeConnectionString(pConnectionString);
+                if (tResultCode == (int) ResultCodesEnum.SUCCESS)
+                {
+                    // Change the current instance of ConnectionString present in the Database to the new instance
+                    tResultCode = DatabaseController.ChangeConnectionString(pConnectionString);
+                }
             }
             catch (Exception tException)
             {

@@ -39,7 +39,8 @@ namespace QuestionsWebApplication
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/QuestionsStyles.css"));
+                      "~/Content/QuestionsStyles.css",
+                      "~/Content/ArabicStyles.css"));
         }
     }
 }
