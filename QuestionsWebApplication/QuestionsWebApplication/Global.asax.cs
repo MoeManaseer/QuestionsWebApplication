@@ -32,8 +32,8 @@ namespace QuestionsWebApplication
 
                 if (tCurrentLanguageCookie != null && !string.IsNullOrEmpty(tCurrentLanguageCookie.Value))
                 {
-                    Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(tCurrentLanguageCookie.Value);
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(tCurrentLanguageCookie.Value);
+                    Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(tCurrentLanguageCookie.Value.Substring(0, 2));
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(tCurrentLanguageCookie.Value.Substring(0, 2));
                 }
             }
             catch (Exception tException)

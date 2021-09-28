@@ -20,7 +20,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ConnectionStringObject.DataSource, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ConnectionStringObject.DataSource, new { @class = "form-control" })
+            @Html.EditorFor(model => model.ConnectionStringObject.DataSource, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ConnectionStringObject.DataSource, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -28,7 +28,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ConnectionStringObject.DatabaseName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ConnectionStringObject.DatabaseName, new { @class = "form-control" })
+            @Html.EditorFor(model => model.ConnectionStringObject.DatabaseName, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ConnectionStringObject.DatabaseName, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -45,7 +45,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ConnectionStringObject.Username, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ConnectionStringObject.Username, new { @class = "form-control" })
+                @Html.EditorFor(model => model.ConnectionStringObject.Username, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ConnectionStringObject.Username, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -53,7 +53,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ConnectionStringObject.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ConnectionStringObject.Password, new { @class = "form-control" })
+                @Html.EditorFor(model => model.ConnectionStringObject.Password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ConnectionStringObject.Password, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -61,7 +61,7 @@
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="col-md-offset-2 col-md-10 button-container">
             <input type="submit" value=@Languages.Language.SaveButton class="btn btn-default" />
         </div>
     </div>

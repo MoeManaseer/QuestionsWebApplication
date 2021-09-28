@@ -120,8 +120,8 @@
   <data name="Add" xml:space="preserve">
     <value>إضافة</value>
   </data>
-  <data name="All" xml:space="preserve">
-    <value>الجميع</value>
+  <data name="AddFailure" xml:space="preserve">
+    <value>حدث خطأ ما أثناء الإضافة .. يرجى المحاولة مرة أخرى.</value>
   </data>
   <data name="AppName" xml:space="preserve">
     <value>QuestionsBuilder</value>
@@ -129,8 +129,26 @@
   <data name="ArabicKey" xml:space="preserve">
     <value>عربي</value>
   </data>
+  <data name="CodeFailure" xml:space="preserve">
+    <value>حدث خطأ ما في التطبيق .. يرجى الاتصال بالمسؤول</value>
+  </data>
+  <data name="ConnectionStringFailure" xml:space="preserve">
+    <value>فشل سلسلة الاتصال .. يرجى المحاولة مرة أخرى أو تغيير إعدادات التطبيق</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>إنشاء</value>
+  </data>
+  <data name="DatabaseAuthenticationError" xml:space="preserve">
+    <value>لم يتم توثيق المستخدم الحالي في قاعدة البيانات .. يرجى تغيير المستخدم أو الاتصال بالمسؤول</value>
+  </data>
+  <data name="DatabaseConnectionDenied" xml:space="preserve">
+    <value>تم رفض الاتصال بقاعدة البيانات ، يرجى تغيير المستخدم الحالي أو الاتصال بالمسؤول</value>
+  </data>
+  <data name="DatabaseError" xml:space="preserve">
+    <value>حدث خطأ ما في قاعدة البيانات .. يرجى الاتصال بالمسؤول</value>
+  </data>
+  <data name="DatabaseFailure" xml:space="preserve">
+    <value>حدث خطأ ما في قاعدة البيانات .. يرجى الاتصال بالمسؤول</value>
   </data>
   <data name="DatabaseName" xml:space="preserve">
     <value>اسم قاعدة البيانات</value>
@@ -141,6 +159,9 @@
   <data name="DatabaseNameRequired" xml:space="preserve">
     <value>لا يمكن أن يكون اسم قاعدة البيانات فارغًا</value>
   </data>
+  <data name="DatabaseSQLIncorrect" xml:space="preserve">
+    <value>تم تنفيذ SQL غير صحيح .. الرجاء الاتصال بالمسؤول</value>
+  </data>
   <data name="DataSource" xml:space="preserve">
     <value>مصدر البيانات</value>
   </data>
@@ -150,6 +171,9 @@
   <data name="DataSourceRequired" xml:space="preserve">
     <value>لا يمكن أن يكون مصدر البيانات فارغًا</value>
   </data>
+  <data name="DefaultResponse" xml:space="preserve">
+    <value>حدث خطأ عام .. يرجى المحاولة مرة أخرى أو الاتصال بالمسؤول</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
   </data>
@@ -157,7 +181,10 @@
     <value>تفاصيل</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>يحرر</value>
+    <value>تحديث</value>
+  </data>
+  <data name="EmptyFields" xml:space="preserve">
+    <value>فشلت عملية الإضافة / التحديث .. هناك حقول فارغة.</value>
   </data>
   <data name="EnglishKey" xml:space="preserve">
     <value>إنجليزي</value>
@@ -167,6 +194,9 @@
   </data>
   <data name="ErrorMessage" xml:space="preserve">
     <value>حدث خطأ أثناء معالجة طلبك.</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الصفحة الرئيسية</value>
   </data>
   <data name="Index" xml:space="preserve">
     <value>الصفحة الرئيسية</value>
@@ -178,10 +208,10 @@
     <value>كل الأسئلة</value>
   </data>
   <data name="IntegratedSecurity" xml:space="preserve">
-    <value>الأمان المتكامل</value>
+    <value>نوع المصادقة</value>
   </data>
   <data name="IntegratedSecurityRequired" xml:space="preserve">
-    <value>لا يمكن أن يكون الأمان المتكامل فارغًا</value>
+    <value>لا يمكن أن يكون أمان نوع المصادقة فارغًا</value>
   </data>
   <data name="LanguageKey" xml:space="preserve">
     <value>اللغة</value>
@@ -191,6 +221,9 @@
   </data>
   <data name="ListFail" xml:space="preserve">
     <value>حدث خطأ أثناء جلب البيانات .. يرجى التحديث أو المحاولة مرة أخرى لاحقًا</value>
+  </data>
+  <data name="NothingToUpdate" xml:space="preserve">
+    <value>فشلت إضافة / التحديث .. لا يوجد شيء لتحديثه.</value>
   </data>
   <data name="NumberOfSmiley" xml:space="preserve">
     <value>عدد الوجوه المبتسمة</value>
@@ -211,7 +244,7 @@
     <value>لا يجوز أن يكون عدد النجوم فارغًا</value>
   </data>
   <data name="OtherKey" xml:space="preserve">
-    <value>آخر</value>
+    <value>مصادقة خادم SQL</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>كلمه السر</value>
@@ -236,6 +269,9 @@
   </data>
   <data name="QuestionDeleteDeleted" xml:space="preserve">
     <value>حدث خطأ ما أثناء حذف السؤال .. ربما تم حذف السؤال بالفعل</value>
+  </data>
+  <data name="QuestionDeletedFail" xml:space="preserve">
+    <value>لم يتم حذف السؤال ، حدث خطأ ما في التطبيق ، حاول مرة أخرى!</value>
   </data>
   <data name="QuestionDeleteSuccess" xml:space="preserve">
     <value>تمت إزالة السؤال بنجاح!</value>
@@ -278,6 +314,9 @@
   </data>
   <data name="QuestionOrderRequired" xml:space="preserve">
     <value>لا يمكن أن يكون الطلب فارغًا</value>
+  </data>
+  <data name="QuestionOutOfDate" xml:space="preserve">
+    <value>السؤال قديم .. يرجى التحديث للحصول على أحدث نسخة من البيانات</value>
   </data>
   <data name="QuestionStartValue" xml:space="preserve">
     <value>قيمه البدايه</value>
@@ -322,13 +361,22 @@
     <value>تم تحديث السؤال بنجاح</value>
   </data>
   <data name="SaveButton" xml:space="preserve">
-    <value>يحفظ</value>
+    <value>حفظ</value>
   </data>
   <data name="SaveFail" xml:space="preserve">
     <value>حدث خطأ ما أثناء حفظ الإعدادات .. يرجى المحاولة مرة أخرى!</value>
   </data>
   <data name="SaveSuccess" xml:space="preserve">
     <value>تم حفظ الإعدادات بنجاح!</value>
+  </data>
+  <data name="ServerConnectionFailure" xml:space="preserve">
+    <value>فشل الاتصال بالخادم .. يرجى التحقق من اسم الخادم أو الاتصال بالمسؤول</value>
+  </data>
+  <data name="ServerNotFoundOrDown" xml:space="preserve">
+    <value>خادم قاعدة البيانات محدث خادم قاعدة البيانات معطل حاليًا أو غير صحيح .. يرجى التحقق من الإعدادات أو الاتصال بمسؤول تم إيقافه مؤقتًا .. يرجى الاتصال بالمسؤول</value>
+  </data>
+  <data name="ServerPaused" xml:space="preserve">
+    <value>خادم قاعدة البيانات متوقف مؤقتًا حاليًا .. يرجى الاتصال بالمسؤول</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>إعدادات</value>
@@ -347,6 +395,15 @@
   </data>
   <data name="StarKey" xml:space="preserve">
     <value>نجمة</value>
+  </data>
+  <data name="TestFail" xml:space="preserve">
+    <value>لم ينجح الاتصال ، يرجى الاتصال بالمسؤول</value>
+  </data>
+  <data name="TestSuccess" xml:space="preserve">
+    <value>كان الاتصال ناجحًا!</value>
+  </data>
+  <data name="UpToDate" xml:space="preserve">
+    <value>السؤال محدث!</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>اسم المستخدم</value>

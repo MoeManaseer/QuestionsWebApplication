@@ -13,7 +13,7 @@
 }
 
 #questions__container form {
-   display: inline-block;
+    display: inline-block;
 }
 
 .question__delete-btn {
@@ -22,19 +22,40 @@
     padding: 0;
 }
 
-.question__delete-btn:hover {
-    text-decoration: underline;
-}
+    .question__delete-btn:hover {
+        text-decoration: underline;
+    }
 
 .sortable {
     cursor: pointer;
 }
 
-.sortable:hover {
-    background-color: lightgray;
-}
+    .sortable:hover {
+        background-color: lightgray;
+    }
 
 .slider__value-validation-message {
     margin-top: 8px;
     opacity: 0.7;
+}
+
+textarea {
+    resize: none;
+}
+
+.button-container {
+    display: flex;
+    margin: 0;
+}
+
+.button-container input {
+    align-self: center;
+    width: 50%;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .button-container input {
+        width: 25%;
+    }
 }

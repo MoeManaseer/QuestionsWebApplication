@@ -9,15 +9,16 @@ using System.Timers;
 using LoggerUtils;
 using QuestionDatabase;
 using QuestionEntities;
+using Timer = System.Threading.Timer;
 
 namespace QuestionsController
 {
     public class QuestionsHandler
     {
         private DatabaseController DatabaseController;
-        private Thread UpdateDataThread;
         private Mutex ResourcesLocker = new Mutex();
         public event EventHandler UpdateData;
+        private Timer UpdateTimer;
         public List<Question> QuestionsList { get; private set; }
         public bool IsInitialLoad;
         private ListSortDirection CurrentSortDirection;
@@ -39,9 +40,7 @@ namespace QuestionsController
                 CurrentSortDirection = ListSortDirection.Ascending;
                 CurrentSortValueEnum = (int) SortableValueNames.Id;
                 IsInitialLoad = true;
-
-                UpdateDataThread = new Thread(UpdateDataThreadCall);
-                UpdateDataThread.IsBackground = true;
+                UpdateTimer = new Timer(UpdateDataThreadCall, new object(), 10000, 10000);
             }
             catch (Exception tException)
             {
@@ -52,28 +51,16 @@ namespace QuestionsController
         /// <summary>
         /// The updateThread function call
         /// </summary>
-        private void UpdateDataThreadCall()
+        private void UpdateDataThreadCall(object state)
         {
             try
             {
-                while (true)
-                {
-                    try
-                    {
-                        // Sleep this thread for 10 seconds
-                        Thread.Sleep(10000);
-                        int tResultCode = UpdateQuestionsData();
+                int tResultCode = UpdateQuestionsData();
 
-                        // If new data cameback, invoke the UI to update It's data
-                        if (tResultCode == (int)ResultCodesEnum.SUCCESS)
-                        {
-                            UpdateData?.Invoke(this, new EventArgs());
-                        }
-                    }
-                    catch (Exception tException)
-                    {
-                        Logger.WriteExceptionMessage(tException);
-                    }
+                // If new data cameback, invoke the UI to update It's data
+                if (tResultCode == (int)ResultCodesEnum.SUCCESS)
+                {
+                    UpdateData?.Invoke(this, new EventArgs());
                 }
             }
             catch (Exception tException)
@@ -96,12 +83,6 @@ namespace QuestionsController
                 QuestionsList = new List<Question>();
                 tResultCode = DatabaseController.GetData(QuestionsList);
                 IsInitialLoad = false;
-
-                // Start the automatic refresh of data after the data is initially fetched.
-                if (!UpdateDataThread.IsAlive)
-                {
-                    UpdateDataThread.Start();
-                }
             }
             catch (Exception tException)
             {

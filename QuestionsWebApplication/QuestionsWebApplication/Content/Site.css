@@ -16,11 +16,11 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
 select,
-textarea {
-    max-width: 280px;
+textarea,
+.form-control,
+input {
+    width: 70%;
 }
 
 .response__message-container {
@@ -31,6 +31,16 @@ textarea {
     opacity: 0.5;
 }
 
-.form-horizontal input {
-    width: 280px
+textarea,
+textarea.form-control {
+    height: 12vh;
+}
+
+@media only screen and (max-width: 768px) {
+    select,
+    textarea,
+    .form-control,
+    input {
+        width: 100%;
+    }
 }

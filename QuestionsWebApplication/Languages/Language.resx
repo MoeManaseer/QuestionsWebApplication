@@ -120,8 +120,8 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
-  <data name="All" xml:space="preserve">
-    <value>All</value>
+  <data name="AddFailure" xml:space="preserve">
+    <value>Something wrong happend while adding.. please try again.</value>
   </data>
   <data name="AppName" xml:space="preserve">
     <value>QuestionsBuilder</value>
@@ -129,8 +129,26 @@
   <data name="ArabicKey" xml:space="preserve">
     <value>Arabic</value>
   </data>
+  <data name="CodeFailure" xml:space="preserve">
+    <value>Something wrong happend with the application.. please contact administrator</value>
+  </data>
+  <data name="ConnectionStringFailure" xml:space="preserve">
+    <value>Connection string failure.. please try again or change the application settings</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
+  </data>
+  <data name="DatabaseAuthenticationError" xml:space="preserve">
+    <value>The current user is not authenticated in the database.. please change the user or contact administrator</value>
+  </data>
+  <data name="DatabaseConnectionDenied" xml:space="preserve">
+    <value>The connection to the database was denied, please change the current user or contact adminstartor</value>
+  </data>
+  <data name="DatabaseError" xml:space="preserve">
+    <value>Something wrong happened with the database.. please contact administrator</value>
+  </data>
+  <data name="DatabaseFailure" xml:space="preserve">
+    <value>Something wrong happened with the database.. please contact administrator</value>
   </data>
   <data name="DatabaseName" xml:space="preserve">
     <value>Database name</value>
@@ -141,6 +159,9 @@
   <data name="DatabaseNameRequired" xml:space="preserve">
     <value>The database name can't be empty</value>
   </data>
+  <data name="DatabaseSQLIncorrect" xml:space="preserve">
+    <value>The executed SQL was incorrect.. please contact administrator</value>
+  </data>
   <data name="DataSource" xml:space="preserve">
     <value>Data source</value>
   </data>
@@ -149,6 +170,9 @@
   </data>
   <data name="DataSourceRequired" xml:space="preserve">
     <value>The data source can't be empty</value>
+  </data>
+  <data name="DefaultResponse" xml:space="preserve">
+    <value>A general error occured.. please try again or contact administrator</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
@@ -159,6 +183,9 @@
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="EmptyFields" xml:space="preserve">
+    <value>Adding/Updating failed.. there are empty fields.</value>
+  </data>
   <data name="EnglishKey" xml:space="preserve">
     <value>English</value>
   </data>
@@ -167,6 +194,9 @@
   </data>
   <data name="ErrorMessage" xml:space="preserve">
     <value>An error occurred while processing your request.</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="Index" xml:space="preserve">
     <value>Homepage</value>
@@ -178,10 +208,10 @@
     <value>All questions</value>
   </data>
   <data name="IntegratedSecurity" xml:space="preserve">
-    <value>Integrated security</value>
+    <value>Authentication type</value>
   </data>
   <data name="IntegratedSecurityRequired" xml:space="preserve">
-    <value>The integrated security can't be empty</value>
+    <value>The authentication type security can't be empty</value>
   </data>
   <data name="LanguageKey" xml:space="preserve">
     <value>Language</value>
@@ -191,6 +221,9 @@
   </data>
   <data name="ListFail" xml:space="preserve">
     <value>There was an error while fetching the data.. please refresh or try again later</value>
+  </data>
+  <data name="NothingToUpdate" xml:space="preserve">
+    <value>Adding/Updating failed.. there is nothing to update.</value>
   </data>
   <data name="NumberOfSmiley" xml:space="preserve">
     <value>Number of smiley faces</value>
@@ -211,7 +244,7 @@
     <value>The number of stars can't be empty</value>
   </data>
   <data name="OtherKey" xml:space="preserve">
-    <value>Other</value>
+    <value>SQL server authentication</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -236,6 +269,9 @@
   </data>
   <data name="QuestionDeleteDeleted" xml:space="preserve">
     <value>Something wrong happend while deleting the question.. The question might be already deleted</value>
+  </data>
+  <data name="QuestionDeletedFail" xml:space="preserve">
+    <value>The question was not deleted, something wrong happened in the application, try again!</value>
   </data>
   <data name="QuestionDeleteSuccess" xml:space="preserve">
     <value>The question was removed successfully!</value>
@@ -278,6 +314,9 @@
   </data>
   <data name="QuestionOrderRequired" xml:space="preserve">
     <value>The order can't be empty</value>
+  </data>
+  <data name="QuestionOutOfDate" xml:space="preserve">
+    <value>The question is out of date.. please refresh to get the latest version of data</value>
   </data>
   <data name="QuestionStartValue" xml:space="preserve">
     <value>Start value</value>
@@ -330,6 +369,15 @@
   <data name="SaveSuccess" xml:space="preserve">
     <value>The settings were saved successfully!</value>
   </data>
+  <data name="ServerConnectionFailure" xml:space="preserve">
+    <value>The connection to the server failed.. please check the server name or contact administrator</value>
+  </data>
+  <data name="ServerNotFoundOrDown" xml:space="preserve">
+    <value>The database server is currently down or is not correct.. please check your settings or contact an administrator</value>
+  </data>
+  <data name="ServerPaused" xml:space="preserve">
+    <value>The database server is currently paused.. please contact administrator</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -347,6 +395,15 @@
   </data>
   <data name="StarKey" xml:space="preserve">
     <value>Star</value>
+  </data>
+  <data name="TestFail" xml:space="preserve">
+    <value>The connection was unsuccessful, please contact an administrator</value>
+  </data>
+  <data name="TestSuccess" xml:space="preserve">
+    <value>The connection was successful!</value>
+  </data>
+  <data name="UpToDate" xml:space="preserve">
+    <value>Question is up to date!</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>

@@ -70,11 +70,11 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All.
+        ///   Looks up a localized string similar to Something wrong happend while adding.. please try again..
         /// </summary>
-        public static string All {
+        public static string AddFailure {
             get {
-                return ResourceManager.GetString("All", resourceCulture);
+                return ResourceManager.GetString("AddFailure", resourceCulture);
             }
         }
         
@@ -97,11 +97,65 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something wrong happend with the application.. please contact administrator.
+        /// </summary>
+        public static string CodeFailure {
+            get {
+                return ResourceManager.GetString("CodeFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection string failure.. please try again or change the application settings.
+        /// </summary>
+        public static string ConnectionStringFailure {
+            get {
+                return ResourceManager.GetString("ConnectionStringFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         public static string Create {
             get {
                 return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The current user is not authenticated in the database.. please change the user or contact administrator.
+        /// </summary>
+        public static string DatabaseAuthenticationError {
+            get {
+                return ResourceManager.GetString("DatabaseAuthenticationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The connection to the database was denied, please change the current user or contact adminstartor.
+        /// </summary>
+        public static string DatabaseConnectionDenied {
+            get {
+                return ResourceManager.GetString("DatabaseConnectionDenied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wrong happened with the database.. please contact administrator.
+        /// </summary>
+        public static string DatabaseError {
+            get {
+                return ResourceManager.GetString("DatabaseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wrong happened with the database.. please contact administrator.
+        /// </summary>
+        public static string DatabaseFailure {
+            get {
+                return ResourceManager.GetString("DatabaseFailure", resourceCulture);
             }
         }
         
@@ -133,6 +187,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The executed SQL was incorrect.. please contact administrator.
+        /// </summary>
+        public static string DatabaseSQLIncorrect {
+            get {
+                return ResourceManager.GetString("DatabaseSQLIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data source.
         /// </summary>
         public static string DataSource {
@@ -156,6 +219,15 @@ namespace Languages {
         public static string DataSourceRequired {
             get {
                 return ResourceManager.GetString("DataSourceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A general error occured.. please try again or contact administrator.
+        /// </summary>
+        public static string DefaultResponse {
+            get {
+                return ResourceManager.GetString("DefaultResponse", resourceCulture);
             }
         }
         
@@ -187,6 +259,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding/Updating failed.. there are empty fields..
+        /// </summary>
+        public static string EmptyFields {
+            get {
+                return ResourceManager.GetString("EmptyFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         public static string EnglishKey {
@@ -210,6 +291,15 @@ namespace Languages {
         public static string ErrorMessage {
             get {
                 return ResourceManager.GetString("ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -241,7 +331,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Integrated security.
+        ///   Looks up a localized string similar to Authentication type.
         /// </summary>
         public static string IntegratedSecurity {
             get {
@@ -250,7 +340,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The integrated security can&apos;t be empty.
+        ///   Looks up a localized string similar to The authentication type security can&apos;t be empty.
         /// </summary>
         public static string IntegratedSecurityRequired {
             get {
@@ -282,6 +372,15 @@ namespace Languages {
         public static string ListFail {
             get {
                 return ResourceManager.GetString("ListFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding/Updating failed.. there is nothing to update..
+        /// </summary>
+        public static string NothingToUpdate {
+            get {
+                return ResourceManager.GetString("NothingToUpdate", resourceCulture);
             }
         }
         
@@ -340,7 +439,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Other.
+        ///   Looks up a localized string similar to SQL server authentication.
         /// </summary>
         public static string OtherKey {
             get {
@@ -417,6 +516,15 @@ namespace Languages {
         public static string QuestionDeleteDeleted {
             get {
                 return ResourceManager.GetString("QuestionDeleteDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The question was not deleted, something wrong happened in the application, try again!.
+        /// </summary>
+        public static string QuestionDeletedFail {
+            get {
+                return ResourceManager.GetString("QuestionDeletedFail", resourceCulture);
             }
         }
         
@@ -543,6 +651,15 @@ namespace Languages {
         public static string QuestionOrderRequired {
             get {
                 return ResourceManager.GetString("QuestionOrderRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The question is out of date.. please refresh to get the latest version of data.
+        /// </summary>
+        public static string QuestionOutOfDate {
+            get {
+                return ResourceManager.GetString("QuestionOutOfDate", resourceCulture);
             }
         }
         
@@ -700,6 +817,33 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The connection to the server failed.. please check the server name or contact administrator.
+        /// </summary>
+        public static string ServerConnectionFailure {
+            get {
+                return ResourceManager.GetString("ServerConnectionFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The database server is currently down or is not correct.. please check your settings or contact an administrator.
+        /// </summary>
+        public static string ServerNotFoundOrDown {
+            get {
+                return ResourceManager.GetString("ServerNotFoundOrDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The database server is currently paused.. please contact administrator.
+        /// </summary>
+        public static string ServerPaused {
+            get {
+                return ResourceManager.GetString("ServerPaused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {
@@ -750,6 +894,33 @@ namespace Languages {
         public static string StarKey {
             get {
                 return ResourceManager.GetString("StarKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The connection was unsuccessful, please contact an administrator.
+        /// </summary>
+        public static string TestFail {
+            get {
+                return ResourceManager.GetString("TestFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The connection was successful!.
+        /// </summary>
+        public static string TestSuccess {
+            get {
+                return ResourceManager.GetString("TestSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question is up to date!.
+        /// </summary>
+        public static string UpToDate {
+            get {
+                return ResourceManager.GetString("UpToDate", resourceCulture);
             }
         }
         

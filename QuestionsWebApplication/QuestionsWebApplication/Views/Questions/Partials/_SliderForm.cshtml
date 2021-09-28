@@ -14,13 +14,16 @@
         @Html.EditorFor(model => model.EndValue, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(model => model.EndValue, "", new { @class = "text-danger" })
     </div>
+</div>
+
+<div class="form-group">
     <p class="col-md-10 slider__value-validation-message">@Languages.Language.SliderValuesValidationMessage</p>
 </div>
 
 <div class="form-group">
     @Html.LabelFor(model => model.StartValueCaption, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.EditorFor(model => model.StartValueCaption, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.TextAreaFor(model => model.StartValueCaption, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.StartValueCaption, "", new { @class = "text-danger" })
     </div>
 </div>
@@ -28,7 +31,7 @@
 <div class="form-group">
     @Html.LabelFor(model => model.EndValueCaption, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.EditorFor(model => model.EndValueCaption, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.TextAreaFor(model => model.EndValueCaption, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.EndValueCaption, "", new { @class = "text-danger" })
     </div>
 </div>

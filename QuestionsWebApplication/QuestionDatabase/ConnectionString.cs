@@ -25,24 +25,24 @@ namespace QuestionDatabase
         [Required(ErrorMessageResourceName = "DataSourceRequired", ErrorMessageResourceType = typeof(Language))]
         [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessageResourceName = "DataSourceLength", ErrorMessageResourceType = typeof(Language))]
         [Display(Name = "DataSource", ResourceType = typeof(Language))]
-        public string DataSource { get; private set; }
+        public string DataSource { get; set; }
 
         [Required(ErrorMessageResourceName = "DatabaseNameRequired", ErrorMessageResourceType = typeof(Language))]
         [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessageResourceName = "DatabaseNameLength", ErrorMessageResourceType = typeof(Language))]
         [Display(Name = "DatabaseName", ResourceType = typeof(Language))]
-        public string DatabaseName { get; private set; }
+        public string DatabaseName { get; set; }
 
         [Required(ErrorMessageResourceName = "IntegratedSecurityRequired", ErrorMessageResourceType = typeof(Language))]
         [Display(Name = "IntegratedSecurity", ResourceType = typeof(Language))]
-        public IntegratedSecurityEnum IntegratedSecurity { get; private set; }
+        public IntegratedSecurityEnum IntegratedSecurity { get; set; }
 
         [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessageResourceName = "UsernameLength", ErrorMessageResourceType = typeof(Language))]
         [Display(Name = "Username", ResourceType = typeof(Language))]
-        public string Username { get; private set; }
+        public string Username { get; set; }
 
         [StringLength(maximumLength: 255, MinimumLength = 0, ErrorMessageResourceName = "PasswordLength", ErrorMessageResourceType = typeof(Language))]
         [Display(Name = "Password", ResourceType = typeof(Language))]
-        public string Password { get; private set; }
+        public string Password { get; set; }
 
         public ConnectionString()
         {

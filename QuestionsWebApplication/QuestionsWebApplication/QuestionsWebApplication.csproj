@@ -167,6 +167,7 @@
     <Compile Include="App_Start\ContainerConfig.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="DataUpdateNotifier.cs" />
+    <Compile Include="Extentions\MessagesUtilities.cs" />
     <Compile Include="Extentions\QuestionsModelBinder.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Extentions\QuestionsViewEngine.cs" />

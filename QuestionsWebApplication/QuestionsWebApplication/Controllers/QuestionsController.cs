@@ -1,6 +1,7 @@
 ﻿using LoggerUtils;
 using QuestionEntities;
 using QuestionsController;
+using QuestionsWebApplication.Extentions;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -17,7 +18,6 @@ namespace QuestionsWebApplication.Controllers
         private const string SuccessKey = "success";
         private const string QuestionsKey = "Questions";
         private const string IndexKey = "Index";
-        private const string CreateKey = "Create";
 
         public QuestionsController(QuestionsHandler pQuestionsHandler)
         {
@@ -122,7 +122,7 @@ namespace QuestionsWebApplication.Controllers
                     }
                     else
                     {
-                        TempData[MessageKey] = Languages.Language.QuestionAddFail;
+                        TempData[MessageKey] = MessagesUtilities.GetResponseMessage(tResultCode);
                         TempData[ResponseKey] = DangerKey;
                     }
                 }
@@ -185,7 +185,7 @@ namespace QuestionsWebApplication.Controllers
 
                 if (tResultCode != (int)ResultCodesEnum.SUCCESS)
                 {
-                    TempData[MessageKey] = Languages.Language.QuestionDeleted;
+                    TempData[MessageKey] = MessagesUtilities.GetResponseMessage(tResultCode);
                     TempData[ResponseKey] = DangerKey;
                 }
             }
@@ -223,7 +223,7 @@ namespace QuestionsWebApplication.Controllers
                     }
                     else
                     {
-                        TempData[MessageKey] = Languages.Language.QuestionUpdateDeleted;
+                        TempData[MessageKey] = MessagesUtilities.GetResponseMessage(tResultCode);
                         TempData[ResponseKey] = DangerKey;
                     }
                 }
@@ -252,7 +252,7 @@ namespace QuestionsWebApplication.Controllers
         [HttpPost]
         public ActionResult OnDeleteQuestion(string pQuestionId)
         {
-            bool tDidDelete = false;
+            int tResultCode = (int)ResultCodesEnum.SUCCESS;
             string tMessageResponse = "";
             string tRequestResponse = "";
 
@@ -260,13 +260,21 @@ namespace QuestionsWebApplication.Controllers
             {
                 int tCurrentQuestionId = Convert.ToInt32(pQuestionId);
                 Question tQuestion = GetQuestionObject(tCurrentQuestionId);
-                
-                tDidDelete = (tQuestion != null) && (QuestionsHandlerObject.RemoveQuestion(tQuestion) == (int)ResultCodesEnum.SUCCESS);
 
-                if (tDidDelete)
+                if (tQuestion != null)
                 {
-                    tMessageResponse = Languages.Language.QuestionDeleteSuccess;
-                    tRequestResponse = SuccessKey;
+                    tResultCode = QuestionsHandlerObject.RemoveQuestion(tQuestion);
+
+                    if (tResultCode == (int) ResultCodesEnum.SUCCESS)
+                    {
+                        tMessageResponse = Languages.Language.QuestionDeleteSuccess;
+                        tRequestResponse = SuccessKey;
+                    }
+                    else
+                    {
+                        tMessageResponse = MessagesUtilities.GetResponseMessage(tResultCode);
+                        tRequestResponse = DangerKey;
+                    }
                 }
                 else
                 {
@@ -277,14 +285,15 @@ namespace QuestionsWebApplication.Controllers
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                tDidDelete = false;
+                tMessageResponse = Languages.Language.QuestionDeletedFail;
+                tRequestResponse = DangerKey;
             }
 
             return Json(new
             {
                 message = tMessageResponse,
                 requestResponse = tRequestResponse,
-                didDelete = tDidDelete
+                didDelete = tResultCode == (int)ResultCodesEnum.SUCCESS
             });
         }
 
@@ -319,7 +328,7 @@ namespace QuestionsWebApplication.Controllers
 
                 if (tResultCode != (int) ResultCodesEnum.SUCCESS)
                 {
-                    TempData[MessageKey] = Languages.Language.QuestionFetchDeleted;
+                    TempData[MessageKey] = MessagesUtilities.GetResponseMessage(tResultCode);
                     TempData[ResponseKey] = DangerKey;
                 }
             }

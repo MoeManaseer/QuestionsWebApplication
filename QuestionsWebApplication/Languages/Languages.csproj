@@ -10,11 +10,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Language.resx</DependentUpon>
     </Compile>
-    <Compile Update="ResponseMessages.Designer.cs">
-      <DependentUpon>ResponseMessages.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -25,10 +20,6 @@
     <EmbeddedResource Update="Language.resx">
       <LastGenOutput>Language.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ResponseMessages.resx">
-      <LastGenOutput>ResponseMessages.Designer.cs</LastGenOutput>
-      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
