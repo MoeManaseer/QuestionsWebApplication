@@ -208,19 +208,19 @@
     <value>رجوع إلى الأسئلة</value>
   </data>
   <data name="IndexHeader" xml:space="preserve">
-    <value>كل الأسئلة</value>
+    <value> جميع الأسئلة</value>
   </data>
   <data name="IntegratedSecurity" xml:space="preserve">
     <value>نوع المصادقة</value>
   </data>
   <data name="IntegratedSecurityRequired" xml:space="preserve">
-    <value>لا يمكن أن يكون أمان نوع المصادقة فارغًا</value>
+    <value>لا يمكن أن يكون نوع المصادقة فارغًا</value>
   </data>
   <data name="LanguageKey" xml:space="preserve">
     <value>اللغة</value>
   </data>
   <data name="LanguageRequired" xml:space="preserve">
-    <value>لا يمكن أن يكون اللغة فارغًا</value>
+    <value>لا يمكن أن تكون اللغة فارغًا</value>
   </data>
   <data name="ListFail" xml:space="preserve">
     <value>حدث خطأ أثناء جلب البيانات .. يرجى التحديث أو المحاولة مرة أخرى لاحقًا</value>
@@ -265,7 +265,7 @@
     <value>تمت إضافة السؤال بنجاح</value>
   </data>
   <data name="QuestionAddValidationFail" xml:space="preserve">
-    <value>تمت إضافة السؤال دون نجاح ، يرجى التحقق من القيم والتأكد من صحتها</value>
+    <value>لم يتم اضافة السؤال بنجاح ، يرجى التحقق من القيم والتأكد من صحتها</value>
   </data>
   <data name="QuestionDeleted" xml:space="preserve">
     <value>حدث خطأ ما أثناء إحضار السؤال .. ربما تم حذف السؤال</value>
@@ -280,7 +280,7 @@
     <value>تمت إزالة السؤال بنجاح!</value>
   </data>
   <data name="QuestionEditValidationFail" xml:space="preserve">
-    <value>تم تحرير السؤال دون نجاح ، يرجى التحقق من القيم والتأكد من صحتها</value>
+    <value>لم يتم تحديث السؤال بنجاح، يرجى التحقق من القيم والتأكد من صحتها</value>
   </data>
   <data name="QuestionEndValue" xml:space="preserve">
     <value>القيمة النهائية</value>
@@ -292,7 +292,7 @@
     <value>لا يمكن أن يكون طول التسمية التوضيحية لقيمة النهاية أكثر من 255 حرفًا</value>
   </data>
   <data name="QuestionEndValueCaptionRequired" xml:space="preserve">
-    <value>لا يمكن ترك تسمية توضيحية لقيمة النهاية فارغة</value>
+    <value>لا يمكن ترك التسمية التوضيحية لقيمة النهاية فارغة</value>
   </data>
   <data name="QuestionEndValueRange" xml:space="preserve">
     <value>يجب أن تكون القيمة النهائية في النطاق من 1 إلى 100</value>
@@ -301,7 +301,7 @@
     <value>لا يجوز أن تكون قيمة النهاية فارغة</value>
   </data>
   <data name="QuestionFetchDeleted" xml:space="preserve">
-    <value>حدث خطأ ما أثناء إحضار السؤال .. قد يتم حذف السؤال</value>
+    <value>حدث خطأ ما أثناء إحضار السؤال .. قد يكىن السؤال محذوفا </value>
   </data>
   <data name="QuestionFetchFail" xml:space="preserve">
     <value>حدث خطأ ما أثناء إحضار السؤال .. يرجى المحاولة مرة أخرى</value>
@@ -316,16 +316,16 @@
     <value>يجب أن يكون الترتيب في النطاق من 1 إلى 100</value>
   </data>
   <data name="QuestionOrderRequired" xml:space="preserve">
-    <value>لا يمكن أن يكون الطلب فارغًا</value>
+    <value>لا يمكن أن يكون الترتيب فارغًا</value>
   </data>
   <data name="QuestionOutOfDate" xml:space="preserve">
     <value>السؤال قديم .. يرجى التحديث للحصول على أحدث نسخة من البيانات</value>
   </data>
   <data name="QuestionStartValue" xml:space="preserve">
-    <value>قيمه البدايه</value>
+    <value>قيمه البداية</value>
   </data>
   <data name="QuestionStartValueCaption" xml:space="preserve">
-    <value>بدء التسمية التوضيحية القيمة</value>
+    <value>التسمية التوضيحية لقيمة البداية</value>
   </data>
   <data name="QuestionStartValueCaptionLength" xml:space="preserve">
     <value>لا يمكن أن يكون طول التسمية التوضيحية لقيمة البداية أكثر من 255 حرفًا</value>

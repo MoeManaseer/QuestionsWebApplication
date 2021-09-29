@@ -47,6 +47,46 @@ textarea.form-control {
     color: #3c763d;
 }
 
+.width-25 {
+    width: 25%;
+}
+
+.width-15 {
+    width: 15%;
+}
+
+.width-10 {
+    width: 10%;
+}
+
+.width-5 {
+    width: 5%;
+}
+
+.width-20 {
+    width: 20%;
+}
+
+width-30 {
+    width: 30%;
+}
+
+.width-40 {
+    width: 40%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.width-75 {
+    width: 75%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
     @media only screen and (max-width: 768px) {
         select, textarea, .form-control, input {
         width: 100%;

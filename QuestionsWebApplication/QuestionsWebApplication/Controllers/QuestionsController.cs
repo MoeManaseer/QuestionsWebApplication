@@ -298,51 +298,6 @@ namespace QuestionsWebApplication.Controllers
         }
 
         /// <summary>
-        /// GET: \Questions\Details\Id
-        /// Returns the details view for the question id with the question data
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>View</returns>
-        public ActionResult Details(int id = -1)
-        {
-            Question tCorrectInstance = null;
-            try
-            {
-                // Get the question object
-                Question tOriginalQuestion = GetQuestionObject(id);
-
-                // If question doesn't exist redirect the user
-                if (id == -1 || tOriginalQuestion == null)
-                {
-                    TempData[MessageKey] = Languages.Language.QuestionNull;
-                    TempData[ResponseKey] = InfoKey;
-                    return RedirectToAction(IndexKey, QuestionsKey);
-                }
-
-                // Create a new instance of the Question class with the right subtype
-                tCorrectInstance = QuestionsFactory.GetInstance(tOriginalQuestion.Type);
-                // Manually assign the Id
-                tCorrectInstance.Id = tOriginalQuestion.Id;
-                // Get all the subtyped question data from the database
-                int tResultCode = QuestionsHandlerObject.GetQuestion(tCorrectInstance);
-
-                if (tResultCode != (int) ResultCodesEnum.SUCCESS)
-                {
-                    TempData[MessageKey] = MessagesUtilities.GetResponseMessage(tResultCode);
-                    TempData[ResponseKey] = DangerKey;
-                }
-            }
-            catch (Exception tException)
-            {
-                Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = Languages.Language.QuestionFetchFail;
-                TempData[ResponseKey] = DangerKey;
-            }
-
-            return View(tCorrectInstance);
-        }
-
-        /// <summary>
         /// Utility function that returns a question object
         /// </summary>
         /// <param name="pId">The question object to return</param>

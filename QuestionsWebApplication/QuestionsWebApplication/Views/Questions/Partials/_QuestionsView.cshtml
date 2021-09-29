@@ -4,16 +4,16 @@
     <div id="questions__container">
         <table class="table">
             <tr>
-                <th class="sortable">
+                <th class="sortable width-20">
                     @Html.DisplayNameFor(model => model.Order)
                 </th>
-                <th>
+                <th class="sortable width-20">
                     @Html.DisplayNameFor(model => model.Type)
                 </th>
-                <th class="sortable">
+                <th class="sortable width-40">
                     @Html.DisplayNameFor(model => model.Text)
                 </th>
-                <th></th>
+                <th class="width-20"></th>
             </tr>
 
             <tbody>
@@ -29,10 +29,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Text)
                         </td>
-                        <td>
-                            @Html.ActionLink(Languages.Language.Edit, "Edit", new { id = item.Id }) |
-                            @Html.ActionLink(Languages.Language.Details, "Details", new { id = item.Id }) |
-                            <button class="question__delete-btn" id=@($"delete-{item.Id}")>@Languages.Language.Delete</button>
+                        <td class="question__buttons">
+                            @Html.ActionLink(Languages.Language.Edit, "Edit", new { id = item.Id }, new {@class = "btn btn-primary" })
+                            <button class="question__delete-btn btn btn-danger" id=@($"delete-{item.Id}")>@Languages.Language.Delete</button>
                         </td>
                     </tr>
                 }

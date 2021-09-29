@@ -34,8 +34,27 @@
     display: flex;
 }
 
-@media only screen and (max-width: 1024px) {
-    .body--right-to-left .form-horizontal .form-group {
+.body--right-to-left .form-horizontal .control-label {
+    text-align: left;
+}
+
+.body--right-to-left .headerSortDown:after,
+.body--right-to-left .headerSortUp:after {
+    left: 5px;
+    right: unset;
+}
+
+.body--right-to-left .question__buttons *:last-child {
+    margin-right: 6px;
+}
+
+    .body--right-to-left .question__buttons *:first-child {
+        margin: 0;
+    }
+
+
+    @media only screen and (max-width: 1024px) {
+        .body--right-to-left .form-horizontal .form-group {
         flex-direction: column;
     }
 }

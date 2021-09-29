@@ -331,7 +331,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All questions.
+        ///   Looks up a localized string similar to All Questions.
         /// </summary>
         public static string IndexHeader {
             get {
@@ -475,7 +475,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Question.
+        ///   Looks up a localized string similar to Question Form.
         /// </summary>
         public static string Question {
             get {

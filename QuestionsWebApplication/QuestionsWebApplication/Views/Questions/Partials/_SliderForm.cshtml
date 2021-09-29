@@ -3,7 +3,7 @@
 <div class="form-group">
     @Html.LabelFor(model => model.StartValue, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.EditorFor(model => model.StartValue, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(model => model.StartValue, new { htmlAttributes = new { @class = "form-control width-25" } })
         @Html.ValidationMessageFor(model => model.StartValue, "", new { @class = "text-danger" })
     </div>
 </div>
@@ -11,19 +11,22 @@
 <div class="form-group">
     @Html.LabelFor(model => model.EndValue, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.EditorFor(model => model.EndValue, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(model => model.EndValue, new { htmlAttributes = new { @class = "form-control width-25" } })
         @Html.ValidationMessageFor(model => model.EndValue, "", new { @class = "text-danger" })
     </div>
 </div>
 
 <div class="form-group">
-    <p class="col-md-10 slider__value-validation-message">@Languages.Language.SliderValuesValidationMessage</p>
+    @Html.Label("              ", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        <p class="slider__value-validation-message width-50">@Languages.Language.SliderValuesValidationMessage</p>
+    </div>
 </div>
 
 <div class="form-group">
     @Html.LabelFor(model => model.StartValueCaption, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.TextAreaFor(model => model.StartValueCaption, new { @class = "form-control" })
+        @Html.TextAreaFor(model => model.StartValueCaption, new { @class = "form-control width-50" })
         @Html.ValidationMessageFor(model => model.StartValueCaption, "", new { @class = "text-danger" })
     </div>
 </div>
@@ -31,7 +34,7 @@
 <div class="form-group">
     @Html.LabelFor(model => model.EndValueCaption, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.TextAreaFor(model => model.EndValueCaption, new { @class = "form-control" })
+        @Html.TextAreaFor(model => model.EndValueCaption, new { @class = "form-control width-50" })
         @Html.ValidationMessageFor(model => model.EndValueCaption, "", new { @class = "text-danger" })
     </div>
 </div>

@@ -16,7 +16,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Type, new { @class = "form-control question__type-dropdown " + (tIsNewQuestion ? "question__type-dropdown--enabled" : "question__type-dropdown--disabled") })
+            @Html.EnumDropDownListFor(model => model.Type, new { @class = "form-control width-25 question__type-dropdown " + (tIsNewQuestion ? "question__type-dropdown--enabled" : "question__type-dropdown--disabled") })
             @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -24,7 +24,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Text, new {@class = "form-control" })
+            @Html.TextAreaFor(model => model.Text, new { @class = "form-control width-50" })
             @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -32,11 +32,11 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Order, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Order, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Order, new { htmlAttributes = new { @class = "form-control width-25" } })
             @Html.ValidationMessageFor(model => model.Order, "", new { @class = "text-danger" })
         </div>
     </div>
-    
+
     <div class="question__extra-data-container">
         <div class=@((tIsNewQuestion ? "Smiley" : Model.Type.ToString()) + "__container") type=@((tIsNewQuestion ? "Smiley" : Model.Type.ToString()))>
             @Html.Partial("_" + (tIsNewQuestion ? "Smiley" : Model.Type.ToString()) + "Form", Model)
@@ -55,15 +55,12 @@
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10 button-container">
-            <input type="submit" value=@ViewBag.buttonName class="btn btn-default" />
+        @Html.Label("              ", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 button-container">
+            <input type="submit" value=@ViewBag.buttonName class="btn btn-primary width-25" />
         </div>
     </div>
 </div>
 
     @Html.Hidden("ModelTypeName", (tIsNewQuestion ? "Smiley" : Model.Type.ToString()) + "Question")
 }
-
-<div>
-    @Html.ActionLink(Languages.Language.IndexBack, "Index")
-</div>

@@ -9,87 +9,84 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>@Languages.Language.Settings</h4>
-        <hr />
+<div class="form-horizontal">
+    <h4>@Languages.Language.Settings</h4>
+    <hr />
 
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Language, new { @class = "form-control width-40" })
+            @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConnectionStringObject.DataSource, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ConnectionStringObject.DataSource, new { htmlAttributes = new { @class = "form-control width-40" } })
+            @Html.ValidationMessageFor(model => model.ConnectionStringObject.DataSource, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConnectionStringObject.DatabaseName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ConnectionStringObject.DatabaseName, new { htmlAttributes = new { @class = "form-control width-40" } })
+            @Html.ValidationMessageFor(model => model.ConnectionStringObject.DatabaseName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConnectionStringObject.IntegratedSecurity, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.ConnectionStringObject.IntegratedSecurity, new { @class = "form-control settings__secuirty-dropdown width-40" })
+            @Html.ValidationMessageFor(model => model.ConnectionStringObject.IntegratedSecurity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="settings__user-password-container">
         <div class="form-group">
-            @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ConnectionStringObject.Username, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Language, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ConnectionStringObject.Username, new { htmlAttributes = new { @class = "form-control width-40" } })
+                @Html.ValidationMessageFor(model => model.ConnectionStringObject.Username, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ConnectionStringObject.DataSource, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ConnectionStringObject.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ConnectionStringObject.DataSource, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ConnectionStringObject.DataSource, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConnectionStringObject.DatabaseName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConnectionStringObject.DatabaseName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ConnectionStringObject.DatabaseName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConnectionStringObject.IntegratedSecurity, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.ConnectionStringObject.IntegratedSecurity, new { @class = "form-control settings__secuirty-dropdown" })
-                @Html.ValidationMessageFor(model => model.ConnectionStringObject.IntegratedSecurity, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="settings__user-password-container">
-            <div class="form-group">
-                @Html.LabelFor(model => model.ConnectionStringObject.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ConnectionStringObject.Username, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ConnectionStringObject.Username, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ConnectionStringObject.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ConnectionStringObject.Password, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ConnectionStringObject.Password, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="settings__connection-test">
-            <div class="form-group">
-                @Html.Label(Languages.Language.TestConnection, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <button type="button" class="connection-test__button form-control">
-                        @Languages.Language.TestButton
-                    </button>
-                    <p class="connection-test__text connection-test__text--hidden">
-                        @Languages.Language.TestingText
-                    </p>
-                </div>
-            </div>
-        </div>
-
-
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10 button-container">
-                <input type="submit" value=@Languages.Language.SaveButton class="btn btn-default" />
+                @Html.EditorFor(model => model.ConnectionStringObject.Password, new { htmlAttributes = new { @class = "form-control width-40" } })
+                @Html.ValidationMessageFor(model => model.ConnectionStringObject.Password, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink(Languages.Language.IndexBack, "Index", "Questions")
+    <div class="settings__connection-test">
+        <div class="form-group">
+            @Html.Label(Languages.Language.TestConnection, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <button type="button" class="connection-test__button btn btn-info width-25">
+                    @Languages.Language.TestButton
+                </button>
+                <p class="connection-test__text connection-test__text--hidden">
+                    @Languages.Language.TestingText
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("              ", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-offset-2 col-md-10 button-container">
+            <input type="submit" value=@Languages.Language.SaveButton class="btn btn-primary width-40" />
+        </div>
+    </div>
 </div>
+}
 
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -208,7 +208,7 @@
     <value>Back to questions</value>
   </data>
   <data name="IndexHeader" xml:space="preserve">
-    <value>All questions</value>
+    <value>All Questions</value>
   </data>
   <data name="IntegratedSecurity" xml:space="preserve">
     <value>Authentication type</value>
@@ -256,7 +256,7 @@
     <value>The password can't be more than 255 charecters in length</value>
   </data>
   <data name="Question" xml:space="preserve">
-    <value>Question</value>
+    <value>Question Form</value>
   </data>
   <data name="QuestionAddFail" xml:space="preserve">
     <value>Something wrong happend while adding the question..</value>
