@@ -907,11 +907,20 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test connection.
+        ///   Looks up a localized string similar to Test.
         /// </summary>
         public static string TestButton {
             get {
                 return ResourceManager.GetString("TestButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test connection.
+        /// </summary>
+        public static string TestConnection {
+            get {
+                return ResourceManager.GetString("TestConnection", resourceCulture);
             }
         }
         

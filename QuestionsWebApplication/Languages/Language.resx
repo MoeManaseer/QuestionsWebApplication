@@ -400,6 +400,9 @@
     <value>Star</value>
   </data>
   <data name="TestButton" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="TestConnection" xml:space="preserve">
     <value>Test connection</value>
   </data>
   <data name="TestFail" xml:space="preserve">

@@ -400,6 +400,9 @@
     <value>نجمة</value>
   </data>
   <data name="TestButton" xml:space="preserve">
+    <value>اختبار </value>
+  </data>
+  <data name="TestConnection" xml:space="preserve">
     <value>اختبار الاتصال</value>
   </data>
   <data name="TestFail" xml:space="preserve">
