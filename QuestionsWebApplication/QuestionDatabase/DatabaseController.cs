@@ -117,7 +117,6 @@ namespace QuestionDatabase
 
             try
             {
-                string tomato = tConnectionString.ToString();
                 tSqlConnection = new SqlConnection(tConnectionString.ToString());
                 
                 // We know that the AllQuestions table will always exist in the database, so test selecting from it

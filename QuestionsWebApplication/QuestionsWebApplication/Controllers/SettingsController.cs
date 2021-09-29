@@ -126,36 +126,45 @@ namespace QuestionsWebApplication.Controllers
 
         /// <summary>
         /// POST: /Settings/TestConnection
-        /// POST method to save all the settings that were set by the user
+        /// POST method to test the current inputted connection string to the database
         /// </summary>
-        /// <param name="pSettingsModel"></param>
-        /// <returns></returns>
+        /// <param name="pSettingsModel">The settings model</param>
+        /// <returns>JSON response whether the connection was successful or not</returns>
         [HttpPost]
         public ActionResult TestConnection(SettingsModel pSettingsModel)
         {
+            int tResultCode = (int)ResultCodesEnum.SUCCESS;
+            string tMessageResponse = "";
+            string tRequestResponse = "";
+
             try
             {
-                int tResultCode = QuestionsHandlerObject.TestConnection(pSettingsModel.ConnectionStringObject);
+                tResultCode = QuestionsHandlerObject.TestConnection(pSettingsModel.ConnectionStringObject);
 
                 if (tResultCode == (int)ResultCodesEnum.SUCCESS)
                 {
-                    TempData[MessageKey] = Languages.Language.TestSuccess;
-                    TempData[ResponseKey] = SuccessKey;
+                    tMessageResponse = Languages.Language.TestSuccess;
+                    tRequestResponse = SuccessKey;
                 }
                 else
                 {
-                    TempData[MessageKey] = MessagesUtilities.GetResponseMessage(tResultCode);
-                    TempData[ResponseKey] = DangerKey;
+                    tMessageResponse = MessagesUtilities.GetResponseMessage(tResultCode);
+                    tRequestResponse = DangerKey;
                 }
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = Languages.Language.TestFail;
-                TempData[ResponseKey] = DangerKey;
+                tMessageResponse = Languages.Language.TestFail;
+                tRequestResponse = DangerKey;
             }
 
-            return View(pSettingsModel);
+            return Json(new
+            {
+                message = tMessageResponse,
+                requestResponse = tRequestResponse,
+                connectionSuccess = tResultCode == (int)ResultCodesEnum.SUCCESS
+            });
         }
     }
 }

@@ -142,6 +142,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The connection to the database was a failure....
+        /// </summary>
+        public static string DatabaseConnectionFailure {
+            get {
+                return ResourceManager.GetString("DatabaseConnectionFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Something wrong happened with the database.. please contact administrator.
         /// </summary>
         public static string DatabaseError {
@@ -898,11 +907,29 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Test connection.
+        /// </summary>
+        public static string TestButton {
+            get {
+                return ResourceManager.GetString("TestButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The connection was unsuccessful, please contact an administrator.
         /// </summary>
         public static string TestFail {
             get {
                 return ResourceManager.GetString("TestFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Testing connection.. please wait!.
+        /// </summary>
+        public static string TestingText {
+            get {
+                return ResourceManager.GetString("TestingText", resourceCulture);
             }
         }
         

@@ -1,4 +1,6 @@
-﻿const RemoveQuestion = (resultData = {}, questionId = 0) => {
+﻿let deleteQuestionResponseContainer;
+
+const RemoveQuestion = (resultData = {}, questionId = 0) => {
     const {
         didDelete = false,
         requestResponse = 'error',
@@ -10,7 +12,7 @@
         currentQuestionContainer.remove();
     }
 
-    createResponseMessage(requestResponse, message);
+    createResponseMessage(requestResponse, message, deleteQuestionResponseContainer);
 };
 
 const RemoveQuestionAjax = (questionId) => {
@@ -33,5 +35,6 @@ const RemoveQuestionAjax = (questionId) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    deleteQuestionResponseContainer = document.querySelector('.questions__delete-response-container');
     AddRemoveEventListeners();
 });

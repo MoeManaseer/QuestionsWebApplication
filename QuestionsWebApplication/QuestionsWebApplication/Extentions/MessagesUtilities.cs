@@ -56,6 +56,9 @@ namespace QuestionsWebApplication.Extentions
                     case ResultCodesEnum.SERVER_NOT_FOUND_OR_DOWN:
                         tResponseMessage = Languages.Language.ServerNotFoundOrDown;
                         break;
+                    case ResultCodesEnum.DATABASE_CONNECTION_FAILURE:
+                        tResponseMessage = Languages.Language.DatabaseConnectionFailure;
+                        break;
                     case ResultCodesEnum.DATABASE_FAILURE:
                         tResponseMessage = Languages.Language.DatabaseFailure;
                         break;

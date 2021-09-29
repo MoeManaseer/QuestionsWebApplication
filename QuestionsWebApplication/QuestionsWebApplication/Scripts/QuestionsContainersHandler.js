@@ -1,7 +1,8 @@
 ﻿let tQuestionExtraDataContainer;
 let tModelTypeField;
+let tQuestionTypeMenu;
 
-const SelectExtraQuestionContainer = (typeIndex = 0) => {
+const SelectExtraQuestionContainer = (typeIndex = 0, specificType) => {
     if (tQuestionExtraDataContainer) {
         [...tQuestionExtraDataContainer.children].forEach((tDataContainer) => {
             tDataContainer.style.display = 'none';
@@ -15,17 +16,21 @@ const SelectExtraQuestionContainer = (typeIndex = 0) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    const tQuestionTypeMenu = document.querySelector('.question__type-dropdown');
-    tQuestionExtraDataContainer = document.querySelector('.question__extra-data-container');
-    tModelTypeField = document.querySelector('#ModelTypeName');
-
-    SelectExtraQuestionContainer();
+    tQuestionTypeMenu = document.querySelector('.question__type-dropdown');
 
     if (tQuestionTypeMenu) {
-        tQuestionTypeMenu.disabled = tQuestionTypeMenu.classList.contains('question__type-dropdown--disabled') ? true : false;
+        const isDisabled = tQuestionTypeMenu.classList.contains('question__type-dropdown--disabled') ? true : false;
+        tQuestionTypeMenu.disabled = isDisabled;
 
-        tQuestionTypeMenu.addEventListener('change', (event) => {
+        if (!isDisabled) {
+            tQuestionExtraDataContainer = document.querySelector('.question__extra-data-container');
+            tModelTypeField = document.querySelector('#ModelTypeName');
+
             SelectExtraQuestionContainer(tQuestionTypeMenu.selectedIndex);
-        });
+
+            tQuestionTypeMenu.addEventListener('change', (event) => {
+                SelectExtraQuestionContainer(tQuestionTypeMenu.selectedIndex);
+            });
+        }
     }
 });

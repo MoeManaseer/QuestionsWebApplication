@@ -199,6 +199,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\ApplicationShared.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
@@ -220,6 +221,7 @@
     <Content Include="Scripts\QuestionsSharedHandlers.js" />
     <Content Include="Scripts\QuestionsSortHandler.js" />
     <Content Include="Scripts\QuestionsRefreshHandler.js" />
+    <Content Include="Scripts\SettingsConnectionTestHandler.js" />
     <Content Include="Scripts\SettingsHandler.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

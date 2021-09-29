@@ -144,6 +144,9 @@
   <data name="DatabaseConnectionDenied" xml:space="preserve">
     <value>The connection to the database was denied, please change the current user or contact adminstartor</value>
   </data>
+  <data name="DatabaseConnectionFailure" xml:space="preserve">
+    <value>The connection to the database was a failure...</value>
+  </data>
   <data name="DatabaseError" xml:space="preserve">
     <value>Something wrong happened with the database.. please contact administrator</value>
   </data>
@@ -396,8 +399,14 @@
   <data name="StarKey" xml:space="preserve">
     <value>Star</value>
   </data>
+  <data name="TestButton" xml:space="preserve">
+    <value>Test connection</value>
+  </data>
   <data name="TestFail" xml:space="preserve">
     <value>The connection was unsuccessful, please contact an administrator</value>
+  </data>
+  <data name="TestingText" xml:space="preserve">
+    <value>Testing connection.. please wait!</value>
   </data>
   <data name="TestSuccess" xml:space="preserve">
     <value>The connection was successful!</value>

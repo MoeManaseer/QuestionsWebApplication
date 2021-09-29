@@ -36,11 +36,19 @@ textarea.form-control {
     height: 12vh;
 }
 
-@media only screen and (max-width: 768px) {
-    select,
-    textarea,
-    .form-control,
-    input {
+.connection-test__container {
+    margin-top: 16px;
+}
+
+.connection-test__text--hidden {
+    display: none;
+}
+.connection-test__text {
+    color: #3c763d;
+}
+
+    @media only screen and (max-width: 768px) {
+        select, textarea, .form-control, input {
         width: 100%;
     }
 }

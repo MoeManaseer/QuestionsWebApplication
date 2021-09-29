@@ -27,13 +27,16 @@ namespace QuestionsWebApplication
 
             bundles.Add(new ScriptBundle("~/bundles/QuestionsIndexControllers").Include(
                       "~/Scripts/jquery.unobtrusive*",
+                      "~/Scripts/ApplicationShared.js",
                       "~/Scripts/QuestionsSharedHandlers.js",
                       "~/Scripts/QuestionsSortHandler.js",
                       "~/Scripts/QuestionsRefreshHandler.js",
                       "~/Scripts/QuestionsDeleteHandler.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/Settings").Include(
-                "~/Scripts/SettingsHandler.js"
+                "~/Scripts/ApplicationShared.js",
+                "~/Scripts/SettingsHandler.js",
+                "~/Scripts/SettingsConnectionTestHandler.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

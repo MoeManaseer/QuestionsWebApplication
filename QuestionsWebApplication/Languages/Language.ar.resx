@@ -144,6 +144,9 @@
   <data name="DatabaseConnectionDenied" xml:space="preserve">
     <value>تم رفض الاتصال بقاعدة البيانات ، يرجى تغيير المستخدم الحالي أو الاتصال بالمسؤول</value>
   </data>
+  <data name="DatabaseConnectionFailure" xml:space="preserve">
+    <value>فشل الاتصال بقاعدة البيانات ...</value>
+  </data>
   <data name="DatabaseError" xml:space="preserve">
     <value>حدث خطأ ما في قاعدة البيانات .. يرجى الاتصال بالمسؤول</value>
   </data>
@@ -396,8 +399,14 @@
   <data name="StarKey" xml:space="preserve">
     <value>نجمة</value>
   </data>
+  <data name="TestButton" xml:space="preserve">
+    <value>اختبار الاتصال</value>
+  </data>
   <data name="TestFail" xml:space="preserve">
     <value>لم ينجح الاتصال ، يرجى الاتصال بالمسؤول</value>
+  </data>
+  <data name="TestingText" xml:space="preserve">
+    <value>جارٍ اختبار الاتصال .. يُرجى الانتظار!</value>
   </data>
   <data name="TestSuccess" xml:space="preserve">
     <value>كان الاتصال ناجحًا!</value>
