@@ -139,16 +139,24 @@ namespace QuestionsWebApplication.Controllers
 
             try
             {
-                tResultCode = QuestionsHandlerObject.TestConnection(pSettingsModel.ConnectionStringObject);
-
-                if (tResultCode == (int)ResultCodesEnum.SUCCESS)
+                if (ModelState.IsValid)
                 {
-                    tMessageResponse = Languages.Language.TestSuccess;
-                    tRequestResponse = SuccessKey;
+                    tResultCode = QuestionsHandlerObject.TestConnection(pSettingsModel.ConnectionStringObject);
+
+                    if (tResultCode == (int)ResultCodesEnum.SUCCESS)
+                    {
+                        tMessageResponse = Languages.Language.TestSuccess;
+                        tRequestResponse = SuccessKey;
+                    }
+                    else
+                    {
+                        tMessageResponse = MessagesUtilities.GetResponseMessage(tResultCode);
+                        tRequestResponse = DangerKey;
+                    }
                 }
                 else
                 {
-                    tMessageResponse = MessagesUtilities.GetResponseMessage(tResultCode);
+                    tMessageResponse = Languages.Language.TestFail;
                     tRequestResponse = DangerKey;
                 }
             }
