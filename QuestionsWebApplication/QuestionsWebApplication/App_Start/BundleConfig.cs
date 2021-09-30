@@ -43,7 +43,8 @@ namespace QuestionsWebApplication
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/QuestionsStyles.css",
-                      "~/Content/ArabicStyles.css"));
+                      "~/Content/ArabicStyles.css",
+                      "~/Content/ErrorPageStyles.css"));
         }
     }
 }

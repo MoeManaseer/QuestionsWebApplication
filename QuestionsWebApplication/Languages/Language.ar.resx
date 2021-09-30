@@ -123,6 +123,9 @@
   <data name="AddFailure" xml:space="preserve">
     <value>حدث خطأ ما أثناء الإضافة .. يرجى المحاولة مرة أخرى.</value>
   </data>
+  <data name="AddForm" xml:space="preserve">
+    <value>سؤال جديد</value>
+  </data>
   <data name="AppName" xml:space="preserve">
     <value>QuestionsBuilder</value>
   </data>
@@ -186,6 +189,9 @@
   <data name="Edit" xml:space="preserve">
     <value>تحديث</value>
   </data>
+  <data name="EditForm" xml:space="preserve">
+    <value>تحديث سؤال</value>
+  </data>
   <data name="EmptyFields" xml:space="preserve">
     <value>فشلت عملية الإضافة / التحديث .. هناك حقول فارغة.</value>
   </data>
@@ -194,6 +200,9 @@
   </data>
   <data name="Error" xml:space="preserve">
     <value>خطأ</value>
+  </data>
+  <data name="ErrorHome" xml:space="preserve">
+    <value>العودة الى الصفحة الرئيسية</value>
   </data>
   <data name="ErrorMessage" xml:space="preserve">
     <value>حدث خطأ أثناء معالجة طلبك.</value>
@@ -265,7 +274,7 @@
     <value>تمت إضافة السؤال بنجاح</value>
   </data>
   <data name="QuestionAddValidationFail" xml:space="preserve">
-    <value>لم يتم اضافة السؤال بنجاح ، يرجى التحقق من القيم والتأكد من صحتها</value>
+    <value>لم يتم اضافة السؤال، يرجى التحقق من القيم والتأكد من صحتها</value>
   </data>
   <data name="QuestionDeleted" xml:space="preserve">
     <value>حدث خطأ ما أثناء إحضار السؤال .. ربما تم حذف السؤال</value>
@@ -280,7 +289,7 @@
     <value>تمت إزالة السؤال بنجاح!</value>
   </data>
   <data name="QuestionEditValidationFail" xml:space="preserve">
-    <value>لم يتم تحديث السؤال بنجاح، يرجى التحقق من القيم والتأكد من صحتها</value>
+    <value>لم يتم تحديث السؤال, يرجى التحقق من القيم والتأكد من صحتها</value>
   </data>
   <data name="QuestionEndValue" xml:space="preserve">
     <value>القيمة النهائية</value>

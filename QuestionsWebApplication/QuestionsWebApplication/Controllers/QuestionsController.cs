@@ -46,20 +46,16 @@ namespace QuestionsWebApplication.Controllers
         /// <returns>View</returns>
         public ActionResult Index()
         {
-            List<Question> tQuestions = new List<Question>();
-
             try
             {
-                tQuestions.AddRange(QuestionsHandlerObject.QuestionsList);
+                List<Question> tQuestions = new List<Question>(QuestionsHandlerObject.QuestionsList);
+                return View(tQuestions);
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = Languages.Language.ListFail;
-                TempData[ResponseKey] = DangerKey;
+                return View("Error");
             }
-
-            return View(tQuestions);
         }
 
         /// <summary>
@@ -70,20 +66,16 @@ namespace QuestionsWebApplication.Controllers
         [HttpPost]
         public ActionResult GetUpdatedData()
         {
-            List<Question> tQuestions = new List<Question>();
-
             try
             {
-                tQuestions.AddRange(QuestionsHandlerObject.QuestionsList);
+                List<Question> tQuestions = new List<Question>(QuestionsHandlerObject.QuestionsList);
+                return PartialView("_QuestionsView", tQuestions);
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = Languages.Language.ListFail;
-                TempData[ResponseKey] = DangerKey;
+                return View("Error");
             }
-
-            return PartialView("_QuestionsView", tQuestions);
         }
 
         /// <summary>
@@ -93,7 +85,15 @@ namespace QuestionsWebApplication.Controllers
         /// <returns>View</returns>
         public ActionResult Create()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception tException)
+            {
+                Logger.WriteExceptionMessage(tException);
+                return View("Error");
+            }
         }
 
         /// <summary>
@@ -106,10 +106,11 @@ namespace QuestionsWebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Question pQuestion)
         {
-            int tResultCode = (int) ResultCodesEnum.SUCCESS;
 
             try
             {
+                int tResultCode = (int) ResultCodesEnum.SUCCESS;
+
                 // Validate the inputted data
                 if (ModelState.IsValid && pQuestion.ValidateQuestionFields())
                 {
@@ -119,6 +120,9 @@ namespace QuestionsWebApplication.Controllers
                     {
                         TempData[MessageKey] = Languages.Language.QuestionAddSuccess;
                         TempData[ResponseKey] = SuccessKey;
+
+                        // If successful return to the index page
+                        return RedirectToAction(IndexKey, QuestionsKey);
                     }
                     else
                     {
@@ -130,26 +134,14 @@ namespace QuestionsWebApplication.Controllers
                 {
                     TempData[MessageKey] = Languages.Language.QuestionAddValidationFail;
                     TempData[ResponseKey] = DangerKey;
-                    tResultCode = (int) ResultCodesEnum.CODE_FAILUER;
                 }
+
+                return View(pQuestion);
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = Languages.Language.QuestionAddFail;
-                TempData[ResponseKey] = DangerKey;
-                tResultCode = (int) ResultCodesEnum.CODE_FAILUER;
-            }
-
-            // If successful redirect to the index page
-            if (tResultCode == (int) ResultCodesEnum.SUCCESS)
-            {
-                return RedirectToAction(IndexKey, QuestionsKey);
-            }
-            // If not return to the same page with the question data
-            else
-            {
-                return View(pQuestion);
+                return View("Error");
             }
         }
 
@@ -161,8 +153,6 @@ namespace QuestionsWebApplication.Controllers
         /// <returns>View</returns>
         public ActionResult Edit(int id = -1)
         {
-            Question tCorrectInstance = null;
-
             try
             {
                 // Get the question object
@@ -177,7 +167,7 @@ namespace QuestionsWebApplication.Controllers
                 }
 
                 // Create a new instance of the Question class with the right subtype
-                tCorrectInstance = QuestionsFactory.GetInstance(tOriginalQuestion.Type);
+                Question tCorrectInstance = QuestionsFactory.GetInstance(tOriginalQuestion.Type);
                 // Manually assign the Id
                 tCorrectInstance.Id = tOriginalQuestion.Id;
                 // Get all the subtyped question data from the database
@@ -188,15 +178,14 @@ namespace QuestionsWebApplication.Controllers
                     TempData[MessageKey] = MessagesUtilities.GetResponseMessage(tResultCode);
                     TempData[ResponseKey] = DangerKey;
                 }
+
+                return View(tCorrectInstance);
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = Languages.Language.QuestionAddFail;
-                TempData[ResponseKey] = DangerKey;
+                return View("Error");
             }
-
-            return View(tCorrectInstance);
         }
 
         /// <summary>
@@ -232,15 +221,14 @@ namespace QuestionsWebApplication.Controllers
                     TempData[MessageKey] = Languages.Language.QuestionEditValidationFail;
                     TempData[ResponseKey] = DangerKey;
                 }
+
+                return View(pQuestion);
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = Languages.Language.QuestionUpdateFail;
-                TempData[ResponseKey] = DangerKey;
+                return View("Error");
             }
-
-            return View(pQuestion);
         }
 
         /// <summary>
@@ -252,12 +240,12 @@ namespace QuestionsWebApplication.Controllers
         [HttpPost]
         public ActionResult OnDeleteQuestion(string pQuestionId)
         {
-            int tResultCode = (int)ResultCodesEnum.SUCCESS;
-            string tMessageResponse = "";
-            string tRequestResponse = "";
-
             try
             {
+                int tResultCode = (int)ResultCodesEnum.SUCCESS;
+                string tMessageResponse = "";
+                string tRequestResponse = "";
+
                 int tCurrentQuestionId = Convert.ToInt32(pQuestionId);
                 Question tQuestion = GetQuestionObject(tCurrentQuestionId);
 
@@ -281,20 +269,25 @@ namespace QuestionsWebApplication.Controllers
                     tMessageResponse = Languages.Language.QuestionDeleteDeleted;
                     tRequestResponse = DangerKey;
                 }
+
+                return Json(new
+                {
+                    message = tMessageResponse,
+                    requestResponse = tRequestResponse,
+                    didDelete = tResultCode == (int)ResultCodesEnum.SUCCESS
+                });
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                tMessageResponse = Languages.Language.QuestionDeletedFail;
-                tRequestResponse = DangerKey;
-            }
 
-            return Json(new
-            {
-                message = tMessageResponse,
-                requestResponse = tRequestResponse,
-                didDelete = tResultCode == (int)ResultCodesEnum.SUCCESS
-            });
+                return Json(new
+                {
+                    message = Languages.Language.QuestionDeletedFail,
+                    requestResponse = DangerKey,
+                    didDelete = false
+                });
+            }
         }
 
         /// <summary>
@@ -304,18 +297,16 @@ namespace QuestionsWebApplication.Controllers
         /// <returns>a question object if found or null</returns>
         private Question GetQuestionObject(int pId)
         {
-            Question tQuestion = null;
-
             try
             {
-                tQuestion = QuestionsHandlerObject.QuestionsList.Find((tTempQuestion) => pId == tTempQuestion.Id);
+                Question tQuestion = QuestionsHandlerObject.QuestionsList.Find((tTempQuestion) => pId == tTempQuestion.Id);
+                return tQuestion;
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
+                return null;
             }
-
-            return tQuestion;
         }
 
         /// <summary>

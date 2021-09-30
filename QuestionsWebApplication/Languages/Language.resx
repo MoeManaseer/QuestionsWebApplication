@@ -123,6 +123,9 @@
   <data name="AddFailure" xml:space="preserve">
     <value>Something wrong happend while adding.. please try again.</value>
   </data>
+  <data name="AddForm" xml:space="preserve">
+    <value>New Question</value>
+  </data>
   <data name="AppName" xml:space="preserve">
     <value>QuestionsBuilder</value>
   </data>
@@ -186,6 +189,9 @@
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="EditForm" xml:space="preserve">
+    <value>Edit Question</value>
+  </data>
   <data name="EmptyFields" xml:space="preserve">
     <value>Adding/Updating failed.. there are empty fields.</value>
   </data>
@@ -194,6 +200,9 @@
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="ErrorHome" xml:space="preserve">
+    <value>Go back to homepage</value>
   </data>
   <data name="ErrorMessage" xml:space="preserve">
     <value>An error occurred while processing your request.</value>
@@ -265,7 +274,7 @@
     <value>Question added successfully</value>
   </data>
   <data name="QuestionAddValidationFail" xml:space="preserve">
-    <value>The question was added unsuccessfully, please check the values and make sure they are valid</value>
+    <value>The question was not added, please check the values and make sure they are valid</value>
   </data>
   <data name="QuestionDeleted" xml:space="preserve">
     <value>Something wrong happend while fetching the question.. the question is probably deleted</value>
@@ -280,7 +289,7 @@
     <value>The question was removed successfully!</value>
   </data>
   <data name="QuestionEditValidationFail" xml:space="preserve">
-    <value>The question was edited unsuccessfully, please check the values and make sure they are valid</value>
+    <value>The question was not updated, please check the values and make sure they are valid</value>
   </data>
   <data name="QuestionEndValue" xml:space="preserve">
     <value>End value</value>

@@ -79,6 +79,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Question.
+        /// </summary>
+        public static string AddForm {
+            get {
+                return ResourceManager.GetString("AddForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to QuestionsBuilder.
         /// </summary>
         public static string AppName {
@@ -268,6 +277,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Question.
+        /// </summary>
+        public static string EditForm {
+            get {
+                return ResourceManager.GetString("EditForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adding/Updating failed.. there are empty fields..
         /// </summary>
         public static string EmptyFields {
@@ -291,6 +309,15 @@ namespace Languages {
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go back to homepage.
+        /// </summary>
+        public static string ErrorHome {
+            get {
+                return ResourceManager.GetString("ErrorHome", resourceCulture);
             }
         }
         
@@ -502,7 +529,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The question was added unsuccessfully, please check the values and make sure they are valid.
+        ///   Looks up a localized string similar to The question was not added, please check the values and make sure they are valid.
         /// </summary>
         public static string QuestionAddValidationFail {
             get {
@@ -547,7 +574,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The question was edited unsuccessfully, please check the values and make sure they are valid.
+        ///   Looks up a localized string similar to The question was not updated, please check the values and make sure they are valid.
         /// </summary>
         public static string QuestionEditValidationFail {
             get {

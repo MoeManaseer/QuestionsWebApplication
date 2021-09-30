@@ -39,10 +39,9 @@ namespace QuestionsWebApplication.Controllers
         /// <returns>View</returns>
         public ActionResult Edit()
         {
-            SettingsModel tSettingsModel = null; 
             try
             {
-                tSettingsModel = new SettingsModel();
+                SettingsModel tSettingsModel = new SettingsModel();
                 // Get the current connection string object
                 tSettingsModel.ConnectionStringObject = QuestionsHandlerObject.GetConnectionString();
 
@@ -50,15 +49,14 @@ namespace QuestionsWebApplication.Controllers
                 HttpCookie tLanguageCookie = Request.Cookies[LanguageKey];
                 // If the language cookie is not set, fallback to the defualt language.
                 tSettingsModel.Language = (tLanguageCookie != null && !string.IsNullOrEmpty(tLanguageCookie.Value)) ? (LanguagesEnum)Enum.Parse(typeof(LanguagesEnum), tLanguageCookie.Value) : LanguagesEnum.English;
+             
+                return View(tSettingsModel);
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = Languages.Language.ListFail;
-                TempData[ResponseKey] = DangerKey;
+                return View("Error");
             }
-
-            return View(tSettingsModel);
         }
 
         /// <summary>
@@ -113,15 +111,14 @@ namespace QuestionsWebApplication.Controllers
                     TempData[MessageKey] = Languages.Language.SaveFail;
                     TempData[ResponseKey] = DangerKey;
                 }
+
+                return View(pSettingsModel);
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                TempData[MessageKey] = Languages.Language.SaveFail;
-                TempData[ResponseKey] = DangerKey;
+                return View("Error");
             }
-
-            return View(pSettingsModel);
         }
 
         /// <summary>
@@ -133,12 +130,12 @@ namespace QuestionsWebApplication.Controllers
         [HttpPost]
         public ActionResult TestConnection(SettingsModel pSettingsModel)
         {
-            int tResultCode = (int)ResultCodesEnum.SUCCESS;
-            string tMessageResponse = "";
-            string tRequestResponse = "";
-
             try
             {
+                int tResultCode = (int)ResultCodesEnum.SUCCESS;
+                string tMessageResponse = "";
+                string tRequestResponse = "";
+
                 if (ModelState.IsValid)
                 {
                     tResultCode = QuestionsHandlerObject.TestConnection(pSettingsModel.ConnectionStringObject);
@@ -159,20 +156,25 @@ namespace QuestionsWebApplication.Controllers
                     tMessageResponse = Languages.Language.TestFail;
                     tRequestResponse = DangerKey;
                 }
+
+                return Json(new
+                {
+                    message = tMessageResponse,
+                    requestResponse = tRequestResponse,
+                    connectionSuccess = tResultCode == (int)ResultCodesEnum.SUCCESS
+                });
             }
             catch (Exception tException)
             {
                 Logger.WriteExceptionMessage(tException);
-                tMessageResponse = Languages.Language.TestFail;
-                tRequestResponse = DangerKey;
+                
+                return Json(new
+                {
+                    message = Languages.Language.TestFail,
+                    requestResponse = DangerKey,
+                    connectionSuccess = false,
+                });
             }
-
-            return Json(new
-            {
-                message = tMessageResponse,
-                requestResponse = tRequestResponse,
-                connectionSuccess = tResultCode == (int)ResultCodesEnum.SUCCESS
-            });
         }
     }
 }

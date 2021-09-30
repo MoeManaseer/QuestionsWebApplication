@@ -1,13 +1,21 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <hgroup>
-        <h1>@Languages.Language.Error</h1>
-        <h2>@Languages.Language.ErrorMessage</h2>
-    </hgroup>
-</body>
-</html>
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    @Languages.Language.Error
+                </h1>
+                <div class="error-details">
+                    @Languages.Language.ErrorMessage
+                    <br />
+                </div>
+                <div class="error-actions">
+                    <a href="http://www.jquery2dotnet.com" class="btn btn-primary btn-lg">
+                        <span class="glyphicon glyphicon-home"></span>
+                        @Languages.Language.ErrorHome
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
