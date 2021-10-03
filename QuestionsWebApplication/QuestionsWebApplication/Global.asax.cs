@@ -1,13 +1,12 @@
 ﻿using LoggerUtils;
 using QuestionsWebApplication.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Http;
 
 namespace QuestionsWebApplication
 {
@@ -17,9 +16,11 @@ namespace QuestionsWebApplication
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ContainerConfig.RegisterContainer();
+            ContainerConfig.RegisterContainer(GlobalConfiguration.Configuration);
             ModelBinders.Binders.DefaultBinder = new QuestionsModelBinder();
             ViewEngines.Engines.Add(new QuestionsViewEngine());
         }
